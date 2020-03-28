@@ -12,3 +12,9 @@ Pour lancer l'application rassurez-vous d'avoir éxécuté les commande suivante
 * Typescript -> *Backend*
 * Javascript -> *Frontend*
 * MongoDB
+
+**A lire attentivement avant de contribuer à un projet open source**<br>
+https://openclassrooms.com/fr/courses/2342361-gerez-votre-code-avec-git-et-github/2433731-contribuez-a-des-projets-open-source<br>
+https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/
+
+
