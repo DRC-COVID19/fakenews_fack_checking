@@ -102,3 +102,12 @@ dist
 
 # TernJS port file
 .tern-port
+
+#My files
+prod.ts
+keys.ts
+build/
+db_schema.drawio
+initial_data.ts
+dev.js
+

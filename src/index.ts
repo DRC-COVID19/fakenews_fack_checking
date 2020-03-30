@@ -1,6 +1,6 @@
 import express from 'express';
 import { newRouter } from './routes/news_routes';
-
+import './services/DataBasInit';
 const app = express();
 
 app.set('views', './src/views');

@@ -6,6 +6,7 @@ var NewsController = /** @class */ (function () {
     NewsController.home = function () {
         return function (req, res) {
             res.render('pages/home', {
+                tab_title: 'Rapporter des Fakes news',
                 title: 'Bienvenu dans le site de signelement des Fake news',
                 message: 'Dans ce site,vous pouvez signaler/faire verifier toutes les informations circulant sur les réseau sociaux en rapport avec la Pandemie du Covid-19'
             });
