@@ -7,6 +7,10 @@ Pour lancer l'application rassurez-vous d'avoir éxécuté les commande suivante
 - **npm install** si vous avez **npm** installé ou **yarn** si vous avez **yarn** installé
 - Faites ensuite **npm run start** ou **yarn start** selon que vous avez **npm** ou **yarn**
 
+- Le projet étant en Typescript,avant de lancer le server faites : **yarn build** ou **npm run build**
+
+- Pour lancer le server faites **yarn start** ou **npm run start**
+
 **Tech Stack**
 
 - Node.js
@@ -35,3 +39,12 @@ Pour lancer l'application rassurez-vous d'avoir éxécuté les commande suivante
     </ul>
  </li>
 </ul>
+* Node.js
+* Express
+* Typescript -> *Backend*
+* Javascript -> *Frontend*
+* MongoDB
+
+**A lire attentivement avant de contribuer à un projet open source**<br>
+https://openclassrooms.com/fr/courses/2342361-gerez-votre-code-avec-git-et-github/2433731-contribuez-a-des-projets-open-source<br>
+https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/
