@@ -7,6 +7,7 @@ var express_1 = __importDefault(require("express"));
 var news_routes_1 = require("./routes/news_routes");
 require("./services/DataBasInit");
 var app = express_1.default();
+app.use(express_1.default.static('public'));
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 app.use(express_1.default.urlencoded({ extended: true }));
