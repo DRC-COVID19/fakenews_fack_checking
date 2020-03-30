@@ -13,7 +13,7 @@ var InformationSchema = new mongoose_1.default.Schema({
         unique: true,
         required: true
     },
-    contentu: {
+    contenu: {
         type: String,
         unique: true,
         required: false

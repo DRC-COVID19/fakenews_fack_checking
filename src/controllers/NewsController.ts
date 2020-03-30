@@ -1,13 +1,13 @@
 import { Request, Response } from 'express';
+import { Information } from '../models/Information';
 export class NewsController {
   static home() {
-    return function(req: Request, res: Response) {
-      res.render('pages/home', {
-        tab_title: 'Rapporter des Fakes news',
-        title: 'Bienvenu dans le site de signelement des Fake news',
-        message:
-          'Dans ce site,vous pouvez signaler/faire verifier toutes les informations circulant sur les réseau sociaux en rapport avec la Pandemie du Covid-19'
-      });
+    return async function(req: Request, res: Response) {
+      const news = await Information.find({ veracite: 'fausse' }).select(
+        'source titre contenu photo veracite'
+      );
+      console.log('DATA : ', news);
+      res.render('pages/home', { news });
     };
   }
 }

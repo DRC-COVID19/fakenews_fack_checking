@@ -23,11 +23,13 @@
   "dependencies": {
     "@types/cookie-session": "^2.0.39",
     "@types/express": "^4.17.3",
+    "@types/lodash": "^4.14.149",
     "@types/mongoose": "^5.7.8",
     "concurrently": "^5.1.0",
     "cookie-session": "^1.4.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
+    "lodash": "^4.17.15",
     "mongoose": "^5.9.6",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",

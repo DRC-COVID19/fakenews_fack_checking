@@ -1,9 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-  <%- include('../partials/head') %> <%- include('../partials/header') %>
-  <div class="ui visible message">
-    <h1 class="ui header"><%= title %></h1>
-    <p><%= message %></p>
-  </div>
-  <%- include('../partials/footer') %>
-</html>
+<%- include('../partials/head') %> <%- include('../partials/header') %>
+<div class="ui visible message">
+  <h1 class="ui header">Liste des fakes news</h1>
+  <table border='1' class="table">
+    <tr>
+      <th>Source</th>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th>Photo</th>
+      <th>Veracite</th>
+    </tr>
+    <% for( let info of news ) { %>
+    <tr>
+      <td><%= info.source %> </td>
+      <td><%= info.titre %> </td>
+      <td><%= info.contenu %> </td>
+      <td><img src=<%= info.photo %> /></td>
+      <td><%= info.veracite %> </td>
+    </tr>
+    <% } %>
+  </table>
+</div>
+<%- include('../partials/footer') %>

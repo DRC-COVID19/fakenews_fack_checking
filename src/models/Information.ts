@@ -9,7 +9,7 @@ const InformationSchema = new mongoose.Schema({
     unique: true,
     required: true
   },
-  contentu: {
+  contenu: {
     type: String,
     unique: true,
     required: false
