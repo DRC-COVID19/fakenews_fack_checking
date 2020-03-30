@@ -1,5 +1,5 @@
 <%- include('../partials/head') %> <%- include('../partials/header') %>
-<div class="ui visible message">
+<!-- <div class="ui visible message">
   <h1 class="ui header">Liste des fakes news</h1>
   <table border='1' class="table">
     <tr>
@@ -19,5 +19,78 @@
     </tr>
     <% } %>
   </table>
-</div>
+</div> -->
+
+<div class="container">
+
+  <!-- L'entête -->
+  <div class="row mt-5">
+    <div class="col-sm-12 text-center">
+      <h1>Coronavirus factcheck RDC</h1>
+      <p>Bienvenus sur la plate-forme officiel de fact-checking</p>
+      <button type="button" class="btn btn-dark">PARTAGER UNE INFO</button>
+      <hr>
+    </div>
+  </div>
+
+  <!-- Le contenu -->
+  <div class="row ">
+    <div class="col-sm-12">
+      <h3>Les dernières info</h3>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <div class="col-sm-12 d-flex justify-content-center">
+      <div class="card mb-3" style="max-width: 600px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <!-- L'iamge ici -->
+            <img src="..." class="card-img" alt="img">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <span class="badge badge-danger">FAUX</span>
+              <a href="#"><h5 class="card-title font-weight-bolder">Est-il vrai que le congo bololo protège du COVID-19 ?</h5></a>
+                <p class="card-text">Nombreuses persones influentes ont partagé cette fausse info sur les réseaux sociaux ont conduit à sa propagation.</p>
+                <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
+                <i style="color :#3b5998 ; font-size:25px; margin-right:5px;" class="fa fa-facebook-official" aria-hidden="true"></i>
+                <i style="color : #38A1F3; font-size:25px;" class="fa fa-twitter-square" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+
+  <div class="row mb-4 ">
+    <div class="col-sm-12 d-flex justify-content-center">
+      <div class="card mb-3" style="max-width: 600px;">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <!-- L'iamge ici -->
+            <img src="..." class="card-img" alt="img">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <span class="badge badge-success">VRAI</span>
+              <a href="#"><h5 class="card-title font-weight-bolder">Est-il vrai que le congo bololo protège du COVID-19 ?</h5></a>
+                <p class="card-text">Nombreuses persones influentes ont partagé cette fausse info sur les réseaux sociaux ont conduit à sa propagation.</p>
+                <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
+                <i style="color :#3b5998 ; font-size:25px; margin-right:5px;" class="fa fa-facebook-official" aria-hidden="true"></i>
+                <i style="color : #38A1F3; font-size:25px;" class="fa fa-twitter-square" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <hr>
+  <footer>
+    <p>Fournis par <a href="#">Kinshasa Digital</a></p>
+  </footer>
+  </div>
+
+
 <%- include('../partials/footer') %>
