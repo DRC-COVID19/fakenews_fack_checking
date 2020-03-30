@@ -46,12 +46,43 @@ var NewsController = /** @class */ (function () {
                 var news;
                 return __generator(this, function (_a) {
                     switch (_a.label) {
-                        case 0: return [4 /*yield*/, Information_1.Information.find({ veracite: 'fausse' }).select('source titre contenu photo veracite')];
+                        case 0: return [4 /*yield*/, Information_1.Information.find({ veracite: 'fausse' }).select('_id source titre contenu photo veracite')];
                         case 1:
                             news = _a.sent();
                             console.log('DATA : ', news);
                             res.render('pages/home', { news: news });
                             return [2 /*return*/];
+                    }
+                });
+            });
+        };
+    };
+    NewsController.show = function () {
+        return function (req, res) {
+            return __awaiter(this, void 0, void 0, function () {
+                var id, news, error_1;
+                return __generator(this, function (_a) {
+                    switch (_a.label) {
+                        case 0:
+                            id = req.params.id;
+                            _a.label = 1;
+                        case 1:
+                            _a.trys.push([1, 3, , 4]);
+                            return [4 /*yield*/, Information_1.Information.findById(id)];
+                        case 2:
+                            news = _a.sent();
+                            if (news) {
+                                return [2 /*return*/, res.render('pages/details-info', { news: news })];
+                            }
+                            else {
+                                return [2 /*return*/, res.render("<h1>Not Found</h1>")];
+                            }
+                            return [3 /*break*/, 4];
+                        case 3:
+                            error_1 = _a.sent();
+                            console.log(error_1);
+                            return [3 /*break*/, 4];
+                        case 4: return [2 /*return*/];
                     }
                 });
             });
