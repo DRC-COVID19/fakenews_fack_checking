@@ -7,7 +7,7 @@ export class NewsController {
         '_id source titre contenu photo veracite'
       );
       console.log('DATA : ', news);
-      res.render('pages/home', { news });
+      res.render('pages/home', { news, title: 'Bienvenu' });
     };
   }
 
@@ -17,7 +17,9 @@ export class NewsController {
         params: { id }
       } = req;
       try {
-        const news = await Information.findById(id);
+        const news = await Information.findById(id).select(
+          '_id source titre contenu photo veracite'
+        );
         if (news) {
           return res.render('pages/details-info', { news });
         } else {
