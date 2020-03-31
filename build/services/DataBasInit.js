@@ -4,9 +4,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
-var dev_1 = require("../config/dev");
+var DBInfos = require('../config/keys').DBInfos;
 var MONGO_URL;
-var MONGO_DBNAME = dev_1.DBInfos.MONGO_DBNAME, MONGO_PASSWORD = dev_1.DBInfos.MONGO_PASSWORD, MONGO_USER = dev_1.DBInfos.MONGO_USER, MONGO_HOSTNAME = dev_1.DBInfos.MONGO_HOSTNAME;
+var MONGO_DBNAME = DBInfos.MONGO_DBNAME, MONGO_PASSWORD = DBInfos.MONGO_PASSWORD, MONGO_USER = DBInfos.MONGO_USER, MONGO_HOSTNAME = DBInfos.MONGO_HOSTNAME;
 MONGO_URL = "mongodb://" + MONGO_USER + ":" + MONGO_PASSWORD + "@" + MONGO_HOSTNAME + "/" + MONGO_DBNAME;
 mongoose_1.default
     .connect(MONGO_URL, { useNewUrlParser: false, useUnifiedTopology: false })
