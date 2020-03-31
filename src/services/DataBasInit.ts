@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import { DBInfos } from '../config/dev';
+const { DBInfos } = require('../config/keys');
 let MONGO_URL;
 
 const { MONGO_DBNAME, MONGO_PASSWORD, MONGO_USER, MONGO_HOSTNAME } = DBInfos;

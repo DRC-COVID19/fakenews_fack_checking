@@ -104,10 +104,10 @@ dist
 .tern-port
 
 #My files
-prod.ts
-keys.ts
+dev.ts
 build/
 db_schema.drawio
 initial_data.ts
 dev.js
+.vscode/
 
