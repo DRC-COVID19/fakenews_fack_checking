@@ -50,7 +50,7 @@ var NewsController = /** @class */ (function () {
                         case 1:
                             news = _a.sent();
                             console.log('DATA : ', news);
-                            res.render('pages/home', { news: news });
+                            res.render('pages/home', { news: news, title: 'Bienvenu' });
                             return [2 /*return*/];
                     }
                 });
@@ -68,7 +68,7 @@ var NewsController = /** @class */ (function () {
                             _a.label = 1;
                         case 1:
                             _a.trys.push([1, 3, , 4]);
-                            return [4 /*yield*/, Information_1.Information.findById(id)];
+                            return [4 /*yield*/, Information_1.Information.findById(id).select('_id source titre contenu photo veracite')];
                         case 2:
                             news = _a.sent();
                             if (news) {
