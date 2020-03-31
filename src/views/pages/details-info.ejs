@@ -1,7 +1,7 @@
 <%- include('../partials/head') %> <%- include('../partials/header') %>
 <div class="row mt-5">
   <div class="col-sm-12 text-center">
-    <div class="badge badge-danger text-uppercase "> 
+    <div class="badge badge-<%= news.veracite == 'vraie'   ? 'success' : 'danger' %> text-uppercase "> 
       <span class="h1"><%= news.veracite %></span>
     </div>
 
