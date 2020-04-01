@@ -1,11 +1,13 @@
 <%- include('../partials/head') %> 
 <%- include('../partials/header') %>
 <div class="container">
+
   <div class="row return">
     <div class="col-sm-6">
       <a class="" href="/"><span class="iconify" data-icon="cil:arrow-left" data-inline="false"></span> Retour</a>
     </div>
   </div>
+
   <div class="content">
     <div class="row justify-content-center">
       <div class="col-sm-10 text-center ">
@@ -15,23 +17,7 @@
         <img width="500" src="<%= news.photo %>" alt="<%= news.titre %>">
         <p class="text-justify"><%= news.contenu %></p>
 
-        <ul class="social">
-          <li>
-            <span style="color :#3b5998 ; font-size:25px; margin-right:5px;"  class="button share-button facebook-share-button st-custom-button" data-network="facebook" data-url="https://www.kinshasadigital.com/kinshasa-digital-academy">
-              <span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span>
-            </span>
-          </li>
-          <li>
-            <span style="color :#38A1F3 ; font-size:25px; margin-right:5px;" class="button share-button facebook-share-button st-custom-button" data-network="twitter" data-url="https://www.kinshasadigital.com/kinshasa-digital-academy">
-              <span class="iconify" data-icon="jam:twitter-circle" data-inline="false"></span>
-            </span>
-          </li>
-          <li>
-            <span style="color :#61d0b6 ; font-size:25px;" class="button share-button facebook-share-button st-custom-button" data-network="whatsapp" data-url="https://www.kinshasadigital.com/kinshasa-digital-academy">
-              <span class="iconify" data-icon="mdi:whatsapp" data-inline="false"></span>
-            </span>
-          </li>
-        </ul>
+        <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : news.titre})%>
 
       </div>
     </div>

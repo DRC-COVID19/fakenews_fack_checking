@@ -31,11 +31,7 @@
           <a href="<%=info.id%>""><h5 class="card-title"><%= info.titre %></h5></a>
           <p class="card-text"><%- info.contenu %></p>
           <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
-          <ul class="social">
-            <li><a style="color :#3b5998 ; font-size:25px; margin-right:5px;" href="#"><span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span></a></li>
-            <li><a style="color :#38A1F3 ; font-size:25px; margin-right:5px;" href="#"><span class="iconify" data-icon="jam:twitter-circle" data-inline="false"></span></a></li>
-            <li><a style="color :#61d0b6 ; font-size:25px;" href="#"><span class="iconify" data-icon="mdi:whatsapp" data-inline="false"></span></a></li>
-          </ul>
+          <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : info.titre})%>
         </div>
       </div>
       <% } %>
