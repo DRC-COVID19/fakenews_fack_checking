@@ -1,0 +1,132 @@
+<%- include('../partials/head') %> <%- include('../partials/header') %>
+<div class="container">
+    <form action="/add-news" method="post">
+        <div class="form-group">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="francais-tab" data-toggle="tab" href="#francais" role="tab" aria-controls="francais" aria-selected="true">Fancais</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="lingala-tab" data-toggle="tab" href="#lingala" role="tab" aria-controls="lingala" aria-selected="false">Lingala</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="tshiluba-tab" data-toggle="tab" href="#tshiluba" role="tab" aria-controls="tshiluba" aria-selected="false">Tshiluba</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="swahili-tab" data-toggle="tab" href="#swahili" role="tab" aria-controls="swahili" aria-selected="false">Swahili</a>
+              </li>
+               <li class="nav-item">
+                <a class="nav-link" id="kikongo-tab" data-toggle="tab" href="#kikongo" role="tab" aria-controls="kikongo" aria-selected="false">Kikongo</a>
+              </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+          <div class="tab-pane fade show active" id="francais" role="tabpanel" aria-labelledby="francais-tab">			  	
+               <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" class="form-control" name="souce" id="source">
+              </div>
+              <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" class="form-control" id="titre" name="titre">
+              </div>
+              <div class="form-group">
+                <label for="Contenu">Contenu</label>
+                <input type="text" class="form-control" id="contenu" name="contenu">
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="lingala" role="tabpanel" aria-labelledby="lingala-tab">
+               <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" class="form-control" name="souce" id="source">
+              </div>
+              <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" class="form-control" id="titre" name="titre">
+              </div>
+              <div class="form-group">
+                <label for="Contenu">Contenu</label>
+                <input type="text" class="form-control" id="contenu" name="contenu">
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="tshiluba" role="tabpanel" aria-labelledby="tshiluba-tab">
+               <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" class="form-control" name="souce" id="source">
+              </div>
+              <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" class="form-control" id="titre" name="titre">
+              </div>
+              <div class="form-group">
+                <label for="Contenu">Contenu</label>
+                <input type="text" class="form-control" id="contenu" name="contenu">
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="swahili" role="tabpanel" aria-labelledby="swahili-tab">
+               <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" class="form-control" name="souce" id="source">
+              </div>
+              <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" class="form-control" id="titre" name="titre">
+              </div>
+              <div class="form-group">
+                <label for="Contenu">Contenu</label>
+                <input type="text" class="form-control" id="contenu" name="contenu">
+            </div>
+          </div>
+
+          <div class="tab-pane fade" id="kikongo" role="tabpanel" aria-labelledby="kikongo-tab">
+               <div class="form-group">
+                <label for="source">Source</label>
+                <input type="text" class="form-control" name="souce" id="source">
+              </div>
+              <div class="form-group">
+                <label for="titre">Titre</label>
+                <input type="text" class="form-control" id="titre" name="titre">
+              </div>
+              <div class="form-group">
+                <label for="Contenu">Contenu</label>
+                <input type="text" class="form-control" id="contenu" name="contenu">
+            </div>
+          </div>
+
+        </div>
+        </div>
+     
+      <div class="form-group">
+        <label for="vraie_information">Vraie information</label>
+        <input type="text" class="form-control" id="vraie_information" name="vraie_information">
+      </div>
+      <div class="form-group">
+        <label for="lien">Lien</label>
+        <input type="text" class="form-control" id="lien" name="lien">
+      </div>
+      <div class="form-group">
+        <label for="type">Type</label>
+        <select class="form-control" id="type" name="type">
+          <option value="idées reçues">idées reçues</option>
+          <option value="théorie du complot">théorie du complot</option>
+          <option value="remède">remède</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="type">Statut</label>
+        <select class="form-control" id="statut" name="statut">
+          <option value="vraie">vraie</option>
+          <option value="fausse">fausse</option>
+          <option value="brouillon">Brouillon</option>
+        </select>
+      </div>
+      <div class="form-group">
+          <button type="submit" class="btn btn-primary">ENREGISTRER</button>
+      </div>
+    </form>
+</div>
+<hr>
+ 
+<%- include('../partials/footer') %>
