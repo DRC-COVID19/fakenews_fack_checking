@@ -1,28 +1,41 @@
-<%- include('../partials/head') %> <%- include('../partials/header') %>
-<div class="row mt-5">
-  <div class="col-sm-12 text-center">
-    <div class="badge badge-danger text-uppercase ">
-      <span class="h1"><%= news.veracite %></span>
+<%- include('../partials/head') %> 
+<%- include('../partials/header') %>
+<div class="container">
+
+  <div class="row return">
+    <div class="col-sm-6">
+      <a class="" href="/"><span class="iconify" data-icon="cil:arrow-left" data-inline="false"></span> Retour</a>
     </div>
+  </div>
 
-    <h1><%= news.titre %></h1>
-
-    <img class="img-fluid rounded mx-auto d-block" src="<%= news.photo %>" alt="image source <%= news.titre %>">
-
-    <div class="row d-flex justify-content-center">
-      <div class="col-sm-7">
-        <p class="text-justify"><%= news.contenu %></p>
+  <div class="content">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 text-center ">
+        <span class="badge badge-danger"><%= news.verasite %></span>
+        <h1><%= news.titre %></h1>
         <hr>
-        <div class="social-share">
-          <div class="sharethis-inline-share-buttons"
-            data-url="https://www.kinshasadigital.com/kinshasa-digital-academy" data-title="<%= news.titre %>"></div>
-        </div>
+        <img width="500" src="<%= news.photo %>" alt="<%= news.titre %>">
+        <p class="text-justify"><%= news.contenu %></p>
+
+        <ul class="social">
+          <li>
+            <span style="color :#3b5998 ; font-size:25px; margin-right:5px;"  class="button share-button facebook-share-button st-custom-button" data-network="facebook" data-url="https://www.kinshasadigital.com/kinshasa-digital-academy">
+              <span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span>
+            </span>
+          </li>
+          <li>
+            <span style="color :#38A1F3 ; font-size:25px; margin-right:5px;" class="button share-button facebook-share-button st-custom-button" data-network="twitter" data-url="https://www.kinshasadigital.com/kinshasa-digital-academy">
+              <span class="iconify" data-icon="jam:twitter-circle" data-inline="false"></span>
+            </span>
+          </li>
+          <li>
+            <span style="color :#61d0b6 ; font-size:25px;" class="button share-button facebook-share-button st-custom-button" data-network="whatsapp" data-url="https://www.kinshasadigital.com/kinshasa-digital-academy">
+              <span class="iconify" data-icon="mdi:whatsapp" data-inline="false"></span>
+            </span>
+          </li>
+        </ul>
+
       </div>
     </div>
   </div>
-</div>
-<hr>
-
-</div>
-
 <%- include('../partials/footer') %>

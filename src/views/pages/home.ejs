@@ -1,51 +1,44 @@
-<%- include('../partials/head') %> <%- include('../partials/header') %>
-<div class="container">
-
-  <!-- L'entête -->
-  <div class="row mt-5">
-    <div class="col-sm-12 text-center">
+<%- include('../partials/head') %> 
+<%- include('../partials/header') %>
+<header class="d-flex justify-content-center">
+  <div class="row">
+    <div class="col-sm-12 ">
       <h1>Coronavirus factcheck RDC</h1>
       <p>Bienvenus sur la plate-forme officiel de fact-checking</p>
-      <button type="button" class="btn btn-dark">PARTAGER UNE INFO</button>
-      <hr>
+      <a class="btn btn-dark" href="#">Faire verifier une information</a>
+    </div>
+  </div>
+</header>
+<hr>
+<div class="container">
+  <div class="row mt-4 mb-4">
+    <div class="col-sm-12">
+      <h4>Les dernières infos</h4>
     </div>
   </div>
 
-  <!-- Le contenu -->
-  <div class="row mt-3">
-    <div class="col-sm-12 text-center">
-      <h3>Les dernières info</h3>
-    </div>
-  </div>
-
-  <% for(let info of news){
-    info.contenu = info.contenu.substr(0, 100) + ' ...';
-    %>
-    <div class="row mb-4">
-        <div class="col-sm-12 d-flex justify-content-center">
-          <div class="card mb-3" style="max-width: 800px;">
-            <div class="row no-gutters">
-              <div class="col-md-4 p-4">
-                <!-- L'iamge ici -->
-                <img src="<%= info.photo %> " class="card-img" alt="img" width="500">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <span class="badge badge-danger"><%= info.veracite %></span>
-                  <a href="#"><h5 class="card-title font-weight-bolder"><%= info.titre %> </h5></a>
-                    <p class="card-text"><%= info.contenu %> </p>
-                    <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
-                    <i style="color :#3b5998 ; font-size:25px; margin-right:5px;" class="fa fa-facebook-official" aria-hidden="true"></i>
-                    <i style="color : #38A1F3; font-size:25px;" class="fa fa-twitter-square" aria-hidden="true"></i>
-                    <p><a href="<%= info._id %>" class="btn btn-dark mt-4">Voir en detail</a></p>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <div class="row ">
+  <div class="col-sm-12 d-flex align-items-start flex-wrap">
+      <% for(let info of news){info.contenu = info.contenu.substr(0, 100) + `  <small class='text-muted'><a href='${info._id}'> (lire)</a></small> `;%>
+      <div class="card mb-5">
+        <!-- l'image -->
+        <figure>
+          <img src="<%= info.photo %>" class="card-img " alt="<%= info.titre %>">
+        </figure>
+        <!-- le contenu -->
+        <div class="card-body">
+          <span class="badge badge-<%= info.veracite =='vrai' ? 'success' :'danger' %> text-uppercase"><%= info.veracite %></span>
+          <a href="<%=info.id%>""><h5 class="card-title"><%= info.titre %></h5></a>
+          <p class="card-text"><%- info.contenu %></p>
+          <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
+          <ul class="social">
+            <li><a style="color :#3b5998 ; font-size:25px; margin-right:5px;" href="#"><span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span></a></li>
+            <li><a style="color :#38A1F3 ; font-size:25px; margin-right:5px;" href="#"><span class="iconify" data-icon="jam:twitter-circle" data-inline="false"></span></a></li>
+            <li><a style="color :#61d0b6 ; font-size:25px;" href="#"><span class="iconify" data-icon="mdi:whatsapp" data-inline="false"></span></a></li>
+          </ul>
         </div>
       </div>
-<% } %>
-
-  <hr>
- 
+      <% } %>
+    </div>
+  </div>
 <%- include('../partials/footer') %>
