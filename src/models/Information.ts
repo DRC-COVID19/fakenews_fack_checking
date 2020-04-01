@@ -1,7 +1,12 @@
 import mongoose from 'mongoose';
+import { CategorySchema } from './Category';
 
 const InformationSchema = new mongoose.Schema(
   {
+    category: {
+      type: CategorySchema,
+      required: false
+    },
     informationID: {
       type: mongoose.Schema.Types.ObjectId,
       required: true
