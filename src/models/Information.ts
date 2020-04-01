@@ -1,32 +1,22 @@
 import mongoose from 'mongoose';
 
 const InformationSchema = new mongoose.Schema({
-  source: {
-    type: String
-  },
-  titre: {
-    type: String,
-    unique: true,
+  informationID: {
+    type: mongoose.Schema.Types.ObjectId,
     required: true
   },
-  contenu: {
-    type: String,
-    unique: true,
-    required: false
+  source: {
+    type: String
   },
   photo: {
     type: String,
     required: false
   },
-  veracite: {
+  statut: {
     type: String,
     enum: ['vraie', 'fausse', 'draft'],
     default: 'draft',
     required: true
-  },
-  vraieInformation: {
-    type: String,
-    required: false
   },
   paysOrigin: {
     type: String,

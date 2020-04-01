@@ -21,31 +21,34 @@
   <% for(let info of news){
     info.contenu = info.contenu.substr(0, 100) + ' ...';
     %>
-    <div class="row mb-4">
-        <div class="col-sm-12 d-flex justify-content-center">
-          <div class="card mb-3" style="max-width: 600px;">
-            <div class="row no-gutters">
-              <div class="col-md-4 p-4">
-                <!-- L'iamge ici -->
-                <img src="<%= info.photo %> " class="card-img" alt="img" width="500">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <span class="badge badge-danger"><%= info.veracite %></span>
-                  <a href="#"><h5 class="card-title font-weight-bolder"><%= info.titre %> </h5></a>
-                    <p class="card-text"><%= info.contenu %> </p>
-                    <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
-                    <i style="color :#3b5998 ; font-size:25px; margin-right:5px;" class="fa fa-facebook-official" aria-hidden="true"></i>
-                    <i style="color : #38A1F3; font-size:25px;" class="fa fa-twitter-square" aria-hidden="true"></i>
-                    <p><a href="<%= info._id %>" class="btn btn-dark mt-4">Voir en detail</a></p>
-                  </div>
-                </div>
-              </div>
+  <div class="row mb-4">
+    <div class="col-sm-12 d-flex justify-content-center">
+      <div class="card mb-3" style="max-width: 600px;">
+        <div class="row no-gutters">
+          <div class="col-md-4 p-4">
+            <!-- L'iamge ici -->
+            <img src="<%= info.photo %> " class="card-img" alt="img" width="500">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <span class="badge badge-danger"><%= info.statut %></span>
+              <a href="#">
+                <h5 class="card-title font-weight-bolder"><%= info.titre %> </h5>
+              </a>
+              <p class="card-text"><%= info.contenu %> </p>
+              <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
+              <i style="color :#3b5998 ; font-size:25px; margin-right:5px;" class="fa fa-facebook-official"
+                aria-hidden="true"></i>
+              <i style="color : #38A1F3; font-size:25px;" class="fa fa-twitter-square" aria-hidden="true"></i>
+              <p><a href="<%= info._id %>" class="btn btn-dark mt-4">Voir en detail</a></p>
             </div>
+          </div>
         </div>
       </div>
-<% } %>
+    </div>
+  </div>
+  <% } %>
 
   <hr>
- 
-<%- include('../partials/footer') %>
+
+  <%- include('../partials/footer') %>

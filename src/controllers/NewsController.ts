@@ -3,8 +3,8 @@ import { Information } from '../models/Information';
 export class NewsController {
   static home() {
     return async function(req: Request, res: Response) {
-      const news = await Information.find({ veracite: 'fausse' }).select(
-        '_id source titre contenu photo veracite'
+      const news = await Information.find({ statut: 'fausse' }).select(
+        '_id source titre contenu photo statut'
       );
       console.log('DATA : ', news);
       res.render('pages/home', { news, title: 'Bienvenu' });
