@@ -30,4 +30,10 @@ export class NewsController {
       }
     };
   }
+
+  static addInfo() {
+    return function(req: Request, res: Response) {
+      return res.render('pages/form-check-info');
+    };
+  }
 }

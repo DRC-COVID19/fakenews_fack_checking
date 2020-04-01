@@ -1,11 +1,11 @@
-<%- include('../partials/head') %> 
+<%- include('../partials/head') %>
 <%- include('../partials/header') %>
 <header class="d-flex justify-content-center">
   <div class="row">
     <div class="col-sm-12 ">
       <h1>Coronavirus factcheck RDC</h1>
       <p>Bienvenus sur la plate-forme officiel de fact-checking</p>
-      <a class="btn btn-dark" href="#">Faire verifier une information</a>
+      <a class="btn btn-dark" href="/form-check-info">Faire verifier une information</a>
     </div>
   </div>
 </header>
@@ -18,7 +18,7 @@
   </div>
 
   <div class="row ">
-  <div class="col-sm-12 d-flex align-items-start flex-wrap">
+    <div class="col-sm-12 d-flex align-items-start flex-wrap">
       <% for(let info of news){info.contenu = info.contenu.substr(0, 100) + `  <small class='text-muted'><a href='${info._id}'> (lire)</a></small> `;%>
       <div class="card mb-5">
         <!-- l'image -->
@@ -27,8 +27,9 @@
         </figure>
         <!-- le contenu -->
         <div class="card-body">
-          <span class="badge badge-<%= info.veracite =='vrai' ? 'success' :'danger' %> text-uppercase"><%= info.veracite %></span>
-          <a href="<%=info.id%>""><h5 class="card-title"><%= info.titre %></h5></a>
+          <span
+            class="badge badge-<%= info.veracite =='vrai' ? 'success' :'danger' %> text-uppercase"><%= info.veracite %></span>
+          <a href="<%=info.id%>""><h5 class=" card-title"><%= info.titre %></h5></a>
           <p class="card-text"><%- info.contenu %></p>
           <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
           <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : info.titre})%>
@@ -37,4 +38,4 @@
       <% } %>
     </div>
   </div>
-<%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>
