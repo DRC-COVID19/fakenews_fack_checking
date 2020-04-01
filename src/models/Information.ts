@@ -3,14 +3,10 @@ import { CategorySchema } from './Category';
 
 const InformationSchema = new mongoose.Schema(
   {
-    category: {
-      type: CategorySchema,
-      required: false
-    },
-    informationID: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true
-    },
+    // category: {
+    //   type: CategorySchema,
+    //   required: false
+    // },
     source: {
       type: String
     },
@@ -35,4 +31,4 @@ const InformationSchema = new mongoose.Schema(
 );
 
 const Information = mongoose.model('Information', InformationSchema);
-export { Information };
+export { Information, InformationSchema };

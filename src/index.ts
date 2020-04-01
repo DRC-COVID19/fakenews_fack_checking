@@ -1,5 +1,5 @@
 import express from 'express';
-import { newRouter } from './routes/news_routes';
+import { newRouter } from './routes/informations_routes';
 import './services/DataBasInit';
 
 // if (process.env.NODE_ENV === 'production') {
