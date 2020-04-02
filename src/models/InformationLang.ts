@@ -1,10 +1,12 @@
 import mongoose from 'mongoose';
+import { InformationSchema } from './Information';
 
 const InformationLangSchema = new mongoose.Schema(
   {
     langue: { type: String, required: true },
     codeLangue: { type: String, required: true },
-    informationKey: { type: mongoose.Schema.Types.ObjectId },
+    informationID: { type: mongoose.Schema.Types.ObjectId },
+    // information: { type: InformationSchema },
     titre: {
       type: String,
       unique: true,
