@@ -8,7 +8,6 @@ export class NewsController {
       const news = await Information.find().select('_id source photo statut');
       const newsToReturn = await getInformationLang(news, InformationLang);
       res.render('pages/home', { news: newsToReturn, title: 'Bienvenu' });
-      // res.json(newsToReturn);
     };
   }
 
@@ -18,11 +17,17 @@ export class NewsController {
         params: { id }
       } = req;
       try {
-        const news = await Information.findById(id).select(
-          '_id source titre contenu photo veracite'
+        const news: any = await Information.findById(id).select(
+          '_id source photo statut'
         );
         if (news) {
-          return res.render('pages/details-info', { news });
+          const langAttributes: any = await InformationLang.find({
+            informationID: news._id,
+            codeLangue: 'fr'
+          }).select('titre contenu -_id');
+          return res.render('pages/details-info', {
+            news: { ...news['_doc'], ...langAttributes['0']['_doc'] }
+          });
         } else {
           return res.render(`<h1>Not Found</h1>`);
         }
