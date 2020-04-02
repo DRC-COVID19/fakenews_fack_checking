@@ -31,4 +31,4 @@ const InformationLang = mongoose.model(
   'InformationLang',
   InformationLangSchema
 );
-export { InformationLang };
+export { InformationLang, InformationLangSchema };

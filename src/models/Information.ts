@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { CategorySchema } from './Category';
+import { InformationLangSchema } from './InformationLang';
 
 const InformationSchema = new mongoose.Schema(
   {
