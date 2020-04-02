@@ -15,6 +15,7 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'))
 app.use(newRouter);
 
 const PORT = 3000 || process.env.PORT;

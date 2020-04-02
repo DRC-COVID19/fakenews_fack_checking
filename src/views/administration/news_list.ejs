@@ -1,0 +1,37 @@
+<%- include('../partials/head') %> <%- include('../partials/header') %>
+<div class="row mt-5">
+  <div class="col-sm-12">
+    <table class="table table-striped table-bordered table-hover ">
+      <caption>Idées reçues</caption>
+      <thead class="thead-light text-center">
+        <tr>
+          <th scope="col" class="w-25">Titres</th>
+          <th scope="col" class="w-10">Sources</th>
+          <th scope="col" class="w-15">Liens</th>
+          <th scope="col" class="w-25">Contenu</th>
+          <th scope="col" class="w-15">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(let info of news){info.contenu = info.contenu.substr(0, 100) + " (<a href='#'>+voir plus</a>) ";%>
+        <tr>
+          <td><%= info.titre %></td>
+          <td><%= info.source %></td>
+          <td>URL DE L'INFO ...</td>
+          <td><%- info.contenu %></td>
+          <td class="text-center"> 
+            <button class="btn btn-info"><i class="fa fa-eye"></i> Visualiser</button>
+            <button class="btn btn-success"><i class="fa fa-check"></i> Valider</button>
+            <button class="btn btn-danger"><i class="fa fa-ban"></i> Invalider</button>
+          </td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+</div>
+
+<%- include('../partials/footer') %>

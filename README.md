@@ -60,3 +60,13 @@ https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/
 https://medium.com/@bolajiayodeji/how-to-test-a-pull-request-locally-before-merging-634bb205d3a6
 
 https://dev.to/bolajiayodeji/how-to-test-a-pull-request-locally-before-merging-1h29
+
+<h2>Contributeurs</h2>
+
+- **Christian Lisangola Bondjali**
+
+- **Osée Mukaya Tshimanga**
+
+- **Peniel Dialundana**
+
+- **Axel Ilali**
