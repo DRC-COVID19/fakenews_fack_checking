@@ -28,7 +28,7 @@
         <!-- le contenu -->
         <div class="card-body">
           <span
-            class="badge badge-<%= info.veracite =='vrai' ? 'success' :'danger' %> text-uppercase"><%= info.veracite %></span>
+            class="badge badge-<%= info.veracite =='vraie' ? 'success' :'danger' %> text-uppercase"><%= info.veracite==='vraie'?'vrai':'faux' %></span>
           <a href="<%=info.id%>""><h5 class=" card-title"><%= info.titre %></h5></a>
           <p class="card-text"><%- info.contenu %></p>
           <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
