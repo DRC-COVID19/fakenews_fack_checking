@@ -2,7 +2,17 @@ import { Request, Response } from 'express';
 import { Information } from '../models/Information';
 import { InformationLang } from '../models/InformationLang';
 import { getInformationLang } from '../lib/get_all_news';
+
 export class NewsController {
+  static informationDetail() {
+    return async function(req: Request, res: Response) {
+      return res.render('administration/informations_details');
+      // const news = await Information.find().select('_id source photo statut');
+      // const newsToReturn = await getInformationLang(news, InformationLang);
+      // res.render('administration/informations_details', { news: newsToReturn, title: 'Bienvenu' });
+    };
+  }
+  
   static home() {
     return async function(req: Request, res: Response) {
       const news = await Information.find().select('_id source photo statut');
@@ -42,4 +52,5 @@ export class NewsController {
       return res.render('pages/form-check-info');
     };
   }
+
 }

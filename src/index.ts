@@ -1,5 +1,6 @@
 import express from 'express';
 import { newRouter } from './routes/news_routes';
+import { informationRouter } from './routes/informations_routes';
 import './services/DataBasInit';
 
 // if (process.env.NODE_ENV === 'production') {
@@ -17,6 +18,7 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(newRouter);
+app.use(informationRouter);
 
 const PORT = 3000 || process.env.PORT;
 
