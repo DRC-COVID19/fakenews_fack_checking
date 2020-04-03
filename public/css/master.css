@@ -88,5 +88,6 @@ figure img {
     }
   }
 @media screen and (max-width:480px) {
-  .card {max-width: 500px;}
+    .card {max-width: 500px;}
+    footer  .social { text-align: center !important;  }
 }
