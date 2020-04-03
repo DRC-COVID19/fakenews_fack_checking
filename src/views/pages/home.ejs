@@ -23,7 +23,7 @@
       <div class="card mb-5">
         <!-- l'image -->
         <figure>
-          <img src="<%= info.photo %>" class="card-img " alt="<%= info.titre %>">
+          <img src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>" class="card-img " alt="<%= info.titre %>">
         </figure>
         <!-- le contenu -->
         <div class="card-body">
