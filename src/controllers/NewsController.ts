@@ -4,7 +4,12 @@ import { InformationLang } from '../models/InformationLang';
 import { getInformationLang } from '../lib/get_all_news';
 
 export class NewsController {
-  static informationDetail() {
+  static addInformation(){
+    return async function(req: Request, res: Response){
+      return res.render('administration/add_information');
+    }
+  }
+  static displayAllInformation() {
     return async function(req: Request, res: Response) {
       return res.render('administration/informations_details');
       // const news = await Information.find().select('_id source photo statut');
