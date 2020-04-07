@@ -1,1 +1,38 @@
-<h1>Detail des informations</h1>
+<%- include('../partials/head') %> <%- include('../partials/header') %>
+<div class="content mt-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-8 text-center">
+            <h1>Liste de toutes les informations</h1>
+            <hr>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Titre</th>
+                  <th scope="col">Contenu</th>
+                  <th scope="col">Source</th>
+                  <th scope="col">Photo</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Page d'origine</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Congo bololo</td>
+                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis beatae in quidem et molestiae iste praesentium aut cumque amet laborum! Velit voluptatem ab vel beatae voluptas pariatur? Unde, magni officia.</td>
+                  <td>User </td>
+                  <td>le lien de la photo</td>
+                  <td>Fausse</td>
+                  <td>hfjfmfckc</td>
+                  <td>
+                      <button class="btn btn-primary">Modifier</button>
+                      <br><br>
+                      <button class="btn btn-danger">supprimer</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>        
+</div>
+<%- include('../partials/footer') %>           

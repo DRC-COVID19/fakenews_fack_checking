@@ -10,7 +10,7 @@ const InformationLangSchema = new mongoose.Schema(
     titre: {
       type: String,
       unique: true,
-      required: true
+      required: true,
     },
     contenu: {
       type: String,

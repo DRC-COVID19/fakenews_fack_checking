@@ -1,0 +1,30 @@
+<%- include('../partials/head') %> <%- include('../partials/header') %>
+<div class="content mt-5">
+    <div class="row justify-content-center">
+        <div class="col-sm-8 text-center">
+            <h1><%= page %> </h1>
+            <hr>
+            <form action="/edit/user" class="" method="post">
+                <input type="hidden" value="<%= user._id %>" name="_id" id="_id">
+                <div class="form-group col-lg-12 col-md-6 col-sm-12 ">
+                    <input type="text" value="<%= user.nom %> " class="form-control" id="userName" name="userName" placeholder="Nom de l'administrateur" required> 
+                  </div>
+                  <div class="form-group col-lg-12 col-md-6 col-sm-12">
+                    <input type="text" value="<%= user.prenom %> "class="form-control" id="userPrenom" name="userPrenom" placeholder="Postnom de l'administrateur" required>
+                  </div>
+                  <div class="form-group col-lg-12 col-md-6 col-sm-12">
+                    <input type="text" value="<%= user.pseudo %> " class="form-control" id="userPseudo" name="userPseudo" placeholder="Pseudo de l'administrateur" required>
+                  </div>
+                  <div class="form-group col-lg-12 col-md-6 col-sm-12">
+                    <input type="email" value="<%= user.email %> " class="form-control" id="userEmail" name="userEmail" placeholder="Adresse e-mail de l'administrateur" required>
+                  </div>
+                  <div class="form-group col-lg-12 col-md-6 col-sm-12">
+                    <input type="password" value="<%= user.password %> " class="form-control" id="userPassword" name="userPassword" placeholder="Mot de passe de l'administrateur" required>
+                  </div>
+                  <button type="submit" class="btn btn-dark">Edit</button>
+            </form>
+        </div>
+        <a href="/details/user" class="btn btn-primary">List users</a>
+    </div>
+</div>
+<%- include('../partials/footer') %>
