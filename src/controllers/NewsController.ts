@@ -38,7 +38,9 @@ export class NewsController {
   }
   static home() {
     return async function (req: Request, res: Response) {
-      const news = await Information.find().select('_id source photo statut');
+      const news = await Information.find({
+        $or: [{ statut: 'vraie' }, { statut: 'fausse' }],
+      }).select('_id source photo statut');
       const newsToReturn = await getInformationLang(news, InformationLang);
       res.render('pages/home', { news: newsToReturn, title: 'Bienvenu' });
     };
@@ -55,8 +57,11 @@ export class NewsController {
         );
         if (news) {
           const langAttributes: any = await InformationLang.find({
-            informationID: news._id,
-            codeLangue: 'fr',
+            $and: [
+              { informationID: news._id },
+              { codeLangue: 'fr' },
+              { $or: [{ statut: 'vraie' }, { statut: 'fausse' }] },
+            ],
           }).select('titre contenu -_id');
           return res.render('pages/details-info', {
             news: { ...news['_doc'], ...langAttributes['0']['_doc'] },
