@@ -12,10 +12,10 @@
     <div class="row justify-content-center">
       <div class="col-sm-10 text-center ">
         <span
-          class="badge badge-<%= news.statut =='vraie' ? 'success' :'danger' %> text-uppercase"><%= news.statut==='vraie'?'vrai':'faux' %></span>
+          class="badge badge-<%= news.statut =='vraie' ? 'success' :'danger' %> text-uppercase "><span class="h3"><%= news.statut==='vraie'?'vrai':'faux' %></span></span>
         <h1><%= news.titre %></h1>
         <hr>
-        <img width="500" src="<%= news.photo %>" alt="<%= news.titre %>">
+        <img width="500" src="<%= news.photo?news.photo:'images/covid_19_1.jpg' %>" alt="<%= news.titre %>">
         <p class="text-justify"><%= news.contenu %></p>
 
         <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : news.titre})%>
