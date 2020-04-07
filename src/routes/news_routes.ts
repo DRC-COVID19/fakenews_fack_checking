@@ -2,7 +2,7 @@ import { AppRouter } from '../AppRouter';
 import { NewsController } from '../controllers/NewsController';
 export const newRouter = AppRouter.getInstance();
 
-newRouter.post('/info/search', NewsController.informationSearch());
+newRouter.get('/news/search', NewsController.searchNews());
 newRouter.get('/add_information/add', NewsController.addInformation());
 newRouter.get('/all-information', NewsController.displayAllInformation());
 newRouter.get('/form-check-info', NewsController.addInfo());

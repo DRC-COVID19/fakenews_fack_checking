@@ -4,20 +4,20 @@ import { InformationLang } from '../models/InformationLang';
 import { getInformationLang, searchInformationLang } from '../lib/get_all_news';
 
 export class NewsController {
-  static informationSearch() {
+  static searchNews() {
     return async function (req: Request, res: Response) {
-      const motCle: string = req.body.recherche;
+      const keyWord: string = req.query.keyword;
       const informationLang = await InformationLang.find({
         $or: [
-          { titre: new RegExp(motCle, 'i') },
-          { contenu: new RegExp(motCle, 'i') },
+          { titre: new RegExp(keyWord, 'i') },
+          { contenu: new RegExp(keyWord, 'i') },
         ],
       }).select('titre contenu informationID -_id');
       const news = await searchInformationLang(Information, informationLang);
-      res.render('pages/information_search', {
+      res.render('pages/news-search-results', {
         news,
         title: 'Bienvenu',
-        moCle: motCle,
+        moCle: keyWord,
       });
     };
   }
@@ -42,7 +42,10 @@ export class NewsController {
         $or: [{ statut: 'vraie' }, { statut: 'fausse' }],
       }).select('_id source photo statut');
       const newsToReturn = await getInformationLang(news, InformationLang);
-      res.render('pages/home', { news: newsToReturn, title: 'Bienvenu' });
+      res.render('pages/home', {
+        news: newsToReturn,
+        title: 'Bienvenu',
+      });
     };
   }
 
