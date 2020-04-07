@@ -6,7 +6,7 @@ const { MONGO_DBNAME, MONGO_PASSWORD, MONGO_USER, MONGO_HOSTNAME } = DBInfos;
 MONGO_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}/${MONGO_DBNAME}`;
 
 mongoose
-  .connect(MONGO_URL, { useNewUrlParser: false, useUnifiedTopology: false })
+  .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('La connexio à base de données MongoDB est établie'))
   .catch(err =>
     console.log(
@@ -15,3 +15,4 @@ mongoose
   );
 
 module.exports = mongoose;
+

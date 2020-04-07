@@ -2,7 +2,28 @@ import { Request, Response } from 'express';
 import { Information } from '../models/Information';
 import { InformationLang } from '../models/InformationLang';
 import { getInformationLang } from '../lib/get_all_news';
-export class NewsController {
+
+export class NewsController{
+  static informationSearch(){
+    return  async function(req: Request, res: Response){
+      const motCle: any = req.body.recherche;
+      const news = await Information.find().select('_id source photo statut');
+      const newsToReturn = await getInformationLang(news, InformationLang);
+      res.render('pages/information_search', { news: newsToReturn, title: 'Bienvenu', moCle: motCle });
+    }
+  }
+  static addInformation(){
+    return async function(req: Request, res: Response){
+      return res.render('administration/add_information');
+    }
+  }
+  static displayAllInformation() {
+    return async function(req: Request, res: Response) {
+      const news = await Information.find().select('_id source photo statut');
+      const newsToReturn = await getInformationLang(news, InformationLang);
+      return res.render('administration/informations_details',{ news: newsToReturn, title: 'Bienvenu' });
+    };
+  }
   static home() {
     return async function(req: Request, res: Response) {
       const news = await Information.find().select('_id source photo statut');
@@ -42,4 +63,19 @@ export class NewsController {
       return res.render('pages/form-check-info');
     };
   }
+
+  static deleteInformation(){
+    return function(req:Request, res:Response){
+      const id = req.params.informationId;
+      Information.deleteOne({_id: id})
+      .exec()
+      .then((result)=>{
+          return res.redirect('/all-information');
+      })
+      .catch((error)=>{
+          console.log(error);
+      })
+  }
+  }
+
 }

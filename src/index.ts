@@ -1,7 +1,8 @@
 import express from 'express';
 import { newRouter } from './routes/news_routes';
+import { userRouter } from './routes/users_routes';
 import './services/DataBasInit';
-
+const bodyParser: any = require('body-parser');
 // if (process.env.NODE_ENV === 'production') {
 //   require('dotenv').config({ path: './prod.env' });
 // } else {
@@ -14,8 +15,11 @@ const app = express();
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
+app.use(userRouter);
 app.use(newRouter);
 
 const PORT = 3000 || process.env.PORT;
