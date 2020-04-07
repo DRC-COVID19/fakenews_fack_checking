@@ -3,6 +3,7 @@
     <div class="row justify-content-center">
         <div class="col-sm-8 text-center">
             <h1><%= page %> </h1>
+            <a href="/details/user" class="btn btn-primary">List users</a>
             <hr>
             <form action="/edit/user" class="" method="post">
                 <input type="hidden" value="<%= user._id %>" name="_id" id="_id">
@@ -24,7 +25,6 @@
                   <button type="submit" class="btn btn-dark">Edit</button>
             </form>
         </div>
-        <a href="/details/user" class="btn btn-primary">List users</a>
     </div>
 </div>
 <%- include('../partials/footer') %>

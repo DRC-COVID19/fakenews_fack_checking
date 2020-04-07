@@ -1,8 +1,11 @@
-<%- include('../partials/head') %> <%- include('../partials/header') %>
-<div class="content mt-5">
+<%- include('../partials/head') %>
+<%- include('../partials/header') %>
+<div class="container">
+  <div class="content mt-5">
     <div class="row justify-content-center">
         <div class="col-sm-8 text-center">
             <h1><%= page %> </h1>
+            <a href="/details/user" class="btn btn-primary">List users</a>
             <hr>
             <form action="/add/user" class="" method="post">
                 <div class="form-group col-lg-12 col-md-6 col-sm-12 ">
@@ -23,7 +26,7 @@
                   <button type="submit" class="btn btn-dark">Enregistrer</button>
             </form>
         </div>
-        <a href="/details/user" class="btn btn-primary">List users</a>
     </div>
+</div>
 </div>
 <%- include('../partials/footer') %>

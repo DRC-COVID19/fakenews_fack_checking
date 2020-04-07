@@ -1,38 +1,39 @@
 <%- include('../partials/head') %> <%- include('../partials/header') %>
+<div class="container">
 <div class="content mt-5">
     <div class="row justify-content-center">
         <div class="col-sm-8 text-center">
             <h1>Liste de toutes les informations</h1>
+            <a href="/add_information/add" class="btn btn-primary">Add information</a>
             <hr>
             <table class="table table-bordered">
               <thead>
                 <tr>
                   <th scope="col">Titre</th>
                   <th scope="col">Contenu</th>
-                  <th scope="col">Source</th>
                   <th scope="col">Photo</th>
                   <th scope="col">Status</th>
-                  <th scope="col">Page d'origine</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>Congo bololo</td>
-                  <td>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis beatae in quidem et molestiae iste praesentium aut cumque amet laborum! Velit voluptatem ab vel beatae voluptas pariatur? Unde, magni officia.</td>
-                  <td>User </td>
-                  <td>le lien de la photo</td>
-                  <td>Fausse</td>
-                  <td>hfjfmfckc</td>
-                  <td>
-                      <button class="btn btn-primary">Modifier</button>
-                      <br><br>
-                      <button class="btn btn-danger">supprimer</button>
-                  </td>
-                </tr>
+                <% for(let info of news){ %>
+                  <tr>
+                    <td><%= info.titre %> </td>
+                    <td><%= info.contenu %> </td>
+                    <td><img src="<%= info.photo %>" alt="<%= info.titre %>"></td>
+                    <td><%= info.statut %></td>
+                    <td>
+                        <a href="/edit/<%= info._id %>" class="btn btn-primary">Modifier</a>
+                        <a href="/delete/<%= info._id %> " class="btn btn-danger">supprimer</a>
+                    </td>
+                  </tr>
+                <% } %>  
+                
               </tbody>
             </table>
         </div>
     </div>        
+</div>
 </div>
 <%- include('../partials/footer') %>           

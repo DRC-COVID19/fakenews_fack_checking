@@ -9,7 +9,7 @@ export class NewsController{
       const motCle: any = req.body.recherche;
       const news = await Information.find().select('_id source photo statut');
       const newsToReturn = await getInformationLang(news, InformationLang);
-      res.render('pages/information_search', { news: newsToReturn, title: 'Bienvenu' });
+      res.render('pages/information_search', { news: newsToReturn, title: 'Bienvenu', moCle: motCle });
     }
   }
   static addInformation(){
@@ -19,10 +19,9 @@ export class NewsController{
   }
   static displayAllInformation() {
     return async function(req: Request, res: Response) {
-      return res.render('administration/informations_details');
-      // const news = await Information.find().select('_id source photo statut');
-      // const newsToReturn = await getInformationLang(news, InformationLang);
-      // res.render('administration/informations_details', { news: newsToReturn, title: 'Bienvenu' });
+      const news = await Information.find().select('_id source photo statut');
+      const newsToReturn = await getInformationLang(news, InformationLang);
+      return res.render('administration/informations_details',{ news: newsToReturn, title: 'Bienvenu' });
     };
   }
   static home() {
@@ -63,6 +62,20 @@ export class NewsController{
     return function(req: Request, res: Response) {
       return res.render('pages/form-check-info');
     };
+  }
+
+  static deleteInformation(){
+    return function(req:Request, res:Response){
+      const id = req.params.informationId;
+      Information.deleteOne({_id: id})
+      .exec()
+      .then((result)=>{
+          return res.redirect('/all-information');
+      })
+      .catch((error)=>{
+          console.log(error);
+      })
+  }
   }
 
 }
