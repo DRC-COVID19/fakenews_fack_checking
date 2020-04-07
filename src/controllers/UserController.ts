@@ -1,6 +1,7 @@
 import { Request, Response} from 'express';
 import mongoose from 'mongoose';
 import { User } from '../models/User';
+const Joi: any = require('joi');
 
 export class UserController{
     static User(){
@@ -10,22 +11,34 @@ export class UserController{
     }
     static InsertUser(){
         return function(req:Request, res:Response){
-            const user = new User({
-                _id: new mongoose.Types.ObjectId(),
-                nom: req.body.userName,
-                prenom: req.body.userPrenom,
-                pseudo: req.body.userPseudo,
-                email: req.body.userEmail,
-                password: req.body.userPassword
+            const schema: any = Joi.object().keys({
+                userName: Joi.string().trim().requered(),
+                userPrenom: Joi.string().trim().requered(),
+                userPseudo: Joi.string().trim().requered(),
+                userEmail: Joi.string().trim().email().requered()
             });
-            user.save()
-            .then((result)=>{
-                if(result){
-                    return res.redirect('/details/user'); 
+            Joi.validate(req.body, schema,(error: any, result: any)=>{
+                if(error){
+                    console.log("Erreur")
+                }else{
+                    const user = new User({
+                        _id: new mongoose.Types.ObjectId(),
+                        nom: req.body.userName,
+                        prenom: req.body.userPrenom,
+                        pseudo: req.body.userPseudo,
+                        email: req.body.userEmail,
+                        password: req.body.userPassword
+                    });
+                    user.save()
+                    .then((result)=>{
+                        if(result){
+                            return res.redirect('/details/user'); 
+                        }
+                    })
+                    .catch((error)=>{
+                        console.log(error);
+                    });
                 }
-            })
-            .catch((error)=>{
-                console.log(error);
             });
         }
     }
