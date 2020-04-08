@@ -32,7 +32,9 @@
         <div class="card-body">
           <span
             class="badge badge-<%= info.statut =='vraie' ? 'success' :'danger' %> text-uppercase"><%= info.statut==='vraie'?'vrai':'faux' %></span>
-          <a href="<%=info.id%>""><h5 class=" card-title"><%= info.titre %></h5></a>
+          <a href="<%=info.id%>">
+            <h5 class=" card-title"><%= info.titre %></h5>
+          </a>
           <p class="card-text"><%- info.contenu %></p>
           <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
           <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : info.titre})%>
