@@ -10,15 +10,36 @@
 
   <div class="content">
     <div class="row justify-content-center">
-      <div class="col-sm-10 text-center ">
-        <span
-          class="badge badge-<%= news.statut =='vraie' ? 'success' :'danger' %> text-uppercase"><%= news.statut==='vraie'?'vrai':'faux' %></span>
-        <h1><%= news.titre %></h1>
-        <hr>
-        <img width="500" src="<%= news.photo %>" alt="<%= news.titre %>">
-        <p class="text-justify"><%= news.contenu %></p>
+      <div class="col-sm-12 col-md-8 col-lg-8 ">
 
-        <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : news.titre})%>
+      <div class="content-card">
+        <h2 class="content-heading"><%= news.titre %></h2>
+          <p class="text-justify"><%= news.contenu %></p>
+
+        <div class="d-flex justify-content-center mb-3">
+          <img width="500" src="<%= news.photo %>" alt="<%= news.titre %>">
+        </div>
+
+        <div class="text-center">
+            <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : news.titre})%>
+        </div>
+      </div>
+
+      <div class="content-card">
+        <!-- <h4>Verdict</h4> -->
+        <% if(news.statut=='vraie'){
+          iconData="mdi:check-circle-outline";
+          color ='true'
+        }else {
+          iconData="mdi:alert-rhombus-outline";
+          color='false'
+        }
+        %>
+        <h4><span class="icon iconify <%= color%>" data-icon="<%=iconData %>" data-inline="false"></span>
+        <%= news.statut%></h4>
+      </div>
+
+
 
       </div>
     </div>
