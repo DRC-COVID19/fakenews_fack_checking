@@ -3,8 +3,8 @@ import { Information } from '../models/Information';
 import { InformationLang } from '../models/InformationLang';
 import { getInformationLang, searchInformationLang } from '../lib/get_all_news';
 
-export class NewsController {
-  static searchNews() {
+export const NewsController = {
+  searchNews: () => {
     return async function (req: Request, res: Response) {
       const keyWord: string = req.query.keyword;
       const informationLang = await InformationLang.find({
@@ -20,13 +20,13 @@ export class NewsController {
         moCle: keyWord,
       });
     };
-  }
-  static addInformation() {
+  },
+  addInformation: () => {
     return async function (req: Request, res: Response) {
       return res.render('administration/add_information');
     };
-  }
-  static displayAllInformation() {
+  },
+  indexAdmin: () => {
     return async function (req: Request, res: Response) {
       const news = await Information.find().select('_id source photo statut');
       const newsToReturn = await getInformationLang(news, InformationLang);
@@ -35,8 +35,8 @@ export class NewsController {
         title: 'Bienvenu',
       });
     };
-  }
-  static home() {
+  },
+  index: () => {
     return async function (req: Request, res: Response) {
       const news = await Information.find({
         $or: [{ statut: 'vraie' }, { statut: 'fausse' }],
@@ -47,9 +47,9 @@ export class NewsController {
         title: 'Bienvenu',
       });
     };
-  }
+  },
 
-  static show() {
+  show: () => {
     return async function (req: Request, res: Response) {
       const {
         params: { id },
@@ -63,28 +63,28 @@ export class NewsController {
             $and: [
               { informationID: news._id },
               { codeLangue: 'fr' },
-              { $or: [{ statut: 'vraie' }, { statut: 'fausse' }] },
+              // { $or: [{ statut: 'vraie' }, { statut: 'fausse' }] },
             ],
           }).select('titre contenu -_id');
           return res.render('pages/details-info', {
             news: { ...news['_doc'], ...langAttributes['0']['_doc'] },
           });
         } else {
-          return res.render(`<h1>Not Found</h1>`);
+          return res.render('pages/404');
         }
       } catch (error) {
         console.log(error);
       }
     };
-  }
+  },
 
-  static addInfo() {
+  requestVerification: () => {
     return function (req: Request, res: Response) {
       return res.render('pages/form-check-info');
     };
-  }
+  },
 
-  static delete() {
+  destroy: () => {
     return function (req: Request, res: Response) {
       const id = req.params.informationId;
       Information.deleteOne({ _id: id })
@@ -96,5 +96,5 @@ export class NewsController {
           console.log(error);
         });
     };
-  }
-}
+  },
+};

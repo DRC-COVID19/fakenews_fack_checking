@@ -1,11 +1,9 @@
 import { AppRouter } from '../AppRouter';
 import { NewsController } from '../controllers/NewsController';
-export const newRouter = AppRouter.getInstance();
+export const newsRouter = AppRouter.getInstance();
 
-newRouter.get('/news/search', NewsController.searchNews());
-newRouter.get('/add_information/add', NewsController.addInformation());
-newRouter.get('/all-information', NewsController.displayAllInformation());
-newRouter.get('/form-check-info', NewsController.addInfo());
-newRouter.get('/', NewsController.home());
-newRouter.get('/:id', NewsController.show());
-newRouter.get('/delete/:informationId', NewsController.delete());
+newsRouter.get('/search', NewsController.searchNews());
+// newsRouter.get('/add_information/add', NewsController.addInformation());
+newsRouter.get('/', NewsController.index());
+newsRouter.get('/:id', NewsController.show());
+newsRouter.post('/delete/:id', NewsController.destroy());

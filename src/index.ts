@@ -1,6 +1,7 @@
-import express from 'express';
-import { newRouter } from './routes/news_routes';
+import express, { Request, Response } from 'express';
+import { newsRouter } from './routes/news_routes';
 import { userRouter } from './routes/users_routes';
+import { newsAdminRouter } from './routes/news_admin_routes';
 import './services/DataBasInit';
 const bodyParser: any = require('body-parser');
 // if (process.env.NODE_ENV === 'production') {
@@ -15,12 +16,18 @@ const app = express();
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-app.use(bodyParser.urlencoded({extended:false}));
+app.get('/', (req: Request, res: Response) => {
+  return res.redirect('/news');
+});
+
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
-app.use(userRouter);
-app.use(newRouter);
+
+app.use('/admin/user', userRouter);
+app.use('/admin/news', newsAdminRouter);
+app.use('/news', newsRouter);
 
 const PORT = 3000 || process.env.PORT;
 

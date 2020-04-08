@@ -5,7 +5,7 @@
     <div class="col-sm-12 ">
       <h1>Coronavirus factcheck RDC</h1>
       <p>Bienvenus sur la plate-forme officiel de fact-checking</p>
-      <a class="btn btn-dark" href="/form-check-info">Faire verifier une information</a>
+      <a class="btn btn-dark" href="/request-fact-check">Faire verifier une information</a>
     </div>
   </div>
 </header>
@@ -22,7 +22,7 @@
 
   <div class="row ">
     <div class="col-sm-12 d-flex align-items-start flex-wrap">
-      <% for(let info of news){info.contenu = info.contenu.substr(0, 100) + `  <small class='text-muted'><a href='${info._id}'> (lire)</a></small> `;%>
+      <% for(let info of news){info.contenu = info.contenu.substr(0, 100) + `  <small class='text-muted'><a href='/news/${info._id}'> (lire)</a></small> `;%>
       <div class="card mb-5">
         <!-- l'image -->
         <figure>
@@ -32,7 +32,7 @@
         <div class="card-body">
           <span
             class="badge badge-<%= info.statut =='vraie' ? 'success' :'danger' %> text-uppercase"><%= info.statut==='vraie'?'vrai':'faux' %></span>
-          <a href="<%=info.id%>">
+          <a href="/news/<%=info.id%>">
             <h5 class=" card-title"><%= info.titre %></h5>
           </a>
           <p class="card-text"><%- info.contenu %></p>
