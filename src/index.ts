@@ -1,6 +1,7 @@
 import express from 'express';
 import { newRouter } from './routes/news_routes';
 import { userRouter } from './routes/users_routes';
+import { administrationRouter } from './routes/administration_routes';
 import './services/DataBasInit';
 const bodyParser: any = require('body-parser');
 // if (process.env.NODE_ENV === 'production') {
@@ -21,6 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(userRouter);
 app.use(newRouter);
+app.use(administrationRouter);
 
 const PORT = 3000 || process.env.PORT;
 
