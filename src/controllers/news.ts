@@ -3,7 +3,7 @@ import { Information } from '../models/Information';
 import { InformationLang } from '../models/InformationLang';
 import { getInformationLang, searchInformationLang } from '../lib/get_all_news';
 
-export const NewsController = {
+export const news = {
   searchNews: () => {
     return async function (req: Request, res: Response) {
       const keyWord: string = req.query.keyword;

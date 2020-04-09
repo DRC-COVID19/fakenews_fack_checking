@@ -1,9 +1,11 @@
 import { AppRouter } from '../AppRouter';
-import { NewsController } from '../controllers/NewsController';
+import { news } from '../controllers/news';
 export const newsRouter = AppRouter.getInstance();
 
-newsRouter.get('/search', NewsController.searchNews());
+const { index, show, searchNews, destroy } = news;
+
+newsRouter.get('/search', searchNews());
 // newsRouter.get('/add_information/add', NewsController.addInformation());
-newsRouter.get('/', NewsController.index());
-newsRouter.get('/:id', NewsController.show());
-newsRouter.post('/delete/:id', NewsController.destroy());
+newsRouter.get('/', index());
+newsRouter.get('/:id', show());
+newsRouter.post('/delete/:id', destroy());

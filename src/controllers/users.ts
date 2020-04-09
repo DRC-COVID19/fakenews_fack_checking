@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import { User } from '../models/User';
 import Joi from 'joi';
 
-export class UserController {
+export class users {
   static User() {
     return function (req: Request, res: Response) {
       return res.render('administration/add_user', {

@@ -1,9 +1,10 @@
 import { AppRouter } from '../AppRouter';
-import { UserController } from '../controllers/UserController';
+import { users } from '../controllers/users';
 export const userRouter = AppRouter.getInstance();
 import { check } from 'express-validator';
+const { User, InsertUser, userDetails, userDelete, findUser, editUser } = users;
 
-userRouter.get('/add/user', UserController.User());
+userRouter.get('/add/user', User());
 userRouter.post(
   '/add/user',
   [
@@ -13,11 +14,11 @@ userRouter.post(
     check('userPseudo').not().isEmpty(),
     check('userPassword').not().isEmpty(),
   ],
-  UserController.InsertUser()
+  InsertUser()
 );
-userRouter.get('/details/user', UserController.userDetails());
-userRouter.get('/details/user/:userId', UserController.userDelete());
-userRouter.get('/edit/user/:userId', UserController.findUser());
+userRouter.get('/details/user', userDetails());
+userRouter.get('/details/user/:userId', userDelete());
+userRouter.get('/edit/user/:userId', findUser());
 userRouter.post(
   '/edit/user',
   [
@@ -27,5 +28,5 @@ userRouter.post(
     check('userPseudo').not().isEmpty(),
     check('userPassword').not().isEmpty(),
   ],
-  UserController.editUser()
+  editUser()
 );

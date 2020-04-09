@@ -1,11 +1,12 @@
 import { AppRouter } from '../AppRouter';
-import { NewsController } from '../controllers/NewsController';
+import { news } from '../controllers/news';
 export const newsAdminRouter = AppRouter.getInstance();
 
+const { addInformation, indexAdmin, destroy } = news;
 //cette route dois renvoyer le formulaire de creation d'information dans la backoffice
-newsAdminRouter.get('/new', NewsController.addInformation());
+newsAdminRouter.get('/new', addInformation());
 
 //Cette route mene à liste de toutes les news dans le Backoffice
-newsAdminRouter.get('/', NewsController.indexAdmin());
+newsAdminRouter.get('/', indexAdmin());
 
-newsAdminRouter.post('/delete/:id', NewsController.destroy());
+newsAdminRouter.post('/delete/:id', destroy());
