@@ -1,5 +1,5 @@
-<%- include('../partials/head') %>
-<%- include('../partials/header') %>
+<%- include('../layout/head') %>
+<%- include('../layout/header') %>
 <div class="container">
 
   <div class="row return">
@@ -12,22 +12,22 @@
     <div class="row justify-content-center">
       <div class="col-sm-12 col-md-8 col-lg-8 ">
 
-      <div class="content-card">
-        <h2 class="content-heading"><%= news.titre %></h2>
+        <div class="content-card">
+          <h2 class="content-heading"><%= news.titre %></h2>
           <p class="text-justify"><%= news.contenu %></p>
 
-        <div class="d-flex justify-content-center mb-3">
-          <img width="500" src="<%= news.photo %>" alt="<%= news.titre %>">
-        </div>
+          <div class="d-flex justify-content-center mb-3">
+            <img width="500" src="<%= news.photo %>" alt="<%= news.titre %>">
+          </div>
 
-        <div class="text-center">
+          <div class="text-center">
             <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : news.titre})%>
+          </div>
         </div>
-      </div>
 
-      <div class="content-card">
-        <!-- <h4>Verdict</h4> -->
-        <% if(news.statut=='vraie'){
+        <div class="content-card">
+          <!-- <h4>Verdict</h4> -->
+          <% if(news.statut=='vraie'){
           iconData="mdi:check-circle-outline";
           color ='true'
         }else {
@@ -35,13 +35,13 @@
           color='false'
         }
         %>
-        <h4><span class="icon iconify <%= color%>" data-icon="<%=iconData %>" data-inline="false"></span>
-        <%= news.statut%></h4>
-      </div>
+          <h4><span class="icon iconify <%= color%>" data-icon="<%=iconData %>" data-inline="false"></span>
+            <%= news.statut%></h4>
+        </div>
 
 
 
       </div>
     </div>
   </div>
-  <%- include('../partials/footer') %>
+  <%- include('../layout/footer') %>

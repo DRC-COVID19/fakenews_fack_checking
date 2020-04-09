@@ -16,7 +16,7 @@ export const NewsController = {
       const news = await searchInformationLang(Information, informationLang);
       res.render('pages/news-search-results', {
         news,
-        title: 'Bienvenu',
+        title: 'Covid-19 Factchecking plateforme',
         moCle: keyWord,
       });
     };
@@ -32,7 +32,7 @@ export const NewsController = {
       const newsToReturn = await getInformationLang(news, InformationLang);
       return res.render('administration/informations_details', {
         news: newsToReturn,
-        title: 'Bienvenu',
+        title: 'Admin',
       });
     };
   },
@@ -44,7 +44,7 @@ export const NewsController = {
       const newsToReturn = await getInformationLang(news, InformationLang);
       res.render('pages/home', {
         news: newsToReturn,
-        title: 'Bienvenu',
+        title: 'Covid-19 Factchecking plateforme',
       });
     };
   },
@@ -68,6 +68,7 @@ export const NewsController = {
           }).select('titre contenu -_id');
           return res.render('pages/details-info', {
             news: { ...news['_doc'], ...langAttributes['0']['_doc'] },
+            title: langAttributes['0']['_doc'].titre,
           });
         } else {
           return res.render('pages/404');

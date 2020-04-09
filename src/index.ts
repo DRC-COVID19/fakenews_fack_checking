@@ -13,6 +13,7 @@ require('dotenv').config();
 
 const app = express();
 
+app.engine('ejs', require('express-ejs-extend')); // add this line
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
