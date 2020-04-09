@@ -1,0 +1,32 @@
+	div.extra.content {
+	    text-align: end;
+	}
+
+	.ui.disabled.button {
+	    width: 40px;
+	    height: 40px;
+	    border-radius: 100%;
+	    margin-left: 20px;
+	}
+
+	.header,
+	.paragraph {
+	    text-align: center !important;
+	}
+
+	.ui.placeholder .long.line.line.line:after,
+	.ui.placeholder.header .line:after {
+	    width: initial;
+	}
+
+	.ui.card {
+	    height: 465px;
+	    width: 300px !important;
+	}
+
+	#loadedNews {
+	    display: grid;
+	    grid-template-columns: repeat(3, 1fr);
+	    grid-auto-rows: 460px;
+	    gap: 40px;
+	}

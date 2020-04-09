@@ -14,7 +14,7 @@ export const news = {
         ],
       }).select('titre contenu informationID -_id');
       const news = await searchInformationLang(Information, informationLang);
-      res.render('pages/news-search-results', {
+      res.json({
         news,
         title: 'Covid-19 Factchecking plateforme',
         moCle: keyWord,

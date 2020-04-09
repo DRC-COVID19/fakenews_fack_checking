@@ -1,49 +1,57 @@
 <% extend('../layout/layout') %>
 <header class="d-flex justify-content-center">
   <div class="row text-center">
-    <div class="col-sm-12 ">
+    <div class="col-sm-12">
       <h1>Coronavirus factcheck RDC</h1>
       <p>Bienvenus sur la plate-forme officiel de fact-checking</p>
       <a class="btn btn-dark" href="#request-fact-check">Faire verifier une information</a>
     </div>
   </div>
 </header>
-<hr>
+<hr />
 <div class="container">
   <div class="row mt-4 mb-4">
     <div class="col-sm-6">
       <h4>Les dernières infos</h4>
     </div>
     <div class="col-sm-6">
-      <%- include('../partials/search-form.ejs')  %>
+      <%- include('../partials/search-form.ejs') %>
     </div>
   </div>
 
-  <div class="row ">
-    <div class="col-sm-12 d-flex align-items-start flex-wrap">
-      <% for(let info of news){info.contenu = info.contenu.substr(0, 100);%>
+  <div class="row">
+    <div class="col-sm-12 ">
+      <div id="loadedNews">
+        <% for(let info of news){info.contenu = info.contenu.substr(0, 100);%>
+        <!-- FAKE -->
 
-      <a href="news/<%= info._id %>" class="card mb-5">
+        <!-- FAKE -->
+        <!-- Data -->
+        <a href="news/<%= info._id %>" class="card mb-5">
+          <figure>
+            <img style="max-height: 100%;max-width: 100%;" src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>"
+              class="card-img" alt="<%= info.titre %>" />
+          </figure>
 
-        <figure>
-          <img src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>" class="card-img " alt="<%= info.titre %>">
-        </figure>
+          <div class="card-body">
+            <span
+              class="badge badge-<%= info.statut =='vraie' ? 'success' :'danger' %> text-uppercase"><%= info.statut==='vraie'?'vrai':'faux' %></span>
 
-        <div class="card-body">
-          <span
-            class="badge badge-<%= info.statut =='vraie' ? 'success' :'danger' %> text-uppercase"><%= info.statut==='vraie'?'vrai':'faux' %></span>
+            <h5 class="card-title"><%= info.titre %></h5>
 
-          <h5 class=" card-title"><%= info.titre %></h5>
-
-          <p class="card-text"><%- info.contenu %>...</p>
-          <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
-          <div class="text-right">
-            <%-include('../partials/social-share',{url : "https://www.kinshasadigital.com/kinshasa-digital-academy", titre : info.titre})%>
+            <p class="card-text"><%- info.contenu %>...</p>
+            <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
+            <div class="text-right">
+              <%-include('../partials/social-share',{url :
+            "https://www.kinshasadigital.com/kinshasa-digital-academy", titre :
+            info.titre})%>
+            </div>
           </div>
-        </div>
+        </a>
+        <!-- End Data -->
+        <% } %>
+      </div>
 
-      </a>
-      <% } %>
+      <!-- END NEWS -->
     </div>
   </div>
-</div>
