@@ -1,4 +1,4 @@
-const cardLoaderTemplate = `<div   class="ui three doubling stackable cards loaders">
+const cardLoaderTemplate = `<div class="col-sm-12"><div class="ui three doubling stackable cards loaders">
           <div class="ui card">
             <div class="image">
               <div class="ui placeholder">
@@ -22,4 +22,4 @@ const cardLoaderTemplate = `<div   class="ui three doubling stackable cards load
               <div class="ui disabled button"></div>
             </div>
           </div>
-        </div>`;
+        </div></div>`;

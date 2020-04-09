@@ -10,8 +10,15 @@ searchButton.addEventListener('click', (e) => {
     .get(`http://localhost:3000/news/search?keyword=${searchTerm}`)
     .then((res) => {
       newsCards.innerHTML = '';
-      document.bgColor = 'red';
-      loadNews(res.data.news, newsCards);
+
+       
+    //   if(res.data.news.lenfth){
+         loadNews(res.data.news, newsCards);
+    //   }else{
+    //       newsCards.innerHTML=`<div class="alert alert-light" role="alert">Aucun resultat!</div>`;
+    //   }
+     
+    
     })
     .catch((err) => console.log(err));
 });

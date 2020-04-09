@@ -19,15 +19,16 @@
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-sm-12 ">
+  <div style="margin-top:100px" class="row">
+    <!-- <div class="col-sm-12 "> -->
       <div id="loadedNews">
         <% for(let info of news){info.contenu = info.contenu.substr(0, 100);%>
         <!-- FAKE -->
 
         <!-- FAKE -->
         <!-- Data -->
-        <a href="news/<%= info._id %>" class="card mb-5">
+        <div class="col-sm-12">
+          <a href="news/<%= info._id %>" class="card">
           <figure>
             <img style="max-height: 100%;max-width: 100%;" src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>"
               class="card-img" alt="<%= info.titre %>" />
@@ -48,10 +49,11 @@
             </div>
           </div>
         </a>
+        </div>
         <!-- End Data -->
         <% } %>
       </div>
 
       <!-- END NEWS -->
-    </div>
+    <!-- </div> -->
   </div>

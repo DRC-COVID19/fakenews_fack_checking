@@ -13,6 +13,8 @@ const loadNews = (data, parentNode) => {
 
     const title=typeof news.titre != 'undefined'  ? `data-title=${news.titre}` : '';
 
+ 
+
      const socialeShare=`<ul class="social"><li>
     <span style="color :#3b5998 ; font-size:25px; margin-right:5px;"  class="button share-button facebook-share-button st-custom-button" data-network="facebook" ${url} ${title} >
       <span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span>
@@ -29,10 +31,10 @@ const loadNews = (data, parentNode) => {
     </span>
   </li>
 </ul>`;  
-    const newsTemplate = `
-   <a href="news/${news._id}" class="card mb-5">
+    const newsTemplate = `<div class="col-sm-12" style="col-sm-12">
+   <a href="news/${news._id}" class="card">
           <figure>
-            <img src="${imageToDisplay}" class="card-img" alt="${news.titre}" />
+            <img style="max-height: 100%;max-width: 100%;" src="${imageToDisplay}" class="card-img" alt="${news.titre}" />
           </figure>
 
           <div class="card-body">
@@ -47,7 +49,7 @@ const loadNews = (data, parentNode) => {
              ${socialeShare}
             </div>
           </div>
-        </a>`;
+        </a></div>`;
     parentNode.insertAdjacentHTML('beforeend', newsTemplate);
 
     //  <%-include('../partials/social-share',{url :
