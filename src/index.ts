@@ -30,7 +30,7 @@ app.use('/admin/user', userRouter);
 app.use('/admin/news', newsAdminRouter);
 app.use('/news', newsRouter);
 
-const PORT = 3000 || process.env.PORT;
+const PORT = 5000 || process.env.PORT;
 
 app.listen(PORT, () => {
   console.log(
