@@ -1,0 +1,77 @@
+<% extend('../layout/layout') %>
+<div class="container">
+  <div class="content mt-5">
+    <div class="row justify-content-center">
+      <div class="col-sm-8 text-center ">
+        <h1>Faire verifier une information</h1>
+        <p>Envoyez nous les informations dont vous avez des doutes pour que nous les verifions.</p>
+        <hr>
+        <p id="err" style="color:red"></p>
+        <form class="" action="/news/request-verification" method="post">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input class="form-control" type="text" name="noms" value="" placeholder="Votre nom">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input id="email" class="form-control" type="text" name="email" value="" placeholder="Votre mail">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input id="titre" class="form-control" type="text" name="titre" value="" placeholder="Titre">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="custom-file">
+                <input name="image" type="file" class="custom-file-input" id="customFile">
+                <label class="custom-file-label" for="customFile">Fichier</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <input class="form-control" type="text" name="lien" value="" placeholder="Le liens de votre information">
+              <textarea id="contenu" name="description" rows="8" placeholder="Décrivez l'information à vérifier"></textarea>
+              <input id="btn" type="submit" class="btn btn-dark" name="" value="Envoyer">
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <script>
+      const btn=document.querySelector('#btn');
+      btn.addEventListener('click',function(e){
+        e.preventDefault();
+        const regexEmail = new RegExp(
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        const contenu=document.querySelector('#contenu');
+        const email = document.querySelector('#email');
+        const titre=document.querySelector('#titre');
+        console.log(contenu.value.length)
+        console.log(email.value.length)
+        console.log(titre.value.length)
+        if(contenu.value.length===0 || email.value.length===0 || regexEmail.test(email.value)===false || titre.value.length===0){
+           const err = document.querySelector('#err');
+          err.innerHTML = "Les champs <b>titre,contenu</b> et <b>email</b> sont obligatoires et doivent être valides"
+        }else{
+            e.target.value="...envoi des données";
+            setTimeout(function(){
+              contenu.value="";
+              email.value="";
+              titre.value="";
+               e.target.value = "Envoyer";
+                err.style.color = "white";
+              err.style.backgroundColor = '#25e487';
+              err.style.fontWeight = "bold";
+              err.innerText = "Informations envoyées pour verification";
+              err.style.fontSize = "1.5em";
+            },3000);
+           
+            setTimeout(function () {
+             window.location.href = "http://localhost:3000/";
+          }, 6000);
+        }
+      });
+  </script>

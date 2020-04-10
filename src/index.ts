@@ -21,7 +21,7 @@ app.get('/', (req: Request, res: Response) => {
   return res.redirect('/news');
 });
 
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));

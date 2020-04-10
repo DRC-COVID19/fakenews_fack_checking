@@ -79,10 +79,16 @@ export const news = {
     };
   },
 
-  requestVerification: () => {
+  requestVerificationForm: () => {
     return function (req: Request, res: Response) {
-      return res.render('pages/form-check-info');
+      return res.render('pages/request-verification',{title:'Faire vérifier une information'});
     };
+  },
+
+  requestVerification:()=>{
+    return function (req:Request,res:Response){
+      return res.json(req.body);
+    }
   },
 
   destroy: () => {
