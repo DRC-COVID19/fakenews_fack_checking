@@ -216,3 +216,14 @@ textarea {
 .col-sm-12.d-flex.align-items-start.flex-wrap {
   justify-content: space-around;
 }
+
+.social  .button>*{
+  transition:0.2s ease-out;
+}
+
+.social .button > *:hover{
+  cursor:pointer;
+  width:45px;
+  height:45px;
+}
+
