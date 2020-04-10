@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use('/admin/user', userRouter);
-app.use('/admin/news', newsAdminRouter);
+app.use('/admin', newsAdminRouter);
 app.use('/news', newsRouter);
 
 const PORT = 5000 || process.env.PORT;
