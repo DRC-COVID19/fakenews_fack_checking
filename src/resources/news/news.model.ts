@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 import { CategorySchema } from '../category/category.model';
 import { FactCheckSchema } from '../factcheck/factcheck.model';
+import {UserSchema} from "../user/user.model";
 
 
 const NewsSchema = new mongoose.Schema(
@@ -32,6 +33,10 @@ const NewsSchema = new mongoose.Schema(
       type: FactCheckSchema,
       required: false,
     },
+    author:{
+      type:UserSchema,
+      required:false,
+    }
   },
   {
     timestamps: true,
