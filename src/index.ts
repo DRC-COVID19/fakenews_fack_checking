@@ -17,18 +17,14 @@ app.engine('ejs', require('express-ejs-extend')); // add this line
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
-// app.get('^/$', (req: Request, res: Response) => {
-//   return res.redirect('/news');
-// });
 
-// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // app.use('/admin/user', userRouter);
-app.use('^/admin', newsAdminRouter);
-app.use('^/news', newsRouter);
+app.use('/admin', newsAdminRouter);
+app.use('/news', newsRouter);
 
 const PORT = 5000 || process.env.PORT;
 

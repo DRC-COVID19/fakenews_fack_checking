@@ -30,4 +30,6 @@ const FactCheckSchema = new mongoose.Schema(
   }
 );
 
-export const FackCheck=mongoose.model('FactCheck',FactCheckSchema);
+const FackCheck=mongoose.model('FactCheck',FactCheckSchema);
+
+export {FackCheck,FactCheckSchema};

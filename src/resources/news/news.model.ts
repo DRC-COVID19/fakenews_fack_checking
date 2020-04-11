@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import { CategorySchema } from '../category/category.model';
-
-
+import { FactCheckSchema } from '../factcheck/factcheck.model';
 
 
 const NewsSchema = new mongoose.Schema(
@@ -9,7 +8,7 @@ const NewsSchema = new mongoose.Schema(
     category: {
       type: CategorySchema,
       required: false,
-      ref:'Category',
+      ref: 'Category',
     },
     source: {
       type: String,
@@ -27,6 +26,10 @@ const NewsSchema = new mongoose.Schema(
     },
     paysOrigin: {
       type: String,
+      required: false,
+    },
+    factCheck: {
+      type: FactCheckSchema,
       required: false,
     },
   },

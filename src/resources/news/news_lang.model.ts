@@ -1,11 +1,12 @@
 import mongoose from 'mongoose';
 
+
 const NewsLangSchema = new mongoose.Schema(
   {
     lang: { type: String, required: true },
     langIsoCode: { type: String, required: true },
     news: { type: mongoose.Schema.Types.ObjectId,require:true,ref:'News' },
-    titre: {
+    title: {
       type: String,
       unique: true,
       required: true,
@@ -13,10 +14,6 @@ const NewsLangSchema = new mongoose.Schema(
     content: {
       type: String,
       unique: true,
-      required: false,
-    },
-    vraieInformation: {
-      type: String,
       required: false,
     },
   },
