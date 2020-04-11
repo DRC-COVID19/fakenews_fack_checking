@@ -12,10 +12,10 @@ const {
   requestVerificationForm,
 } = news;
 
-newsRouter.get('/search', searchNews());
-newsRouter.get('/request-verification',requestVerificationForm());
-newsRouter.post('/request-verification',requestVerification());
+newsRouter.get('^/search', searchNews());
+newsRouter.get('^/request-verification',requestVerificationForm());
+newsRouter.post('^/request-verification',requestVerification());
 // newsRouter.get('/add_information/add', NewsController.addInformation());
-newsRouter.get('/', indexAdmin());
-newsRouter.get('/:id', show());
-newsRouter.post('/delete/:id', destroy());
+// newsRouter.get('/', indexAdmin());
+newsRouter.get('/:id([0-9a-zA-Z]*)', show());
+newsRouter.post('^/delete/:id([0-9a-zA-Z]*)', destroy());

@@ -30,7 +30,7 @@ export const news = {
     return async function (req: Request, res: Response) {
       const news = await Information.find().select('_id source photo statut');
       const newsToReturn = await getInformationLang(news, InformationLang);
-      return res.render('administration/informations_details', {
+      return res.render('administration/home', {
         news: newsToReturn,
         title: 'Admin',
       });
@@ -81,14 +81,16 @@ export const news = {
 
   requestVerificationForm: () => {
     return function (req: Request, res: Response) {
-      return res.render('pages/request-verification',{title:'Faire vérifier une information'});
+      return res.render('pages/request-verification', {
+        title: 'Faire vérifier une information',
+      });
     };
   },
 
-  requestVerification:()=>{
-    return function (req:Request,res:Response){
+  requestVerification: () => {
+    return function (req: Request, res: Response) {
       return res.json(req.body);
-    }
+    };
   },
 
   destroy: () => {

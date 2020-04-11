@@ -9,4 +9,4 @@ newsAdminRouter.get('/new', addInformation());
 //Cette route mene à liste de toutes les news dans le Backoffice
 newsAdminRouter.get('/', indexAdmin());
 
-newsAdminRouter.post('/delete/:id', destroy());
+newsAdminRouter.post('/delete/:id([0-9A-Za-z]*)', destroy());
