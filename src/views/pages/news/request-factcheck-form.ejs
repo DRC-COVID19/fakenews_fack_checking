@@ -1,0 +1,101 @@
+<% extend('../../layout/layout') %>
+<div class="container">
+  <div class="content mt-5">
+    <div class="row justify-content-center">
+      <div class="col-sm-8 text-center ">
+        <h1>Faire verifier une information</h1>
+        <p>Envoyez nous les informations dont vous avez des doutes pour que nous les verifions.</p>
+        <hr>
+        <p id="err" style="color:red"></p>
+        <form id="request_factcheck" class="" action="/news/request-verification" method="post" enctype="multipart/form-data">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input id="names" class="form-control" type="text" name="names" value="" placeholder="Votre nom">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input id="email" class="form-control" type="text" name="email" value="" placeholder="Votre mail">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <input id="title" class="form-control" type="text" name="title" value="" placeholder="Titre">
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <div class="custom-file">
+                <input name="files" type="file" class="custom-file-input" id="customFile" accept="image/*">
+                <label class="custom-file-label" for="customFile">Fichier</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <input id="link" class="form-control" type="text" name="link" value="" placeholder="Le liens de votre information">
+              <textarea id="content" name="content" rows="8" placeholder="Décrivez l'information à vérifier"></textarea>
+              <input type="submit" class="btn btn-dark" name="" value="Envoyer">
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script>
+      const content=document.querySelector('#content');
+      const email = document.querySelector('#email');
+      const title=document.querySelector('#title');
+      const names=document.querySelector('#names');
+      const link=document.querySelector('#link');
+      
+
+      // const formData={};
+      let formData = new FormData()
+
+      for(let field of [content,email,title,names,link]){
+          field.addEventListener('input',(e)=>{
+            const { target:{name,type,value,checked,files} }=e;
+            formData.append([name],value);
+            console.log("ADDING : ",formData);
+          });
+      }
+
+      const requestFactcheck=document.querySelector('#request_factcheck');
+
+      requestFactcheck.addEventListener('submit',function(e){
+        e.preventDefault();
+        const image=document.querySelector('#customFile');
+        const regexEmail = new RegExp(
+          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+        if(!content.value.length || !email.value.length || regexEmail.test(email.value)===false || !title.value.length){
+           const err = document.querySelector('#err');
+          err.innerHTML = "Les champs <b>titre,contenu</b> et <b>email</b> sont obligatoires et doivent être valides"
+        }else{
+            formData.append('image', image.files[0]);
+              for (var key of formData.entries()) {
+            console.log(key[0] + ', ' + key[1]);
+          }
+
+            axios.post('/api/news/',formData,{
+              headers:{
+                "content-type":"multipart/form-data"
+              }
+            }).then(res=>{
+            content.value="";
+            email.value="";
+            title.value="";
+            names.value="";
+            link.value="";
+            e.target.value = "Envoyer";
+            err.style.color = "white";
+            err.style.backgroundColor = '#25e487';
+            err.style.fontWeight = "bold";
+            err.innerText = "Informations envoyées pour verification";
+            err.style.fontSize = "1.5em";
+            console.log(res.data);
+            // window.location.href = "http://localhost:5000/";
+            }).catch(err=>console.log(err));
+           
+        }
+      });
+  </script>

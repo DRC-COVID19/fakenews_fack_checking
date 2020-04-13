@@ -13,12 +13,12 @@
         </tr>
       </thead>
       <tbody>
-        <% for(let info of news){info.contenu = info.contenu.substr(0, 100) + " (<a href='#'>+voir plus</a>) ";%>
+        <% for(let info of news){info.content = info.content.substr(0, 100) + " (<a href='#'>+voir plus</a>) ";%>
         <tr>
-          <td><%= info.titre %></td>
+          <td><%= info.title %></td>
           <td><%= info.source %></td>
           <td>URL DE L'INFO ...</td>
-          <td><%- info.contenu %></td>
+          <td><%- info.content %></td>
           <td class="text-center"> 
             <button class="btn btn-info"><i class="fa fa-eye"></i> Visualiser</button>
             <button class="btn btn-success"><i class="fa fa-check"></i> Valider</button>

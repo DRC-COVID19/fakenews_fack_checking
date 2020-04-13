@@ -19,10 +19,10 @@
               <tbody>
                 <% for(let info of news){ %>
                   <tr>
-                    <td><%= info.titre %> </td>
-                    <td><%= info.contenu %> </td>
-                    <td><img src="<%= info.photo %>" alt="<%= info.titre %>"></td>
-                    <td><%= info.statut %></td>
+                    <td><%= info.title %> </td>
+                    <td><%= info.content %> </td>
+                    <td><img src="<%= info.photo %>" alt="<%= info.title %>"></td>
+                    <td><%= info.status %></td>
                     <td>
                         <a href="/edit/<%= info._id %>" class="btn btn-primary">Modifier</a>
                         <a href="/delete/<%= info._id %> " class="btn btn-danger">supprimer</a>

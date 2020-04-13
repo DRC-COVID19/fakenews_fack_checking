@@ -25,7 +25,7 @@
       
       <div id="loadedNews">
         
-        <% for(let info of news){info.contenu = info.contenu.substr(0, 100);%>
+        <% for(let info of news){info.content = info.content.substr(0, 100);%>
         <!-- FAKE -->
 
         <!-- FAKE -->
@@ -34,21 +34,21 @@
           <a href="news/<%= info._id %>" class="card">
           <figure>
             <img style="max-height: 100%;max-width: 100%;" src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>"
-              class="card-img" alt="<%= info.titre %>" />
+              class="card-img" alt="<%= info.title %>" />
           </figure>
 
           <div class="card-body">
             <span
-              class="badge badge-<%= info.statut =='vraie' ? 'success' :'danger' %> text-uppercase"><%= info.statut==='vraie'?'vrai':'faux' %></span>
+              class="badge badge-<%= info.status =='true' ? 'success' :'danger' %> text-uppercase"><%= info.status==='true'?'vrai':'false' %></span>
 
-            <h5 class="card-title"><%= info.titre %></h5>
+            <h5 class="card-title"><%= info.title %></h5>
 
-            <p class="card-text"><%- info.contenu %>...</p>
+            <p class="card-text"><%- info.content %>...</p>
             <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
             <div class="text-right">
               <%-include('../partials/social-share',{url :
-            "https://www.kinshasadigital.com/kinshasa-digital-academy", titre :
-            info.titre})%>
+            "https://www.kinshasadigital.com/kinshasa-digital-academy", title :
+            info.title})%>
             </div>
           </div>
         </a>

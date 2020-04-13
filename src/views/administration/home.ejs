@@ -29,11 +29,11 @@
               </tr>
             </thead>
             <tbody>
-              <% for(let info of news){info.contenu = info.contenu.substr(0,50);%>
+              <% for(let info of news){info.content = info.content.substr(0,50);%>
               <tr>
-                <td><%= info.titre %></td>
+                <td><%= info.title %></td>
                 <td><%- info.source.includes('http')?`<a href='${info.source}' target='_blank'>${info.source}</a>`:info.source %> </td>
-                <td><%- info.contenu %>...</td>
+                <td><%- info.content %>...</td>
                 <td class="text-center"> 
                   <button class="btn btn-info">voir<i class="fa fa-eye"></i> </button>
                   <button class="btn btn-success">Valider<i class="fa fa-check"></i>  </button>

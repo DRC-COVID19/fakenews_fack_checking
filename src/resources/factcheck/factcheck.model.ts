@@ -11,7 +11,6 @@ const FactCheckSchema = new mongoose.Schema(
     },
     content: {
       type: String,
-      unique: true,
     },
     links: {
       type: [String],

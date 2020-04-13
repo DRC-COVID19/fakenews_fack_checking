@@ -1,21 +1,23 @@
 import { Request, Response } from 'express';
 import { News } from './news.model';
 import { NewsLang } from './news_lang.model';
-import { getInformationLang, searchInformationLang } from '../../lib/get_all_news';
+import {
+  getInformationLang,
+  searchInformationLang,
+} from '../../lib/get_all_news';
 
 export default {
-
-  async index(req: Request, res: Response) {
-    const news = await News.find({
-      $or: [{ status: 'true' }, { status: 'false' }],
-    }).select('_id source photo status');
+  async addInformation(req: Request, res: Response) {
+    return res.render('administration/add_information');
+  },
+  async home(req: Request, res: Response) {
+    const news = await News.find().select('_id source photo status');
     const newsToReturn = await getInformationLang(news, NewsLang);
-    res.render('pages/index', {
+    return res.render('administration/home', {
       news: newsToReturn,
-      title: 'Covid-19 Factchecking plateforme',
+      title: 'Admin',
     });
   },
-
 
   async show(req: Request, res: Response) {
     const {
@@ -45,14 +47,16 @@ export default {
     }
   },
 
-  async requestVerificationForm(req: Request, res: Response) {
-    return res.render('pages/news/request-factcheck-form', {
-      title: 'Faire vérifier une information',
-    });
-  },
 
-
-  async requestVerification(req: Request, res: Response) {
-    return res.json(req.body);
+  async destroy(req: Request, res: Response) {
+    const id = req.params.informationId;
+    News.deleteOne({ _id: id })
+      .exec()
+      .then((result) => {
+        return res.redirect('/all-information');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };

@@ -1,9 +1,6 @@
 import express, { Request, Response } from 'express';
-import { newsRouter } from './routes/news_routes';
-import { userRouter } from './routes/users_routes';
-import { newsAdminRouter } from './routes/news_admin_routes';
+import {newsAPIRouter,newsAdminRouter,newsRouter} from "./resources/index.router";
 import './database/db.start';
-const bodyParser: any = require('body-parser');
 // if (process.env.NODE_ENV === 'production') {
 //   require('dotenv').config({ path: './prod.env' });
 // } else {
@@ -18,13 +15,22 @@ app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
 
-app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded());
 app.use(express.static('public'));
 
-// app.use('/admin/user', userRouter);
-app.use('/admin', newsAdminRouter);
-app.use('/news', newsRouter);
+app.get(/^\/?$/i, (req: Request, res: Response) => {
+  return res.redirect('/news');
+});
+
+
+
+
+app.use(/^\/api\/news(?=\/|$)/i, newsAPIRouter);
+app.use(/^\/admin(?=\/|$)/i, newsAdminRouter);
+app.use(/^\/news(?=\/|$)/i,newsRouter);
+
+
 
 const PORT = 5000 || process.env.PORT;
 
@@ -32,8 +38,4 @@ app.listen(PORT, () => {
   console.log( 
     `Le server écoute sur le port ${PORT}\nEnvironement : ${process.env.NODE_ENV}`
   );
-  console.log('username : ', process.env.MONGO_USER);
-  console.log('password : ', process.env.MONGO_PASSWORD);
-  console.log('database name : ', process.env.MONGO_DBNAME);
-  console.log('hostname : ', process.env.MONGO_HOSTNAME);
 });

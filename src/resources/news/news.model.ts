@@ -11,6 +11,7 @@ const NewsSchema = new mongoose.Schema(
       required: false,
       ref: 'Category',
     },
+
     source: {
       type: String,
     },
@@ -19,20 +20,24 @@ const NewsSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    statut: {
+
+    status: {
       type: String,
-      enum: ['vraie', 'fausse', 'draft'],
+      enum: ['true', 'false', 'draft'],
       default: 'draft',
       required: true,
     },
+
     paysOrigin: {
       type: String,
       required: false,
     },
+
     factCheck: {
       type: FactCheckSchema,
       required: false,
     },
+
     author:{
       type:UserSchema,
       required:false,
