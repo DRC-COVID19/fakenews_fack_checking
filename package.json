@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start_dev": "nodemon ./buil/index.js",
+    "start_dev": "nodemon ./build/index.js",
     "start": "pm2 start ./build/index.js",
     "dev": "yarn build && yarn start_dev",
     "prod": "yarn build && yarn start"
