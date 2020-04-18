@@ -6,7 +6,7 @@ const loadNews = (data, parentNode) => {
       news.content = news.content.substr(0, 100)
     const imageToDisplay = news.photo ? news.photo : 'images/covid_19_1.jpg';
     const badgToDisplay = news.status == 'true' ? 'success' : 'danger';
-    const statusToDisplay = news.status === 'true' ? 'vrai' : 'false';
+    const statusToDisplay = news.status === 'true' ? 'VRAI' : 'FAUX';
 
     const KD_URL = `https://factcheck.stopcoronavirusrdc.info/news/${news.slug}`;
     const url=typeof KD_URL != 'undefined' ? `data-url=${KD_URL}` :'';
