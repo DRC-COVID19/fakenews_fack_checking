@@ -22,10 +22,11 @@
               <input id="title" class="form-control" type="text" name="title" value="" placeholder="Titre">
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-              <div class="custom-file">
-                <input name="files" type="file" class="custom-file-input" id="customFile" accept="image/*">
-                <label class="custom-file-label" for="customFile">Fichier</label>
-              </div>
+              
+                <!-- <input name="files" type="file" class="custom-file-input" id="customFile" accept="image/*">
+                <label class="custom-file-label" for="customFile">Fichier</label> -->
+                <input id="img_link" class="form-control" type="text" name="img_link" value="" placeholder="Le de l'image de l'information">
+              
             </div>
           </div>
           <div class="row">
@@ -47,16 +48,16 @@
       const title=document.querySelector('#title');
       const names=document.querySelector('#names');
       const link=document.querySelector('#link');
+      const img_link=document.querySelector('#img_link');
       
 
-      // const formData={};
-      let formData = new FormData()
+      const formData={};
+      // let formData = new FormData()
 
-      for(let field of [content,email,title,names,link]){
+      for(let field of [content,email,title,names,link, img_link]){
           field.addEventListener('input',(e)=>{
             const { target:{name,type,value,checked,files} }=e;
-            formData.append([name],value);
-            console.log("ADDING : ",formData);
+            formData[name]=value;
           });
       }
 
@@ -64,6 +65,7 @@
 
       requestFactcheck.addEventListener('submit',function(e){
         e.preventDefault();
+        console.log("yoooo")
         const image=document.querySelector('#customFile');
         const regexEmail = new RegExp(
           /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
@@ -71,29 +73,21 @@
            const err = document.querySelector('#err');
           err.innerHTML = "Les champs <b>titre,contenu</b> et <b>email</b> sont obligatoires et doivent être valides"
         }else{
-            formData.append('image', image.files[0]);
-              for (var key of formData.entries()) {
-            console.log(key[0] + ', ' + key[1]);
-          }
-
-            axios.post('/api/news/',formData,{
-              headers:{
-                "content-type":"multipart/form-data"
-              }
-            }).then(res=>{
+          e.target.value = "Envoi des données...";
+            axios.post('/api/news/',formData).then(res=>{
             content.value="";
             email.value="";
             title.value="";
             names.value="";
             link.value="";
+            img_link.value="";
             e.target.value = "Envoyer";
             err.style.color = "white";
             err.style.backgroundColor = '#25e487';
             err.style.fontWeight = "bold";
             err.innerText = "Informations envoyées pour verification";
             err.style.fontSize = "1.5em";
-            console.log(res.data);
-            // window.location.href = "http://localhost:5000/";
+            window.location.href = "http://localhost:5000/";
             }).catch(err=>console.log(err));
            
         }

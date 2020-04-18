@@ -2,25 +2,14 @@ import { Request, Response } from 'express';
 import { NewsLang } from "../news_lang.model";
 import { searchInformationLang } from "../../../lib/get_all_news";
 import { News } from "../news.model";
+import {  } from "../../user/user.model";
 
 // @ts-ignore
 import multer from "multer";
 
 import path from "path";
 
-//set storag engine
-const storage=multer.diskStorage({
-    destination:'./public/uploads',
-    filename:function(req,file,cb){
-        //null : error
-        cb(null,file.fieldname+'-'+Date.now+path.extname(file.originalname),)
-    }
-})
 
-//Init upload
-const upload=multer({
-    storage
-}).single('image');
 
 
 export default {
@@ -31,7 +20,7 @@ export default {
         { title: new RegExp(keyWord, 'i') },
         { content: new RegExp(keyWord, 'i') },
       ],
-    }).select('title content news -_id');
+    }).select('title content news -_id').lean();
     const news = await searchInformationLang(News, newsLang);
     res.json({
       news,
@@ -41,15 +30,28 @@ export default {
   },
 
   async create(req:Request,res:Response){
-    upload(req,res,(err)=>{
-        if(err){
-          return res.send({mssg:err}).status(400);
-        }else{
-          return res.send(req.file);
-        }
-    });
 
-    return res.json({...req.body,files:req.file});
-    
+      const news = new News({
+        photo: req.body.img_link,
+        source:req.body.link,
+        status:'draft',
+        author:{fullName:req.body.names?req.body.names:"",email:req.body.email}
+      }); 
+
+      const newsLang=new NewsLang({
+          lang:'french',
+          langISOCode:"fr",
+          title:req.body.title,
+          content:req.body.content,
+      });
+      
+      try {
+          await news.save();
+          await newsLang.save();
+          return res.send({message:'created',status:'ok'});
+      } catch (error) {
+        console.log(error)
+      }
+
   }
 };

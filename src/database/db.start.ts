@@ -5,8 +5,9 @@ let MONGO_URL;
 
 
 const { MONGO_DBNAME, MONGO_PASSWORD, MONGO_USER, MONGO_HOSTNAME } = DBInfos;
-MONGO_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}/${MONGO_DBNAME}`;
-// MONGO_URL = `mongodb://localhost/fake_news_plateform`;
+// MONGO_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}/${MONGO_DBNAME}`;
+// MONGO_URL = `mongodb://fakenews123:fakenews123@ds233198.mlab.com:33198/fake_new_plateforme_dev`;
+MONGO_URL = `mongodb://localhost/fake_news_plateform`;
 console.log(MONGO_URL);
 mongoose
   .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })

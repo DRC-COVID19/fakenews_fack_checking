@@ -8,12 +8,12 @@ const NewsLangSchema = new mongoose.Schema(
     news: { type: mongoose.Schema.Types.ObjectId,require:true,ref:'News' },
     title: {
       type: String,
-      unique: true,
+      // unique: true,
       required: true,
     },
     content: {
       type: String,
-      unique: true,
+      // unique: true,
       required: false,
     },
   },

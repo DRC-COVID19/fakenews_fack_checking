@@ -111,3 +111,5 @@ initial_data.ts
 dev.js
 .vscode/
 
+/src/database/fake_news.xlsx
+/src/database/import_news.ts

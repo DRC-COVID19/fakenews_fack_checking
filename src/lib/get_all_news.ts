@@ -11,8 +11,8 @@ export const getInformationLang = function (
           news: data._id,
           langISOCode: 'fr',
         })
-        .select('title content -_id');
-      return { ...data['_doc'], ...langAttributes['0']['_doc'] };
+        .select('title content -_id').lean();
+      return { ...data, ...langAttributes[0] };
     })
   );
 };
@@ -25,8 +25,8 @@ export const searchInformationLang = function (
     childModel.map(async (data: any) => {
       const news: any = await parentModel
         .findById(data.news)
-        .select('_id source photo status');
-      return { ..._.pick(data['_doc'], ['title', 'content']), ...news['_doc'] };
+        .select('_id source photo status').lean();
+      return { ..._.pick(data, ['title', 'content']), ...news };
     })
   );
 };

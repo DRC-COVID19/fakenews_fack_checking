@@ -2,19 +2,20 @@ import mongoose from "mongoose";
 
 const FactCheckSchema = new mongoose.Schema(
   {
-    lang: { type: String, required: true, default: 'french' },
-    langIsoCode: { type: String, required: true, default: 'fr' },
+    // lang: { type: String, required: true, default: 'french' },
+    // langIsoCode: { type: String, required: true, default: 'fr' },
     news: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
+      required: false,
       ref: 'News',
     },
-    content: {
+    checkedFact:{type:String},
+    scentificArgument: {
       type: String,
     },
     links: {
       type: [String],
-      required: true,
+      required: false,
     },
     medias: {
       type: [String],
@@ -22,6 +23,7 @@ const FactCheckSchema = new mongoose.Schema(
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
+      required:false,
     },
   },
   {

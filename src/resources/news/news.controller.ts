@@ -8,7 +8,7 @@ export default {
   async index(req: Request, res: Response) {
     const news = await News.find({
       $or: [{ status: 'true' }, { status: 'false' }],
-    }).select('_id source photo status');
+    }).select('_id source photo status').lean();
     const newsToReturn = await getInformationLang(news, NewsLang);
     res.render('pages/index', {
       news: newsToReturn,
