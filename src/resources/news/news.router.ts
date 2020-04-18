@@ -1,5 +1,5 @@
-import NewsController from './news.controller';
-import express from 'express';
+import NewsController from "./news.controller";
+import express from "express";
 export const newsRouter = express.Router();
 
 const {
@@ -9,7 +9,7 @@ const {
   requestVerificationForm,
 } = NewsController;
 
-newsRouter.get('/', index);
-newsRouter.get('/request-verification', requestVerificationForm);
-newsRouter.post('/request-verification', requestVerification);
-newsRouter.get('/:slug', show);
+newsRouter.get("/", index);
+newsRouter.get("/request-verification", requestVerificationForm);
+//newsRouter.post("/request-verification", requestVerification);
+newsRouter.get("/:slug", show);

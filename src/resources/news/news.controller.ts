@@ -18,7 +18,7 @@ export default {
       title: "Covid-19 Factchecking plateforme",
       description: "",
       image: "",
-      url: ``,
+      url: "",
     });
   },
 
@@ -58,6 +58,10 @@ export default {
   async requestVerificationForm(req: Request, res: Response) {
     return res.render("pages/news/request-factcheck-form", {
       title: "Faire vérifier une information",
+      description:
+        "Soumettre une information afin qu'elle puisse etre vérifié par un fact checker",
+      url: "",
+      image: null,
     });
   },
 

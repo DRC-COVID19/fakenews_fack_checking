@@ -2,94 +2,157 @@
 <div class="container">
   <div class="content mt-5">
     <div class="row justify-content-center">
-      <div class="col-sm-8 text-center ">
-        <h1>Faire verifier une information</h1>
-        <p>Envoyez nous les informations dont vous avez des doutes pour que nous les verifions.</p>
-        <hr>
-        <p id="err" style="color:red"></p>
-        <form id="request_factcheck" class="" action="/news/request-verification" method="post" enctype="multipart/form-data">
+      <div class="col-sm-8 text-center">
+        <h1>Faire vérifier une information</h1>
+        <p>
+          Envoyez nous les informations sur lesquelles vous avez des doutes pour
+          que nous les vérifions via notre processus de fact checking.
+        </p>
+        <hr />
+        <p id="err" style="color: red;"></p>
+        <form
+          id="request_factcheck"
+          class=""
+          action="/news/request-verification"
+          method="post"
+          enctype="multipart/form-data"
+        >
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-              <input id="names" class="form-control" type="text" name="names" value="" placeholder="Votre nom">
+              <input
+                id="names"
+                class="form-control"
+                type="text"
+                name="names"
+                value=""
+                placeholder="Votre nom"
+              />
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-              <input id="email" class="form-control" type="text" name="email" value="" placeholder="Votre mail">
+              <input
+                id="email"
+                class="form-control"
+                type="email"
+                required
+                name="email"
+                value=""
+                placeholder="Votre mail"
+              />
             </div>
           </div>
 
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12">
-              <input id="title" class="form-control" type="text" name="title" value="" placeholder="Titre">
+              <input
+                id="title"
+                class="form-control"
+                type="text"
+                name="title"
+                value=""
+                placeholder="Titre"
+              />
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12">
-              
-                <!-- <input name="files" type="file" class="custom-file-input" id="customFile" accept="image/*">
+              <!-- <input name="files" type="file" class="custom-file-input" id="customFile" accept="image/*">
                 <label class="custom-file-label" for="customFile">Fichier</label> -->
-                <input id="img_link" class="form-control" type="text" name="img_link" value="" placeholder="Le de l'image de l'information">
-              
+              <input
+                id="img_link"
+                class="form-control"
+                type="url"
+                name="img_link"
+                value=""
+                placeholder="Le lien de l'image de l'information"
+              />
             </div>
           </div>
           <div class="row">
             <div class="col-sm-12">
-              <input id="link" class="form-control" type="text" name="link" value="" placeholder="Le liens de votre information">
-              <textarea id="content" name="content" rows="8" placeholder="Décrivez l'information à vérifier"></textarea>
-              <input type="submit" class="btn btn-dark" name="" value="Envoyer">
+              <input
+                id="link"
+                class="form-control"
+                type="url"
+                name="link"
+                value=""
+                placeholder="Le liens de votre information"
+              />
+              <textarea
+                id="content"
+                name="content"
+                rows="8"
+                placeholder="Décrivez l'information à vérifier"
+              ></textarea>
+              <input
+                type="submit"
+                class="btn btn-dark"
+                name=""
+                value="Envoyer"
+              />
             </div>
           </div>
         </form>
-
       </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-      const content=document.querySelector('#content');
-      const email = document.querySelector('#email');
-      const title=document.querySelector('#title');
-      const names=document.querySelector('#names');
-      const link=document.querySelector('#link');
-      const img_link=document.querySelector('#img_link');
-      
+    const content = document.querySelector("#content");
+    const email = document.querySelector("#email");
+    const title = document.querySelector("#title");
+    const names = document.querySelector("#names");
+    const link = document.querySelector("#link");
+    const img_link = document.querySelector("#img_link");
 
-      const formData={};
-      // let formData = new FormData()
+    const formData = {};
+    // let formData = new FormData()
 
-      for(let field of [content,email,title,names,link, img_link]){
-          field.addEventListener('input',(e)=>{
-            const { target:{name,type,value,checked,files} }=e;
-            formData[name]=value;
-          });
-      }
+    for (let field of [content, email, title, names, link, img_link]) {
+      field.addEventListener("input", (e) => {
+        const {
+          target: { name, type, value, checked, files },
+        } = e;
+        formData[name] = value;
+      });
+    }
 
-      const requestFactcheck=document.querySelector('#request_factcheck');
+    const requestFactcheck = document.querySelector("#request_factcheck");
 
-      requestFactcheck.addEventListener('submit',function(e){
-        e.preventDefault();
-        console.log("yoooo")
-        const image=document.querySelector('#customFile');
-        const regexEmail = new RegExp(
-          /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
-        if(!content.value.length || !email.value.length || regexEmail.test(email.value)===false || !title.value.length){
-           const err = document.querySelector('#err');
-          err.innerHTML = "Les champs <b>titre,contenu</b> et <b>email</b> sont obligatoires et doivent être valides"
-        }else{
-          e.target.value = "Envoi des données...";
-            axios.post('/api/news/',formData).then(res=>{
-            content.value="";
-            email.value="";
-            title.value="";
-            names.value="";
-            link.value="";
-            img_link.value="";
+    requestFactcheck.addEventListener("submit", function (e) {
+      e.preventDefault();
+      console.log("yoooo");
+      const image = document.querySelector("#customFile");
+      const regexEmail = new RegExp(
+        /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+      if (
+        !content.value.length ||
+        !email.value.length ||
+        regexEmail.test(email.value) === false ||
+        !title.value.length
+      ) {
+        const err = document.querySelector("#err");
+        err.innerHTML =
+          "Les champs <b>titre,contenu</b> et <b>email</b> sont obligatoires et doivent être valides";
+      } else {
+        e.target.value = "Envoi des données...";
+        axios
+          .post("/api/news/", formData)
+          .then((res) => {
+            content.value = "";
+            email.value = "";
+            title.value = "";
+            names.value = "";
+            link.value = "";
+            img_link.value = "";
             e.target.value = "Envoyer";
             err.style.color = "white";
-            err.style.backgroundColor = '#25e487';
+            err.style.backgroundColor = "#25e487";
             err.style.fontWeight = "bold";
             err.innerText = "Informations envoyées pour verification";
             err.style.fontSize = "1.5em";
             window.location.href = "http://localhost:5000/";
-            }).catch(err=>console.log(err));
-           
-        }
-      });
+          })
+          .catch((err) => console.log(err));
+      }
+    });
   </script>
+</div>
