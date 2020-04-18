@@ -4,6 +4,12 @@ import { FactCheckSchema } from '../factcheck/factcheck.model';
 import {UserSchema} from "../user/user.model";
 import Joi, { ValidationResult } from "joi";
 
+// @ts-ignore
+import slug from "mongoose-slug-generator";
+
+
+mongoose.plugin(slug);
+
 
 const authorSchema=new mongoose.Schema({
   fullName:String,
@@ -42,14 +48,14 @@ const NewsSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-
+    title:{type:String},
     status: {
       type: String,
       enum: ['true', 'false', 'draft'],
       default: 'draft',
       required: true,
     },
-
+    slug: { type: String, slug: ['title'], unique:true },
     paysOrigin: {
       type: String,
       required: false,
