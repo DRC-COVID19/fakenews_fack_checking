@@ -32,7 +32,7 @@ const loadNews = (data, parentNode) => {
   </li>
 </ul>`;  
     const newsTemplate = `<div class="col-sm-12" style="col-sm-12">
-   <a href="news/${news._id}" class="card">
+   <a href="news/${news.slug}" class="card">
           <figure>
             <img style="max-height: 100%;max-width: 100%;" src="${imageToDisplay}" class="card-img" alt="${news.title}" />
           </figure>
