@@ -1,7 +1,5 @@
-import { AppRouter } from '../../app.router';
 import  news  from './news.admin.controller';
 import express from 'express';
-// export const newsAdminRouter = AppRouter.getInstance();
 export const newsAdminRouter = express.Router();
 
 

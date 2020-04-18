@@ -20,7 +20,8 @@
           </div>
 
           <div class="text-center">
-            <%-include('../../partials/social-share',{url : "https://factcheck.stopcoronavirusrdc.info/news/<%= news._id %>", title : news.title})%>
+            <%-include('../../partials/social-share',{url : `https://factcheck.stopcoronavirusrdc.info/news/${news.slug}`,
+            title : news.title})%>
           </div>
         </div>
 
@@ -44,7 +45,7 @@
           color='false'
         }
         %>
-          <h4><span class="icon iconify <%= color%>" data-icon="<%=iconData %>" data-inline="false"></span>
+          <h4><span class="icon iconify <%= color %>" data-icon="<%=iconData %>" data-inline="false"></span>
             <%= news.status==="true"?"VRAI":"FAUX" %></h4>
         </div>
 <!-- VERDICT -->

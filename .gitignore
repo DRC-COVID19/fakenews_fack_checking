@@ -113,3 +113,6 @@ dev.js
 
 /src/database/fake_news.xlsx
 /src/database/import_news.ts
+/dev.env
+/prod.env
+/src/database/seed.ts

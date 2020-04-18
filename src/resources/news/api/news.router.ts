@@ -1,12 +1,8 @@
-import { AppRouter } from '../../../app.router';
 import NewsController from '../api/news.api.controller';
 import express from "express";
 
 export const newsAPIRouter = express.Router();
 
-
-
-// export const newsAPIRouter = AppRouter.getInstance();
 
 const { search, create } = NewsController;
 

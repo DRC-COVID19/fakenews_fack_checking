@@ -9,22 +9,25 @@ export default {
   async index(req: Request, res: Response) {
     const news = await News.find({
       $or: [{ status: 'true' }, { status: 'false' }],
-    }).select('_id source photo status').lean();
+    }).select('_id source photo status slug').lean();
     const newsToReturn = await getInformationLang(news, NewsLang);
     res.render('pages/index', {
       news: newsToReturn,
       title: 'Covid-19 Factchecking plateforme',
+      description: "",
+      image: "",
+      url: ``,
     });
   },
 
 
   async show(req: Request, res: Response) {
     const {
-      params: { id },
+      params: { slug },
     } = req;
     try {
-      const news: any = await News.findById(id)
-        .select('_id source photo status factCheck')
+      const news: any = await News.findOne({ slug })
+        .select('_id source photo status factCheck slug')
         .lean();
       if (news) {
         // Query for a new according to a given language
@@ -39,6 +42,9 @@ export default {
         return res.render('pages/news/details', {
           news: { ...news, ...langAttributes[0] },
           title: langAttributes['0'].title,
+          description: langAttributes['0'].content,
+          image:news.photo,
+          url:`/news/${news.slug}`
         });
       } else {
         return res.render('pages/404');

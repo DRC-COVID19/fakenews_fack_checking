@@ -10,14 +10,16 @@
 
         <meta property="og:site_name" content="FactcheckCovid-19">
 
-        <meta property="og:title" content="STOP Coronavirus RDC Fact Check">
+        <meta property="og:title" content="<%= title?title:'STOP Coronavirus RDC Fact Check'%>">
 
-        <meta property="og:description" content="Plateforme de signallement des fakenews et de fact checking concernant le COVID-19.">
+        <meta property="og:description"
+          content="<%= description?description:'Plateforme de signallement des fakenews et de fact checking concernant le COVID-19.' %> ">
 
-        <meta property="og:url" content="http://factcheck.stopcoronavirusrdc.info/">
+        <meta property="og:url" content="<%= url?url:'http://factcheck.stopcoronavirusrdc.info/' %> ">
 
-        <meta property="og:image" content="https://www.stopcoronavirusrdc.info/img/logo_stop_coronavirus_rdc.png">
-  <title><%= title %> </title>
+        <meta property="og:image"
+          content="<%= image?image:'https://www.stopcoronavirusrdc.info/img/logo_stop_coronavirus_rdc.png' %> ">
+  <title><%= title?title:'Covid-19 Factchecking plateforme' %> </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
     integrity="sha256-9mbkOfVho3ZPXfM7W8sV2SndrGDuh7wuyLjtsWeTI1Q=" crossorigin="anonymous" />
 

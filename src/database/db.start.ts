@@ -1,13 +1,13 @@
 import mongoose from 'mongoose';
-const { DBInfos } = require('../config/keys');
-let MONGO_URL;
+import {DBInfos} from "../config";
 
 
+// For my local MongoDB
+// const MONGO_URL = `mongodb://localhost/fake_news_plateform`;
 
 const { MONGO_DBNAME, MONGO_PASSWORD, MONGO_USER, MONGO_HOSTNAME } = DBInfos;
-// MONGO_URL = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}/${MONGO_DBNAME}`;
-// MONGO_URL = `mongodb://fakenews123:fakenews123@ds233198.mlab.com:33198/fake_new_plateforme_dev`;
-MONGO_URL = `mongodb://localhost/fake_news_plateform`;
+const MONGO_URL:string = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}/${MONGO_DBNAME}`;
+
 console.log(MONGO_URL);
 mongoose
   .connect(MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
