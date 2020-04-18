@@ -25,7 +25,8 @@ export const searchInformationLang = function (
     childModel.map(async (data: any) => {
       const news: any = await parentModel
         .findById(data.news)
-        .select('_id source photo status').lean();
+        .select('_id source photo status factCheck slug')
+        .lean();
       return { ..._.pick(data, ['title', 'content']), ...news };
     })
   );

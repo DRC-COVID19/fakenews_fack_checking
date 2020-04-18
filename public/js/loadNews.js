@@ -8,7 +8,7 @@ const loadNews = (data, parentNode) => {
     const badgToDisplay = news.status == 'true' ? 'success' : 'danger';
     const statusToDisplay = news.status === 'true' ? 'vrai' : 'false';
 
-    const KD_URL="https://www.kinshasadigital.com/kinshasa-digital-academy";
+    const KD_URL = `https://factcheck.stopcoronavirusrdc.info/news/${news.slug}`;
     const url=typeof KD_URL != 'undefined' ? `data-url=${KD_URL}` :'';
 
     const title=typeof news.title != 'undefined'  ? `data-title=${news.title}` : '';
