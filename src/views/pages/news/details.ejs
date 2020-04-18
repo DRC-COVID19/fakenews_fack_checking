@@ -13,10 +13,10 @@
 
         <div class="content-card">
           <h2 class="content-heading"><%= news.title %></h2>
-          <p class="text-justify"><%= news.content %></p>
+          <p style="font-size: 1.5em;" class="text-justify"><%= news.content %></p>
 
           <div class="d-flex justify-content-center mb-3">
-            <img width="500" src="<%= news.photo %>" alt="<%= news.title %>">
+            <img width="500" src="<%= news.photo?news.photo:'images/covid_19_1.jpg' %>" alt="<%= news.title %>">
           </div>
 
           <div class="text-center">
@@ -24,8 +24,18 @@
           </div>
         </div>
 
+<!-- ALLEGATION -->
+         <div class="content-card">
+           <h4>Allégation</h4>
+           <hr>
+           <p style="font-size: 1.5em;"><%= news.content  %> </p>
+         </div>
+<!-- ALLEGATION -->
+
+<!-- VERDICT -->
         <div class="content-card">
-          <!-- <h4>Verdict</h4> -->
+          <h4>Verdict</h4>
+          <hr>
           <% if(news.status=='true'){
           iconData="mdi:check-circle-outline";
           color ='true'
@@ -35,9 +45,31 @@
         }
         %>
           <h4><span class="icon iconify <%= color%>" data-icon="<%=iconData %>" data-inline="false"></span>
-            <%= news.status%></h4>
+            <%= news.status==="true"?"VRAI":"FAUX" %></h4>
         </div>
+<!-- VERDICT -->
 
+<!-- VRAIE INFORMATION -->
+          <div class="content-card">
+            <h4>Fait établie</h4>
+            <hr>
+            <blockquote class="blockquote">
+              <p class="mb-0" style="font-size: 1.3em;"><i><%= news.factCheck.checkedFact %> </i>
+              </p>
+            </blockquote>
+            
+            <h5 style="font-size: 1.6em;">Arguments scientifiques</h5>
+            <p style="font-size: 1.4em;">
+              <%= news.factCheck.scentificArgument %>
+            </p>
+            <h5>Sources</h5>
+            <ul>
+              <% for( let  source of news.factCheck.links) { %>
+              <li style="font-size:1.2em"><a href="<%= source %>"><%= source %></li>
+              <% } %>
+            </ul>
+          </div>
+<!-- VRAIE INFORMATION -->
 
 
       </div>
