@@ -1,5 +1,5 @@
 body {
-  font-family: 'Barlow';
+  font-family: "Barlow";
 }
 
 h1,
@@ -11,18 +11,12 @@ a {
   color: #152035;
 }
 
-h4 {
-  margin-left: 41px;
-}
-
-
-
 .navbar {
   background: #f5f5f5;
 }
 
 p {
-  color: #788193
+  color: #788193;
 }
 
 a:hover {
@@ -38,7 +32,6 @@ a:hover {
 textarea {
   padding: 10px;
 }
-
 
 nav a {
   font-size: 14px;
@@ -78,9 +71,9 @@ header p {
   max-width: 300px;
   margin: 0 2%;
   border-radius: 0px;
-  background: #F5F5F5;
+  background: #f5f5f5;
   border: none;
-  transition: all ease .1s;
+  transition: all ease 0.1s;
 }
 
 .card:hover {
@@ -107,18 +100,17 @@ figure img {
   margin: -20% 0;
 }
 
-
 .badge {
   padding: 5px 10px;
   margin-bottom: 10px;
 }
 
 .badge-success {
-  background: #5AFF9C;
+  background: #5aff9c;
 }
 
 .badge-danger {
-  background: #FA3E3E
+  background: #fa3e3e;
 }
 
 .social {
@@ -141,6 +133,7 @@ figure img {
 
 .content img {
   max-width: 100%;
+  width: 100%;
   margin: 10px 0;
 }
 
@@ -157,17 +150,16 @@ figure img {
 }
 
 .true {
-  color: #5aff9c
+  color: #5aff9c;
 }
 
 .false {
-  color: #fa3e3e
+  color: #fa3e3e;
 }
 
 .content-card h4 {
   text-transform: capitalize;
 }
-
 
 /* Submit page style*/
 input,
@@ -180,32 +172,27 @@ textarea {
   width: 100%;
 }
 
-
 /* @media screen and (min-width:1199px) {
   form.form-inline {
     padding-left: 197px;
   }
 } */
 
-@media screen and (max-width:740px) {
+@media screen and (max-width: 740px) {
   .card {
     margin: 0;
     max-width: 500px;
   }
-
-
 
   header {
     padding: 40px;
   }
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width: 480px) {
   .card {
     max-width: 500px;
   }
-
-
 
   .content-heading {
     font-size: 28px;
@@ -217,13 +204,28 @@ textarea {
   justify-content: space-around;
 }
 
-.social  .button>*{
-  transition:0.2s ease-out;
+.social .button > * {
+  transition: 0.2s ease-out;
 }
 
-.social .button > *:hover{
-  cursor:pointer;
-  width:45px;
-  height:45px;
+.social .button > *:hover {
+  cursor: pointer;
+  width: 45px;
+  height: 45px;
 }
 
+.content-card .body {
+  padding: 0 1rem;
+}
+
+.body p {
+  font-size: 1.5em;
+}
+
+.main-card {
+  padding: 0;
+}
+
+.main-card .body {
+  margin: 20px;
+}

@@ -1,9 +1,6 @@
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const UserSchema = new mongoose.Schema({
-  _id: {
-    type: mongoose.Schema.Types.ObjectId,
-  },
   nom: {
     type: String,
     required: true,
@@ -26,11 +23,11 @@ const UserSchema = new mongoose.Schema({
   },
   roles: {
     type: String,
-    enum: ['internaut', 'admin', 'fact_checker'],
-    default: 'internaut',
+    enum: ["internaut", "admin", "fact_checker"],
+    default: "internaut",
     required: true,
   },
 });
 
-const User = mongoose.model('User', UserSchema);
+const User = mongoose.model("User", UserSchema);
 export { User, UserSchema };

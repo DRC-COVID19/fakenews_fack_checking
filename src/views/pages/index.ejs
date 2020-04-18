@@ -4,64 +4,73 @@
     <div class="col-sm-12">
       <h1>Coronavirus factcheck RDC</h1>
       <p>Bienvenus sur la plate-forme officiel de fact-checking</p>
-      <a class="btn btn-dark" href="/news/request-verification">Faire verifier une information</a>
+      <a class="btn btn-dark" href="/news/request-verification"
+        >Faire verifier une information</a
+      >
     </div>
   </div>
 </header>
 <hr />
 <div class="container">
   <div class="row mt-4 mb-4">
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <h4>Les dernières infos</h4>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-12">
       <%- include('../partials/search-form.ejs') %>
     </div>
-    
   </div>
 
-  <div style="margin-top:100px" class="row">
+  <div style="margin-top: 100px;" class="row">
     <!-- <div class="col-sm-12 "> -->
-      
-      <div id="loadedNews">
-        
-        <% for(let info of news){info.content = info.content.substr(0, 100);%>
-        <!-- FAKE -->
 
-        <!-- FAKE -->
-        <!-- Data -->
-        <div class="col-sm-12">
-          <a href="/news/<%= info.slug %>" class="card">
+    <div id="loadedNews">
+      <% for(let info of news){info.content = info.content.substr(0, 100);%>
+      <!-- FAKE -->
+
+      <!-- FAKE -->
+      <!-- Data -->
+      <div class="col-sm-12">
+        <a href="/news/<%= info.slug ? info.slug : info._id %>" class="card">
           <figure>
-            <img style="max-height: 100%;max-width: 100%;" src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>"
-              class="card-img" alt="<%= info.title %>" />
+            <img
+              style="max-height: 100%; max-width: 100%;"
+              src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>"
+              class="card-img"
+              alt="<%= info.title %>"
+            />
           </figure>
 
           <div class="card-body">
             <span
-              class="badge badge-<%= info.status =='true' ? 'success' :'danger' %> text-uppercase"><%= info.status==='true'?'VRAI':'FAUX' %></span>
+              class="badge badge-<%= info.status =='true' ? 'success' :'danger' %> text-uppercase"
+              ><%= info.status==='true'?'VRAI':'FAUX' %></span
+            >
 
             <h5 class="card-title"><%= info.title %></h5>
 
             <p class="card-text"><%- info.content %>...</p>
-            <p class="card-text"><small class="text-muted">5 MARS 2020</small></p>
+            <p class="card-text">
+              <small class="text-muted">5 MARS 2020</small>
+            </p>
             <div class="text-right">
               <%-include('../partials/social-share',{url :
-            "https://www.kinshasadigital.com/kinshasa-digital-academy", title :
-            info.title})%>
+              "https://www.kinshasadigital.com/kinshasa-digital-academy", title
+              : info.title})%>
             </div>
           </div>
         </a>
-        </div>
-        <!-- End Data -->
-        <% } %>
       </div>
+      <!-- End Data -->
+      <% } %>
+    </div>
 
-      <!-- END NEWS -->
+    <!-- END NEWS -->
     <!-- </div> -->
   </div>
-     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="js/html-string.js"></script>
-    <script src="js/generateLoaders.js"></script>
-    <script src="js/loadNews.js"></script>
-    <script src="js/search-news.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="js/html-string.js"></script>
+  <script src="js/generateLoaders.js"></script>
+  <script src="js/loadNews.js"></script>
+  <script src="js/search-news.js"></script>
+</div>

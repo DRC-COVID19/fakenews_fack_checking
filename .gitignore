@@ -116,3 +116,6 @@ dev.js
 /dev.env
 /prod.env
 /src/database/seed.ts
+
+# MACOS
+.DS_Store
