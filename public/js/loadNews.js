@@ -12,21 +12,25 @@ const loadNews = (data, parentNode) => {
     const url=typeof KD_URL != 'undefined' ? `data-url=${KD_URL}` :'';
 
     const title=typeof news.title != 'undefined'  ? `data-title=${news.title}` : '';
+    const image =
+      typeof news.photo != 'undefined' || news.photo.length>0
+        ? `data-image=${news.photo}`
+        : `data-image="images/covid_19_1.jpg"`;
 
  
 
-     const socialeShare=`<ul class="social"><li>
-    <span style="color :#3b5998 ; font-size:25px; margin-right:5px;"  class="button share-button facebook-share-button st-custom-button" data-network="facebook" ${url} ${title} >
+     const socialeShare = `<ul class="social"><li>
+    <span style="color :#3b5998 ; font-size:25px; margin-right:5px;"  class="button share-button facebook-share-button st-custom-button" data-network="facebook" ${url} ${title} ${image} >
       <span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span>
     </span>
   </li>
   <li>
-    <span style="color :#38A1F3 ; font-size:25px; margin-right:5px;" class="button share-button facebook-share-button st-custom-button" data-network="twitter" ${url} ${title} >
+    <span style="color :#38A1F3 ; font-size:25px; margin-right:5px;" class="button share-button facebook-share-button st-custom-button" data-network="twitter" ${url} ${title} ${image} >
       <span class="iconify" data-icon="jam:twitter-circle" data-inline="false"></span>
     </span>
   </li>
   <li>
-    <span style="color :#61d0b6 ; font-size:25px;" class="button share-button facebook-share-button st-custom-button" data-network="whatsapp" ${url} ${title} >
+    <span style="color :#61d0b6 ; font-size:25px;" class="button share-button facebook-share-button st-custom-button" data-network="whatsapp" ${url} ${title} ${image} >
       <span class="iconify" data-icon="mdi:whatsapp" data-inline="false"></span>
     </span>
   </li>
