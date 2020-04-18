@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import cors from "cors"
 import {newsAPIRouter,newsAdminRouter,newsRouter} from "./resources/index.router";
 import {config} from "dotenv";
 
@@ -19,6 +20,7 @@ app.engine('ejs', require('express-ejs-extend')); // add this line
 app.set('views', './src/views');
 app.set('view engine', 'ejs');
 
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.static('public'));
