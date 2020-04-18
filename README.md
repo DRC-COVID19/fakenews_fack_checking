@@ -1,72 +1,75 @@
-# <h1>Plateforme pour signaler/vérifier les fakes news</h1>
+# **Plateforme des signalement et vérification des fakes news liées au COVID-19**
 
-C'est un site web de signalement des **Fake news** en rapport avec la pandemie du **Covid-19**.<br />Les utilsateur ont la possibilité de solliter la vérification des informations.
+Ceci une application web de signalement des **fake news** liées à la pandemie de **COVID-19**. Elle permet au grand public de solliter la vérification d'une information et aux organismes de fact checking de pouvoir apporter une réponse définitive aux différentes rumeurs.
 
-Pour lancer l'application rassurez-vous d'avoir éxécuté les commande suivantes dans le **terminal**:
+Pour commencer l'application en mode développement, suivre les étapes suivantes:
 
-- **node.js** doit etre installé dans votre système
+## **Prerequis**
 
-- Installer **Typescript** : https://www.typescriptlang.org/#download-links
+### **Node.js**
 
-- **npm install** si vous avez **npm** installé ou **yarn** si vous avez **yarn** installé
+Assurez vous d'avoir **Node.js** installé sur votre machine de dévelopment. Si ce n'est pas le cas, veuillez vous rendre sur le [site officiel de Node.js](https://nodejs.org) pour télécharger et executez le fichier d'installation.
 
-- Faites ensuite **npm run start** ou **yarn start** selon que vous avez **npm** ou **yarn**
+### **Typescript**
 
-- Le projet étant en Typescript,avant de lancer le server faites : **yarn build** ou **npm run build**
+L'application nécessite [**Typescript**](https://www.typescriptlang.org/#download-links). Typescript peut etre installé comme un package Node.js en executant la commande suivante:
 
-- Pour lancer le server faites **yarn start** ou **npm run start**.Par default l'application utilise le port 3000
+```
+npm install -g typescript
+```
 
-- Pour travailler avec un base de données de test,vous devez créer un compte dans https://mlab.com/ puis créer une base de données
+### **Base de données**
 
-- pour avoir une configuration de production ,il faudra créer un fichier .env à la racine et y mettre les valeurs des variables environement pour la production.Pour avoir une configuration local , vous devez ajouter un fichier dev.ts dans le repertoire **config/** puis y mettre votre configuration comme le cas du fichier prod.ts
+Le developpement ou la mise en production de cette application nécessite une base de données [MongoDB](https://www.mongodb.com/). Nous vous recommandons de créer votre base de données sur [Mlab](https://mlab.com/) ou autres services similaires.
 
-- Afin d'avoir des données pour initiales , veuillez éxécuter le script se trouvant dans le repertoire **lib/**
+Les paramètres de connexion de la base de données se renseignent via un fichier `.env`. Selon que vous soyez dans un environemnt de dévelopment ou produciton, créez respectivement soit fichier `dev.env` ou `prod.env`. Mettez-y les informations ci-dessous et completez les valeurs renseignant les paramètres de connexion:
 
-**Tech Stack**
+```
+MONGO_USER=
+MONGO_PASSWORD=
+MONGO_DBNAME=
+MONGO_HOSTNAME=
+```
+
+Afin d'avoir des données pour initiales, veuillez éxécuter le script `lib/get_all_news.ts`.
+
+## **Commandes**
+
+Après avoir installé tous les prérequis ci-dessus, executez dans l'ordre les commandes ci-après dans un **terminal**:
+
+```
+npm install
+npm run build
+npm run start_dev
+```
+
+Par default l'application utilise le port 5000.
+
+## **Tech Stack**
 
 - Node.js
 - Express
-- Typescript -> _Backend_
-- Javascript -> _Frontend_
+- Typescript -> _*Backend*_
+- Javascript -> _*Frontend*_
 - MongoDB
-- Moteur de template -> _EJS_
+- Moteur de template -> _*EJS*_
 
-<h2>Structuration des dossiers du projet</h2>
-<ul>
- <li>
-    src/
-    <ul>
-    <li>controllers/</li>
-    <li>middlewares/</li>
-    <li>models/</li>
-    <li>routes/</li>
-    <li>services/</li>
-    <li>views/
-        <ul>
-            <li>pages/ <- _ICi_ ces les pages que les visiteurs vont voir_</li>
-            <li>partials/ <- _Ici_ Ces des morceau de pages réutilisables</li>
-        </ul>
-    </li>
-    </ul>
- </li>
-</ul>
+## **À lire attentivement avant de contribuer à un projet open source**
 
-**A lire attentivement avant de contribuer à un projet open source**<br>
+- [Gérez votre code avec Git et GitHub](https://openclassrooms.com/fr/courses/2342361-gerez-votre-code-avec-git-et-github/2433731-contribuez-a-des-projets-open-source)
 
-https://openclassrooms.com/fr/courses/2342361-gerez-votre-code-avec-git-et-github/2433731-contribuez-a-des-projets-open-source
+- [The beginner's guide to contributing to a GitHub project](https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/)
 
-https://akrabat.com/the-beginners-guide-to-contributing-to-a-github-project/
+- [How to test a Pull Request locally before Merging](https://medium.com/@bolajiayodeji/how-to-test-a-pull-request-locally-before-merging-634bb205d3a6)
 
-https://medium.com/@bolajiayodeji/how-to-test-a-pull-request-locally-before-merging-634bb205d3a6
+- [How to test a Pull Request locally before Merging](https://dev.to/bolajiayodeji/how-to-test-a-pull-request-locally-before-merging-1h29)
 
-https://dev.to/bolajiayodeji/how-to-test-a-pull-request-locally-before-merging-1h29
+## **Contributeurs**
 
-<h2>Contributeurs</h2>
+- [Christian Lisangola Bondjali](https://github.com/theman2000)
 
-- **Christian Lisangola Bondjali**
+- [Osée Mukaya Tshimanga](https://github.com/Mukaya)
 
-- **Osée Mukaya Tshimanga**
+- [Peniel Dialundana](https://github.com/bilwifi)
 
-- **Peniel Dialundana**
-
-- **Axel Ilali**
+- [Axel Ilali](https://github.com/axelilali)
