@@ -21,7 +21,7 @@ if (app.get("env") === "production") {
 import "./lib/db.start";
 
 app.engine("ejs", require("express-ejs-extend")); // add this line
-app.set("views", "./src/views");
+app.set("views", "./views");
 app.set("view engine", "ejs");
 
 app.use(express.json());
@@ -32,9 +32,9 @@ app.get(/^\/?$/i, (req: Request, res: Response) => {
   return res.redirect("/news");
 });
 
+app.use(/^\/news(?=\/|$)/i, newsRouter);
 app.use(/^\/api\/news(?=\/|$)/i, newsAPIRouter);
 app.use(/^\/admin(?=\/|$)/i, newsAdminRouter);
-app.use(/^\/news(?=\/|$)/i, newsRouter);
 
 app.use(express.static(path.join(__dirname, "./src/views/administration")));
 
