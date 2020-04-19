@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
-import { News } from "./news.model";
-import { NewsLang } from "./news_lang.model";
-import { FackCheck } from "../factcheck/factcheck.model";
-import { User } from "../user/user.model";
-import { getInformationLang } from "../../lib/get_all_news";
+import { News } from "../models/news.model";
+import { NewsLang } from "../models/news_lang.model";
+import { FackCheck } from "../models/factcheck.model";
+import { User } from "../models/user.model";
+import { getInformationLang } from "../lib/get_all_news";
 
 export default {
   async index(req: Request, res: Response) {

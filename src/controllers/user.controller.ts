@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { validationResult } from 'express-validator';
 import mongoose from 'mongoose';
-import { User } from './user.model';
+import { User } from '../models/user.model';
 
 export default {
          async index(req: Request, res: Response) {

@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import { NewsLang } from "../news_lang.model";
-import { searchInformationLang } from "../../../lib/get_all_news";
-import { News } from "../news.model";
-import {  } from "../../user/user.model";
+import { NewsLang } from "../models/news_lang.model";
+import { searchInformationLang } from "../lib/get_all_news";
+import { News } from "../models/news.model";
+import {  } from "../models/user.model";
 
 // @ts-ignore
 import multer from "multer";

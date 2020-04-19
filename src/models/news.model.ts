@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
-import { CategorySchema } from '../category/category.model';
-import { FactCheckSchema } from '../factcheck/factcheck.model';
-import {UserSchema} from "../user/user.model";
+import { CategorySchema } from './category.model';
+import { FactCheckSchema } from './factcheck.model';
+import {UserSchema} from "./user.model";
 import Joi, { ValidationResult } from "joi";
 
 // @ts-ignore

@@ -1,4 +1,4 @@
-import NewsController from "./news.controller";
+import NewsController from "../controllers/news.controller";
 import express from "express";
 export const newsRouter = express.Router();
 

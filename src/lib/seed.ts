@@ -1,5 +1,5 @@
-import { News } from '../resources/news/news.model';
-import { NewsLang } from '../resources/news/news_lang.model';
+import { News } from '../models/news.model';
+import { NewsLang } from '../models/news_lang.model';
 import './db.start';
 
 const fakeNews: any[] = [
