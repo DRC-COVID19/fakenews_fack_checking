@@ -10,6 +10,6 @@ const {
 } = NewsController;
 
 newsRouter.get("/", index);
+newsRouter.get("/:slug", show);
 newsRouter.get("/request-verification", requestVerificationForm);
 //newsRouter.post("/request-verification", requestVerification);
-newsRouter.get("/:slug", show);

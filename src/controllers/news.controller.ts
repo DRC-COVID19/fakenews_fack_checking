@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
 import { News } from "../models/news.model";
 import { NewsLang } from "../models/news_lang.model";
-import { FackCheck } from "../models/factcheck.model";
-import { User } from "../models/user.model";
+// import { FactCheck } from "../models/factcheck.model";
+// import { User } from "../models/user.model";
 import { getInformationLang } from "../lib/get_all_news";
 
 export default {

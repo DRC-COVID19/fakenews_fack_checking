@@ -7,9 +7,9 @@ const FactCheckSchema = new mongoose.Schema(
     news: {
       type: mongoose.Schema.Types.ObjectId,
       required: false,
-      ref: 'News',
+      ref: "News",
     },
-    checkedFact:{type:String},
+    checkedFact: { type: String },
     scentificArgument: {
       type: String,
     },
@@ -22,8 +22,8 @@ const FactCheckSchema = new mongoose.Schema(
     },
     author: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      required:false,
+      ref: "User",
+      required: false,
     },
   },
   {
@@ -31,6 +31,6 @@ const FactCheckSchema = new mongoose.Schema(
   }
 );
 
-const FackCheck=mongoose.model('FactCheck',FactCheckSchema);
+const FactCheck = mongoose.model("FactCheck", FactCheckSchema);
 
-export {FackCheck,FactCheckSchema};
+export { FactCheck, FactCheckSchema };

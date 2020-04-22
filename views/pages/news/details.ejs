@@ -1,0 +1,82 @@
+<% extend('../../layout/layout') %>
+<div class="container">
+
+  <div class="row return">
+    <div class="col-sm-6">
+      <a class="" href="/"><span class="iconify" data-icon="cil:arrow-left" data-inline="false"></span> Retour</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="row justify-content-center">
+      <div class="col-sm-12 col-md-8 col-lg-8 ">
+        <div class="content-card main-card">
+          <div class="body">
+            <h2 class="content-heading"><%= news.title %></h2>
+            <p class="text-justify"><%= news.content %></p>
+          </div>
+          <div class="d-flex justify-content-center mb-3">
+              <img src="<%= news.photo?news.photo:'images/covid_19_1.jpg' %>" alt="<%= news.title %>">
+          </div>
+          <div class="body">
+            <div class="text-center">
+              <%-include('../../partials/social-share',{url : `https://factcheck.stopcoronavirusrdc.info/news/${news.slug}`,
+              title : news.title})%>
+            </div>
+          </div>
+        </div>
+
+<!-- ALLEGATION -->
+         <div class="content-card">
+           <h4>Allégation</h4>
+           <hr>
+           <div class="body">
+            <p><%= news.content  %></p>
+           </div>
+         </div>
+<!-- ALLEGATION -->
+
+<!-- VERDICT -->
+        <div class="content-card">
+          <h4>Verdict</h4>
+          <hr>
+          <div class="body">
+            <% if(news.status=='true'){
+              iconData="mdi:check-circle-outline";
+              color ='true'
+              }else {
+                iconData="mdi:alert-rhombus-outline";
+                color='false'
+              }
+              %>
+            <h4><span class="icon iconify <%= color %>" data-icon="<%=iconData %>" data-inline="false"></span>
+            <%= news.status==="true"?"VRAI":"FAUX" %></h4>
+          </div>
+        </div>
+<!-- VERDICT -->
+
+<!-- VRAIE INFORMATION -->
+          <div class="content-card">
+            <h4>Faits établis</h4>
+            <hr>
+            <div class='body'>
+              <blockquote class="blockquote">
+                <p class="mb-0"><i><%= news.factCheck.checkedFact %> </i>
+                </p>
+              </blockquote>
+              <h5>Arguments</h5>
+              <p>
+                <%= news.factCheck.scentificArgument %>
+              </p>
+              <h5>Sources</h5>
+              <ul>
+                <% for( let  source of news.factCheck.links) { %>
+                <li><a href="<%= source %>"><%= source %></li>
+                <% } %>
+              </ul>
+            </div>
+          </div>
+<!-- VRAIE INFORMATION -->
+      </div>
+    </div>
+  </div>
