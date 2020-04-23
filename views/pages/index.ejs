@@ -20,16 +20,9 @@
       <%- include('../partials/search-form.ejs') %>
     </div>
   </div>
-
   <div style="margin-top: 100px;" class="row">
-    <!-- <div class="col-sm-12 "> -->
-
     <div id="loadedNews">
       <% for(let info of news){info.content = info.content.substr(0, 100);%>
-      <!-- FAKE -->
-
-      <!-- FAKE -->
-      <!-- Data -->
       <div class="col-sm-12">
         <a href="/news/<%= info.slug ? info.slug : info._id %>" class="card">
           <figure>
@@ -40,15 +33,12 @@
               alt="<%= info.title %>"
             />
           </figure>
-
           <div class="card-body">
             <span
               class="badge badge-<%= info.status =='true' ? 'success' :'danger' %> text-uppercase"
               ><%= info.status==='true'?'VRAI':'FAUX' %></span
             >
-
             <h5 class="card-title"><%= info.title %></h5>
-
             <p class="card-text"><%- info.content %>...</p>
             <p class="card-text">
               <small class="text-muted">5 MARS 2020</small>
@@ -61,12 +51,8 @@
           </div>
         </a>
       </div>
-      <!-- End Data -->
       <% } %>
     </div>
-
-    <!-- END NEWS -->
-    <!-- </div> -->
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="js/html-string.js"></script>

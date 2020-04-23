@@ -31,11 +31,6 @@ const validateNews = function () {
 
 const NewsSchema = new mongoose.Schema(
   {
-    // category: {
-    //   type: CategorySchema,
-    //   required: false,
-    //   ref: 'Category',
-    // },
     source: {
       type: String,
     },

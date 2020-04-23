@@ -10,12 +10,12 @@ export default function createAPIController(Model: any) {
     req: Request,
     res: Response
   ) => {
-    const keyWord: string = req.query.keyword;
-    const filterArgs = keyWord
+    const keyword: string = req.query.keyword as string;
+    const filterArgs = keyword
       ? {
           $or: [
-            { title: new RegExp(keyWord, "i") },
-            { content: new RegExp(keyWord, "i") },
+            { title: new RegExp(keyword, "i") },
+            { content: new RegExp(keyword, "i") },
           ],
         }
       : {};
@@ -48,11 +48,12 @@ export default function createAPIController(Model: any) {
   return {
     getItems: async (req: Request, res: Response) => {
       res.header("Access-Control-Expose-Headers", "X-Total-Count");
-      const {
-        query: { _start, _end, name },
-      } = req;
+      const query = req.query;
+      const start = query._start as string;
+      const end = query._end as string;
+      const name = query.name as string;
       try {
-        res.send(await findModelItemsAndSetCount(_start, _end, req, res));
+        res.send(await findModelItemsAndSetCount(start, end, req, res));
       } catch (err) {
         return res.status(404).send("Error while getting Model");
       }

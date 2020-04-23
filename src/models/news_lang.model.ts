@@ -1,19 +1,16 @@
-import mongoose from 'mongoose';
-
+import mongoose from "mongoose";
 
 const NewsLangSchema = new mongoose.Schema(
   {
     lang: { type: String, required: true },
     langISOCode: { type: String, required: true },
-    news: { type: mongoose.Schema.Types.ObjectId,require:true,ref:'News' },
+    news: { type: mongoose.Schema.Types.ObjectId, require: true, ref: "News" },
     title: {
       type: String,
-      // unique: true,
       required: true,
     },
     content: {
       type: String,
-      // unique: true,
       required: false,
     },
   },
@@ -22,8 +19,5 @@ const NewsLangSchema = new mongoose.Schema(
   }
 );
 
-const NewsLang = mongoose.model(
-  'NewsLang',
-  NewsLangSchema
-);
+const NewsLang = mongoose.model("NewsLang", NewsLangSchema);
 export { NewsLang };

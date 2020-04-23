@@ -3,13 +3,13 @@ import express from "express";
 export const newsRouter = express.Router();
 
 const {
-  index,
-  show,
-  requestVerification,
-  requestVerificationForm,
+  showIndex,
+  showDetails,
+  showVerificationRequest,
+  search,
 } = NewsController;
 
-newsRouter.get("/", index);
-newsRouter.get("/:slug", show);
-newsRouter.get("/request-verification", requestVerificationForm);
-//newsRouter.post("/request-verification", requestVerification);
+newsRouter.get("/", showIndex);
+newsRouter.get("/search", search);
+newsRouter.get("/request-verification", showVerificationRequest);
+newsRouter.get("/:slug", showDetails);

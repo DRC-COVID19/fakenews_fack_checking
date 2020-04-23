@@ -39,7 +39,10 @@ app.use(express.static("build/admin"));
 /**
  * Primary app routes.
  */
-app.use(/^\/?$/i, newsRouter);
+app.get(/^\/?$/i, (req: Request, res: Response) => {
+  return res.redirect("/news");
+});
+// app.use(/^\/?$/i, newsRouter);
 app.use(/^\/news(?=\/|$)/i, newsRouter);
 
 /**
