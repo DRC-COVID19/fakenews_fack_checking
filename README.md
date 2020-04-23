@@ -1,4 +1,4 @@
-# **Plateforme des signalement et vérification des fakes news liées au COVID-19**
+# **Plateforme de signalement et vérification des fakes news liées au COVID-19**
 
 Ceci une application web de signalement des **fake news** liées à la pandemie de **COVID-19**. Elle permet au grand public de solliter la vérification d'une information et aux organismes de fact checking de pouvoir apporter une réponse définitive aux différentes rumeurs.
 
