@@ -23,6 +23,7 @@
   "homepage": "https://github.com/jochri3/fake_new_report_plateform#readme",
   "dependencies": {
     "@types/cookie-session": "^2.0.39",
+    "@types/cors": "^2.8.6",
     "@types/express": "^4.17.3",
     "@types/joi": "^14.3.4",
     "@types/lodash": "^4.14.149",
