@@ -13,7 +13,7 @@
         <div class="content-card main-card">
           <div class="body">
             <h1 class="content-heading details-title"><%= news.title %></h1>
-            <p class="text-justify"><%= news.content %></p>
+            <p class="text-justify"><%= news.factCheck.checkedFact %></p>
             <div class="text-muted date">Publié le <%= news.publishedAt %></div>
           </div>
           <div class="d-flex justify-content-center mb-3">
@@ -61,10 +61,6 @@
             <h4>Faits établis</h4>
             <hr>
             <div class='body'>
-              <blockquote class="blockquote">
-                <p class="mb-0"><i><%= news.factCheck.checkedFact %> </i>
-                </p>
-              </blockquote>
               <h5>Arguments</h5>
               <p>
                 <%= news.factCheck.scentificArgument %>

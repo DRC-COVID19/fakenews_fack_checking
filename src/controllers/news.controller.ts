@@ -26,7 +26,7 @@ export default {
 
     const news = await findNews(
       filterArgs,
-      "_id source photo status slug createdAt"
+      "_id source photo status slug factCheck createdAt"
     );
     const newsToReturn = await getInformationLang(news, NewsLang);
     res.render("pages/index", {
