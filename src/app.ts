@@ -8,6 +8,7 @@ const cors = require("cors");
 import newsAPIController from "./controllers/news.api.controller";
 import factCheckAPIController from "./controllers/factcheck.api.controller";
 import userAPIController from "./controllers/user.api.controller";
+import newsLangAPIController from "./controllers/news-lang.api.controller";
 
 // API router
 import createAPIRouter from "./routes/lib";
@@ -51,6 +52,7 @@ app.use(/^\/news(?=\/|$)/i, newsRouter);
 app.use(/^\/api\/news(?=\/|$)/i, createAPIRouter(newsAPIController));
 app.use(/^\/api\/checks(?=\/|$)/i, createAPIRouter(factCheckAPIController));
 app.use(/^\/api\/users(?=\/|$)/i, createAPIRouter(userAPIController));
+app.use(/^\/api\/newslang(?=\/|$)/i, createAPIRouter(newsLangAPIController));
 
 app.set("port", process.env.PORT || 5000);
 

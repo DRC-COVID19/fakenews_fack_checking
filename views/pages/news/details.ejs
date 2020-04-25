@@ -12,8 +12,9 @@
       <div class="col-sm-12 col-md-8 col-lg-8 ">
         <div class="content-card main-card">
           <div class="body">
-            <h2 class="content-heading"><%= news.title %></h2>
+            <h1 class="content-heading details-title"><%= news.title %></h1>
             <p class="text-justify"><%= news.content %></p>
+            <div class="text-muted date">Publié le <%= news.publishedAt %></div>
           </div>
           <div class="d-flex justify-content-center mb-3">
               <img src="<%= news.photo?news.photo:'images/covid_19_1.jpg' %>" alt="<%= news.title %>">

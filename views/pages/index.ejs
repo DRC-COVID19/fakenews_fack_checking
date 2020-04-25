@@ -41,7 +41,7 @@
             <h5 class="card-title"><%= info.title %></h5>
             <p class="card-text"><%- info.content %>...</p>
             <p class="card-text">
-              <small class="text-muted">5 MARS 2020</small>
+              <small class="text-muted date"><%= info.publishedAt %></small>
             </p>
             <div class="text-right">
               <%-include('../partials/social-share',{url :
