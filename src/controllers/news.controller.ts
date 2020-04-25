@@ -52,7 +52,7 @@ export default {
           ],
         }
       : { $or: [{ status: "true" }, { status: "false" }] };
-    const news: any = findNews(
+    const news: any = await findNews(
       filterArgs,
       "_id source photo status slug createdAt"
     );
