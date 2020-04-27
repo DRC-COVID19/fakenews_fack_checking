@@ -118,3 +118,6 @@ dev.js
 
 # MACOS
 .DS_Store
+
+# Migration
+migration.*.json

@@ -1,32 +1,38 @@
 import mongoose from "mongoose";
 
+// @ts-ignore
+import slug from "mongoose-slug-generator";
+mongoose.plugin(slug);
+
 const FactCheckSchema = new mongoose.Schema(
   {
-    lang: { type: String, required: true, default: "fr" },
-    news: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: false,
-      ref: "News",
-    },
-    checkedFact: { type: String },
-    scentificArgument: {
-      type: String,
-    },
-    links: {
-      type: [String],
-      required: false,
-    },
-    medias: {
-      type: [String],
-    },
+    news: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        required: false,
+        ref: "News",
+      },
+    ],
     author: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: false,
     },
-    publishedAt: {
-      type: Date,
+    titleQuestion: { type: String, required: false },
+    claim: { type: String, required: false },
+    verdict: {
+      type: String,
+      enum: ["true", "false", "draft"],
+      default: "draft",
+      required: true,
     },
+    checkedFact: { type: String, required: true },
+    scentificArgument: { type: String, required: true },
+    links: { type: [String], required: false },
+    media: { type: [String], required: false },
+    lang: { type: String, required: true, default: "fr" },
+    publishedAt: { type: Date },
+    slug: { type: String, slug: ["claim"], unique: true },
   },
   {
     timestamps: true,

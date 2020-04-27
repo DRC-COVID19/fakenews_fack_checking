@@ -12,17 +12,17 @@
       <div class="col-sm-12 col-md-8 col-lg-8 ">
         <div class="content-card main-card">
           <div class="body">
-            <h1 class="content-heading details-title"><%= news.title %></h1>
-            <p><%= news.factCheck.checkedFact %></p>
-            <div class="text-muted date">Publié le <%= news.publishedAt %></div>
+            <h1 class="content-heading details-title"><%= factCheck.titleQuestion %></h1>
+            <p><%= factCheck.checkedFact %></p>
+            <div class="text-muted date">Publié le <%= factCheck.publishedAt %></div>
           </div>
           <div class="d-flex justify-content-center mb-3">
-              <img src="<%= news.photo?news.photo:'images/covid_19_1.jpg' %>" alt="<%= news.title %>">
+              <img src="<%= factCheck.photo ? factCheck.photo : 'images/covid_19_1.jpg' %>" alt="<%= factCheck.titleQuestion %>">
           </div>
           <div class="body">
             <div class="text-center">
-              <%-include('../../partials/social-share',{url : `https://factcheck.stopcoronavirusrdc.info/news/${news.slug}`,
-              title : news.title})%>
+              <%-include('../../partials/social-share',{url : `https://factcheck.stopcoronavirusrdc.info/news/${factCheck.slug}`,
+              title : factCheck.titleQuestion})%>
             </div>
           </div>
         </div>
@@ -32,7 +32,7 @@
            <h4>Allégation</h4>
            <hr>
            <div class="body">
-            <p><%= news.content  %></p>
+            <p><%= factCheck.claim  %></p>
            </div>
          </div>
 <!-- ALLEGATION -->
@@ -42,7 +42,7 @@
           <h4>Verdict</h4>
           <hr>
           <div class="body">
-            <% if(news.status=='true'){
+            <% if(factCheck.verdict === 'true'){
               iconData="mdi:check-circle-outline";
               color ='true'
               }else {
@@ -51,7 +51,7 @@
               }
               %>
             <h4><span class="icon iconify <%= color %>" data-icon="<%=iconData %>" data-inline="false"></span>
-            <%= news.status==="true"?"VRAI":"FAUX" %></h4>
+            <%= factCheck.verdict === "true" ? "VRAI" : "FAUX" %></h4>
           </div>
         </div>
 <!-- VERDICT -->
@@ -63,11 +63,11 @@
             <div class='body'>
               <h5>Arguments</h5>
               <p>
-                <%= news.factCheck.scentificArgument %>
+                <%= factCheck.scentificArgument %>
               </p>
               <h5>Sources</h5>
               <ul>
-                <% for( let  source of news.factCheck.links) { %>
+                <% for( let  source of factCheck.links) { %>
                 <li><a href="<%= source %>"><%= source %></li>
                 <% } %>
               </ul>

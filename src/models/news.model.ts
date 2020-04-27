@@ -1,63 +1,57 @@
 import mongoose from "mongoose";
-import { CategorySchema } from "./category.model";
-import { FactCheckSchema } from "./factcheck.model";
-import { UserSchema } from "./user.model";
-import Joi, { ValidationResult } from "joi";
-
-// @ts-ignore
-import slug from "mongoose-slug-generator";
-
-mongoose.plugin(slug);
 
 const authorSchema = new mongoose.Schema({
   fullName: String,
   email: {
     type: String,
-    required: true,
+    required: false,
   },
 });
 
-const validateAuthor = function (body: any): ValidationResult<any> {
-  const schema = {
-    fullName: Joi.string().min(2),
-    email: Joi.string().email().required().label("Email vide ou invalide"),
-  };
-  return Joi.validate(body, schema);
-};
-
-const validateNews = function () {
-  //news validation
-};
-
 const NewsSchema = new mongoose.Schema(
   {
-    source: {
-      type: String,
-    },
-    photo: {
+    sources: [
+      {
+        // urls, etc.
+        type: String,
+        required: false,
+      },
+    ],
+    media: [
+      {
+        // screenshots, pictures, ect
+        type: String,
+        required: false,
+      },
+    ],
+    description: {
       type: String,
       required: false,
     },
-    title: { type: String },
     status: {
       type: String,
       enum: ["true", "false", "draft"],
       default: "draft",
-      required: true,
-    },
-    slug: { type: String, slug: ["title"], unique: true },
-    paysOrigin: {
-      type: String,
       required: false,
     },
-    factCheck: {
-      type: FactCheckSchema,
+    paysOrigin: {
+      type: String,
       required: false,
     },
     author: {
       type: authorSchema,
       required: false,
     },
+    // factCheck: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "FactCheck",
+    //   required: false,
+    // },
+    // newsLang: {
+    //   type: mongoose.Schema.Types.ObjectId,
+    //   ref: "NewsLang",
+    //   required: false,
+    // },
   },
   {
     timestamps: true,
@@ -65,4 +59,4 @@ const NewsSchema = new mongoose.Schema(
 );
 
 const News = mongoose.model("News", NewsSchema);
-export { News, NewsSchema, validateAuthor };
+export { News, NewsSchema };

@@ -22,31 +22,35 @@
   </div>
   <div style="margin-top: 100px;" class="row">
     <div id="loadedNews">
-      <% for(let info of news){info.content = info.content.substr(0, 100);%>
+      <% for(let check of factChecks){check.d = check.checkedFact.substr(0,
+      100);%>
       <div class="col-sm-12">
-        <a href="/news/<%= info.slug ? info.slug : info._id %>" class="card">
+        <a
+          href="/factchecks/<%= check.slug ? check.slug : check._id %>"
+          class="card"
+        >
           <figure>
             <img
               style="max-height: 100%; max-width: 100%;"
-              src="<%= info.photo?info.photo:'images/covid_19_1.jpg' %>"
+              src="<%= check.photo ? check.photo : 'images/covid_19_1.jpg' %>"
               class="card-img"
-              alt="<%= info.title %>"
+              alt="<%= check.titleQuestion %>"
             />
           </figure>
           <div class="card-body">
             <span
-              class="badge badge-<%= info.status =='true' ? 'success' :'danger' %> text-uppercase"
-              ><%= info.status==='true'?'VRAI':'FAUX' %></span
+              class="badge badge-<%= check.verdict =='true' ? 'success' :'danger' %> text-uppercase"
+              ><%= check.verdict==='true'?'VRAI':'FAUX' %></span
             >
-            <h5 class="card-title"><%= info.title %></h5>
-            <p class="card-text"><%- info.factCheck.checkedFact %>...</p>
+            <h5 class="card-title"><%= check.titleQuestion %></h5>
+            <p class="card-text"><%- check.checkedFact %>...</p>
             <p class="card-text">
-              <small class="text-muted date"><%= info.publishedAt %></small>
+              <small class="text-muted date"><%= check.publishedAt %></small>
             </p>
             <div class="text-right">
               <%-include('../partials/social-share',{url :
               "https://www.kinshasadigital.com/kinshasa-digital-academy", title
-              : info.title})%>
+              : check.titleQuestion})%>
             </div>
           </div>
         </a>
@@ -56,7 +60,7 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="js/html-string.js"></script>
-  <script src="js/generateLoaders.js"></script>
-  <script src="js/loadNews.js"></script>
-  <script src="js/search-news.js"></script>
+  <script src="js/generate-loaders.js"></script>
+  <script src="js/load-factchecks.js"></script>
+  <script src="js/search-factchecks.js"></script>
 </div>

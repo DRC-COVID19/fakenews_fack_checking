@@ -1,5 +1,5 @@
 import express, { Request, Response } from "express";
-import { newsRouter } from "./routes/index.router";
+import { newsRouter, factCheckRouter } from "./routes/index.router";
 import { config } from "dotenv";
 
 const cors = require("cors");
@@ -13,20 +13,24 @@ import newsLangAPIController from "./controllers/news-lang.api.controller";
 // API router
 import createAPIRouter from "./routes/lib";
 
+// migration
+import { up, down } from "./lib/1587897682264-schema_change";
+
 const app: express.Application = express();
 
 app.use(cors());
 
-config();
+//config();
 
 //Loading config for the execution environment
 if (app.get("env") === "production") {
-  require("dotenv").config({ path: "./prod.env" });
+  config({ path: "./prod.env" });
 } else {
-  require("dotenv").config({ path: "./dev.env" });
+  config({ path: "./dev.env" });
 }
 
 import "./lib/db.start";
+// up();
 
 app.engine("ejs", require("express-ejs-extend")); // add this line
 app.set("views", "./views");
@@ -41,10 +45,12 @@ app.use(express.static("build/admin"));
  * Primary app routes.
  */
 app.get(/^\/?$/i, (req: Request, res: Response) => {
-  return res.redirect("/news");
+  return res.redirect("/factchecks");
 });
+
 // app.use(/^\/?$/i, newsRouter);
 app.use(/^\/news(?=\/|$)/i, newsRouter);
+app.use(/^\/factchecks(?=\/|$)/i, factCheckRouter);
 
 /**
  * API routes.

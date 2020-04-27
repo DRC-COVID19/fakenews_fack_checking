@@ -15,7 +15,7 @@ searchButton.addEventListener("click", (e) => {
   generateLoaders(cardLoaderTemplate, 6, newsCards);
 
   axios
-    .get(`/news/search?keyword=${searchTerm}`)
+    .get(`/factchecks/search?keyword=${searchTerm}`)
     .then((res) => {
       newsCards.innerHTML = "";
       newsTitlesZone.insertAdjacentHTML(

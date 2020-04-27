@@ -147,6 +147,7 @@ const fakeNews: any[] = [
       title,
       content,
     });
+    
     try {
       await info.save();
       await infoLangue.save();
