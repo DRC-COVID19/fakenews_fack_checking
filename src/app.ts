@@ -30,7 +30,7 @@ if (app.get("env") === "production") {
 }
 
 import "./lib/db.start";
-up();
+// up();
 
 app.engine("ejs", require("express-ejs-extend")); // add this line
 app.set("views", "./views");
