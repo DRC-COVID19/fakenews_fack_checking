@@ -2,112 +2,190 @@
 <div class="container">
   <div class="content mt-5">
     <div class="row justify-content-center">
-      <div class="col-sm-8 text-center">
-        <h1>Faire vérifier une information</h1>
-        <p>
-          Envoyez nous les informations sur lesquelles vous avez des doutes pour
-          que nous les vérifions via notre processus de fact checking
-        </p>
-        <hr />
+      <div class="col-sm-8">
+        <h1>
+          Avez-vous vu ou entendu des informations erronées sur le coronavirus ?
+          Dites-nous tout
+        </h1>
+        <div class="form-description">
+          <p>
+            Nous comptons sur votre active participation pour avoir des
+            informations sur lesquelles effectuer le fact checking
+            (vérifications des faits).
+          </p>
+          <hr />
+          <p>
+            Soyez aussi concis et précis que possible. Incluez des liens ou des
+            captures d'écran si vous en avez. Cela aide nos vérificateurs à
+            travailler plus rapidement.
+          </p>
+        </div>
         <p id="err" style="color: red;"></p>
-        <form
-          id="request_factcheck"
-          class=""
-          action="/api/news/"
-          method="post"
-          enctype="multipart/form-data"
-        >
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <input
-                id="names"
-                class="form-control"
-                type="text"
-                name="names"
-                value=""
-                placeholder="Votre nom"
-              />
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <input
-                id="email"
-                class="form-control"
-                type="text"
-                required
-                name="email"
-                value=""
-                placeholder="Votre mail"
-              />
-            </div>
+        <div class="content-card main-card">
+          <div class="body">
+            <form
+              id="request_factcheck"
+              class=""
+              action="/api/news/"
+              method="post"
+              enctype="multipart/form-data"
+            >
+              <div class="row">
+                <div class="col-12">
+                  <label for="description">
+                    <p class="label-title">
+                      Quelle question, préoccupation ou expérience
+                      souhaitez-vous partager à propos de COVID-19 ou du
+                      coronavirus?
+                    </p>
+                    <p class="label-description">
+                      Avec vos propres mots, partagez toutes les rumeurs,
+                      «conseils» ou histoires personnelles que vous avez
+                      rencontrées et que STOPCORONAVIRUS devrait enquêter.
+                    </p>
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="description"
+                    name="description"
+                    rows="3"
+                    required
+                  ></textarea>
+                </div>
+                <div class="col-12">
+                  <label for="sources">
+                    <p class="label-title">
+                      Vous avez un lien vers un exemple ou d'autres informations
+                      qui aideront nos vérificateurs de faits?
+                    </p>
+                    <p class="label-description">
+                      Ceci est facultatif, mais vraiment utile. Veuillez
+                      renseigner un lien par ligne s'il vous plaît.
+                    </p>
+                  </label>
+                  <textarea
+                    class="form-control"
+                    id="sources"
+                    name="sources"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <div class="col-12">
+                  <label for="media">
+                    <p class="label-title">
+                      Vous avez une capture d'écran ?
+                    </p>
+                    <p class="label-description">
+                      Ce champs est optionel
+                    </p>
+                  </label>
+                  <input
+                    id="media"
+                    class="form-control"
+                    type="text"
+                    name="media"
+                    value=""
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="email">
+                    <p class="label-title">
+                      STOPCORONAVIRUS peut-il vous joindre ?
+                    </p>
+                    <p class="label-description">
+                      Si oui, laissez-nous votre email. Ceci est facultatif
+                    </p>
+                  </label>
+                  <input
+                    id="email"
+                    class="form-control"
+                    type="text"
+                    name="email"
+                    value=""
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="fullName">
+                    <p class="label-title">Laissez-nous votre nom</p>
+                    <p class="label-description">
+                      Optionnel. Ceci nous permettrait de personnaliser toute
+                      correspondance future en avec votre nom.
+                    </p>
+                  </label>
+                  <input
+                    id="fullName"
+                    class="form-control"
+                    type="text"
+                    name="fullName"
+                    value=""
+                  />
+                </div>
+                <div class="col-12">
+                  <label for="location">
+                    <p class="label-title">Votre emplacement</p>
+                    <p class="label-description">Pays, Ville ou Commune</p>
+                  </label>
+                  <input
+                    id="location"
+                    class="form-control"
+                    type="text"
+                    name="location"
+                    required
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <input
+                    type="submit"
+                    class="btn btn-dark"
+                    name=""
+                    value="Envoyer"
+                  />
+                </div>
+              </div>
+            </form>
           </div>
-
-          <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <input
-                id="title"
-                class="form-control"
-                type="text"
-                name="title"
-                value=""
-                placeholder="Titre"
-              />
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-12">
-              <input
-                id="img_link"
-                class="form-control"
-                type="text"
-                name="img_link"
-                value=""
-                placeholder="Le lien de l'image de l'information"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <input
-                id="link"
-                class="form-control"
-                type="url"
-                name="link"
-                value=""
-                placeholder="Le liens de votre information"
-              />
-              <textarea
-                id="content"
-                name="content"
-                rows="8"
-                placeholder="Décrivez l'information à vérifier"
-              ></textarea>
-              <input
-                type="submit"
-                class="btn btn-dark"
-                name=""
-                value="Envoyer"
-              />
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
-    const content = document.querySelector("#content");
+    const description = document.querySelector("#description");
+    const sources = document.querySelector("#sources");
+    const media = document.querySelector("#media");
     const email = document.querySelector("#email");
-    const title = document.querySelector("#title");
-    const names = document.querySelector("#names");
-    const link = document.querySelector("#link");
-    const img_link = document.querySelector("#img_link");
+    const senderLocation = document.querySelector("#location");
+    const fullName = document.querySelector("#fullName");
 
     const formData = {};
 
-    for (let field of [content, email, title, names, link, img_link]) {
+    for (let field of [
+      description,
+      sources,
+      media,
+      email,
+      fullName,
+      senderLocation,
+    ]) {
       field.addEventListener("input", (e) => {
         const {
           target: { name, type, value, checked, files },
         } = e;
-        formData[name] = value;
+        if (field === email || field === fullName) {
+          formData["author"] = {
+            ...formData["author"],
+            [name]: value,
+          };
+        } else if (field === senderLocation) {
+          formData["location"] = value;
+        } else if (field === sources || field === media) {
+          formData[name] = value?.trim()?.split("\n");
+        } else {
+          formData[name] = value;
+        }
       });
     }
 
@@ -120,25 +198,24 @@
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
       if (
-        !content.value.length ||
-        !email.value.length ||
-        regexEmail.test(email.value) === false ||
-        !title.value.length
+        !description.value.length ||
+        !senderLocation.value.length ||
+        (email.value.length && !regexEmail.test(email.value))
       ) {
         const err = document.querySelector("#err");
         err.innerHTML =
-          "Les champs <b>titre,contenu</b> et <b>email</b> sont obligatoires et doivent être valides";
+          "Le champ <b>description</b> et <b>emplacement</b> sont obligatoires et doivent être valides";
       } else {
         e.target.value = "Envoi des données...";
         axios
           .post("/api/news/", formData)
           .then((res) => {
-            content.value = "";
+            description.value = "";
             email.value = "";
-            title.value = "";
-            names.value = "";
-            link.value = "";
-            img_link.value = "";
+            location.value = "";
+            fullName.value = "";
+            sources.value = "";
+            media.value = "";
             e.target.value = "Envoyer";
             err.style.color = "white";
             err.style.backgroundColor = "#25e487";

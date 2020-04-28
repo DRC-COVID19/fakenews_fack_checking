@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { Model } from "mongoose";
 const {
   Types: { ObjectId },
 } = require("mongoose");
@@ -88,13 +89,25 @@ export default function createAPIController(Model: any) {
     postItem: async (req: Request, res: Response) => {
       try {
         const now = Date.now();
-        let createdItem = new Model({
-          ...req.body,
-          createdAt: now,
-          updatedAt: now,
-        });
-        createdItem = await createdItem.save();
-        res.send(createdItem);
+        // let createdItem = new Model({
+        //   ...req.body,
+        //   createdAt: now,
+        //   updatedAt: now,
+        // });
+        // createdItem = await createdItem.save().exec();
+
+        await Model.create(
+          {
+            ...req.body,
+            createdAt: now,
+            updatedAt: now,
+          },
+          function (err: any, createdItem: any) {
+            if (err) return console.log(err);
+            // saved!
+            res.send(createdItem);
+          }
+        );
       } catch (error) {
         res.send("Error while creating Model item");
       }

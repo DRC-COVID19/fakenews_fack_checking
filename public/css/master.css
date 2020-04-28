@@ -240,3 +240,37 @@ textarea {
 .details-title {
   font-size: 2.25rem;
 }
+
+textarea {
+  resize: vertical;
+}
+
+.label-title {
+  font-size: 18px !important;
+  margin-bottom: 12px;
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.label-description {
+  font-size: 15px !important;
+  color: #666;
+  margin-bottom: 16px;
+  word-wrap: break-word;
+  line-height: 1.5;
+}
+
+#request_factcheck .col-12 {
+  margin-bottom: 2rem;
+}
+
+.form-description p {
+  font-size: 18px !important;
+  margin-bottom: 12px;
+  display: inline-block;
+  max-width: 100%;
+  line-height: 1.5;
+  word-wrap: break-word;
+}

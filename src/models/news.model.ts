@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
+import { string, optional } from "joi";
 
 const authorSchema = new mongoose.Schema({
-  fullName: String,
-  email: {
-    type: String,
-    required: false,
-  },
+  fullName: { type: String, required: false },
+  email: { type: String, required: false },
 });
 
 const NewsSchema = new mongoose.Schema(
@@ -26,7 +24,7 @@ const NewsSchema = new mongoose.Schema(
     ],
     description: {
       type: String,
-      required: false,
+      required: true,
     },
     status: {
       type: String,
@@ -40,6 +38,10 @@ const NewsSchema = new mongoose.Schema(
     },
     author: {
       type: authorSchema,
+      required: false,
+    },
+    location: {
+      type: String,
       required: false,
     },
     // factCheck: {

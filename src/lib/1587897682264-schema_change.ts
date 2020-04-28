@@ -118,6 +118,13 @@ async function up() {
       });
     }
   );
+
+  await News.collection.dropIndexes(function (err, results) {
+    if (err) {
+      console.log("Error in all dropping index!", err);
+    }
+    console.log("indexes dropped", results);
+  });
 }
 
 /**
