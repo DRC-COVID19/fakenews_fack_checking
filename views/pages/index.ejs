@@ -20,23 +20,19 @@
       <%- include('../partials/search-form.ejs') %>
     </div>
   </div>
-  <div style="margin-top: 100px;" class="row">
-    <div id="loadedNews">
-      <% for(let check of factChecks){check.d = check.checkedFact.substr(0,
-      100);%>
-      <div class="col-sm-12">
-        <a
-          href="/factchecks/<%= check.slug ? check.slug : check._id %>"
-          class="card"
-        >
-          <figure>
+  <div class="row" style="margin-top: 100px;">
+    <% for(let check of factChecks){check.d = check.checkedFact.substr(0,
+    100);%>
+    <div class="col-12 col-md-4 mb-4">
+      <a href="/factchecks/<%= check.slug ? check.slug : check._id %>">
+        <div class="card">
+          <div class="embed-responsive embed-responsive-16by9">
             <img
-              style="max-height: 100%; max-width: 100%;"
+              class="card-img-top embed-responsive-item"
               src="<%= check.photo ? check.photo : 'images/covid_19_1.jpg' %>"
-              class="card-img"
               alt="<%= check.titleQuestion %>"
             />
-          </figure>
+          </div>
           <div class="card-body">
             <span
               class="badge badge-<%= check.verdict =='true' ? 'success' :'danger' %> text-uppercase"
@@ -49,14 +45,14 @@
             </p>
             <div class="text-right">
               <%-include('../partials/social-share',{url :
-              "https://www.kinshasadigital.com/kinshasa-digital-academy", title
-              : check.titleQuestion})%>
+              `https://factcheck.stopcoronavirusrdc.info/factchecks/${check.slug}`,
+              title : check.titleQuestion})%>
             </div>
           </div>
-        </a>
-      </div>
-      <% } %>
+        </div>
+      </a>
     </div>
+    <% } %>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="js/html-string.js"></script>

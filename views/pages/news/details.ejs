@@ -13,35 +13,42 @@
         <div class="content-card main-card">
           <div class="body">
             <h1 class="content-heading details-title"><%= factCheck.titleQuestion %></h1>
-            <p><%= factCheck.checkedFact %></p>
-            <div class="text-muted date">Publié le <%= factCheck.publishedAt %></div>
+            <div class="card-text"><%= factCheck.checkedFact %></div>
+            <div class="text-muted date mt-2">Publié le <%= factCheck.publishedAt %></div>
           </div>
           <div class="d-flex justify-content-center mb-3">
-              <img src="<%= factCheck.photo ? factCheck.photo : '/images/covid_19_1.jpg' %>" alt="<%= factCheck.titleQuestion %>">
+            <div class="embed-responsive embed-responsive-16by9">
+              <img
+                class="embed-responsive-item details-main-image"
+                src="<%= factCheck.photo ? factCheck.photo : '/images/covid_19_1.jpg' %>"
+                alt="<%= factCheck.titleQuestion %>">
+            </div>
           </div>
           <div class="body">
             <div class="text-center">
-              <%-include('../../partials/social-share',{url : `https://factcheck.stopcoronavirusrdc.info/news/${factCheck.slug}`,
-              title : factCheck.titleQuestion})%>
+              <%-include('../../partials/social-share',{
+                url : `https://factcheck.stopcoronavirusrdc.info/factchecks/${factCheck.slug}`,
+                title : factCheck.titleQuestion,
+                })%>
             </div>
           </div>
         </div>
 
 <!-- ALLEGATION -->
          <div class="content-card">
-           <h4>Allégation</h4>
-           <hr>
            <div class="body">
-            <p><%= factCheck.claim  %></p>
+            <h4>Allégation</h4>
+            <hr>
+            <div class="card-text"><%= factCheck.claim  %></div>
            </div>
          </div>
 <!-- ALLEGATION -->
 
 <!-- VERDICT -->
         <div class="content-card">
-          <h4>Verdict</h4>
-          <hr>
           <div class="body">
+            <h4>Verdict</h4>
+            <hr>
             <% if(factCheck.verdict === 'true'){
               iconData="mdi:check-circle-outline";
               color ='true'
@@ -58,14 +65,14 @@
 
 <!-- VRAIE INFORMATION -->
           <div class="content-card">
-            <h4>Faits établis</h4>
-            <hr>
             <div class='body'>
+              <h4>Faits établis</h4>
+              <hr>
               <h5>Arguments</h5>
-              <p>
+              <div class="card-text">
                 <%= factCheck.scentificArgument %>
-              </p>
-              <h5>Sources</h5>
+              </div>
+              <h5 class="mt-2">Sources</h5>
               <ul>
                 <% for( let  source of factCheck.links) { %>
                 <li><a href="<%= source %>"><%= source %></li>

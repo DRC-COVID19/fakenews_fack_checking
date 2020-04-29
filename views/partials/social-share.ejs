@@ -1,17 +1,31 @@
-<ul class="social">
-  <li>
-    <span style="color :#3b5998 ; font-size:25px; margin-right:5px;"  class="button share-button facebook-share-button st-custom-button" data-network="facebook" <%-  typeof url != 'undefined' ? `data-url="${url}"` : ` ` %> <%-  typeof title != 'undefined'  ? `data-title="${title}"` : ` ` %> >
-      <span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span>
-    </span>
-  </li>
-  <li>
-    <span style="color :#38A1F3 ; font-size:25px; margin-right:5px;" class="button share-button facebook-share-button st-custom-button" data-network="twitter" <%- typeof url != 'undefined'  ? `data-url="${url}"` : ` ` %> <%- typeof title != 'undefined'  ? `data-title="${title}"` : ` ` %>>
-      <span class="iconify" data-icon="jam:twitter-circle" data-inline="false"></span>
-    </span>
-  </li>
-  <li>
-    <span style="color :#61d0b6 ; font-size:25px;" class="button share-button facebook-share-button st-custom-button" data-network="whatsapp" <%- typeof url != 'undefined'  ? `data-url="${url}"` : ` ` %> <%- typeof title != 'undefined'  ? `data-title="${title}"` : ` ` %>>
-      <span class="iconify" data-icon="mdi:whatsapp" data-inline="false"></span>
-    </span>
-  </li>
-</ul>
+<a href=''>
+  <ul class="social">
+    <li>
+      <span style="color :#3b5998 ; font-size:25px; margin-right:5px;"
+        class="button share-button facebook-share-button st-custom-button"
+        data-network="facebook"
+      <%- typeof url ? `data-url="${url}" ` : `https://factcheck.stopcoronavirus.info` %>
+        <%- typeof title ? `data-title="${title}" ` : `STOPCORONAVIRUS Factcheck - plateforme de signalement des fakenews et fact checking` %>>
+          <span class="iconify" data-icon="jam:facebook-circle" data-inline="false"></span>
+      </span>
+    </li>
+    <li>
+      <span style="color :#38A1F3 ; font-size:25px; margin-right:5px;"
+        class="button share-button facebook-share-button st-custom-button"
+        data-network="twitter"
+      <%- typeof url ? `data-url="${url}" ` : `https://factcheck.stopcoronavirus.info` %>
+        <%- typeof title ? `data-title="${title}" ` : `STOPCORONAVIRUS Factcheck - plateforme de signalement des fakenews et fact checking` %>>
+          <span class="iconify" data-icon="jam:twitter-circle" data-inline="false"></span>
+      </span>
+    </li>
+    <li>
+      <span style="color :#61d0b6 ; font-size:25px;" class="button
+        share-button facebook-share-button st-custom-button"
+        data-network="whatsapp"
+        <%- typeof url ? `data-url="${url}" ` : `https://factcheck.stopcoronavirus.info` %>
+          <%- typeof title ? `data-title="${title}" ` : `STOPCORONAVIRUS Factcheck - plateforme de signalement des fakenews et fact checking` %>>
+            <span class="iconify" data-icon="mdi:whatsapp" data-inline="false"></span>
+      </span>
+    </li>
+  </ul>
+</a>
