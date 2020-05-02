@@ -71,21 +71,23 @@
                   ></textarea>
                 </div>
                 <div class="col-12">
-                  <label for="media">
-                    <p class="label-title">
-                      Vous avez une capture d'écran ?
-                    </p>
-                    <p class="label-description">
-                      Ce champs est optionel
-                    </p>
-                  </label>
-                  <input
-                    id="media"
-                    class="form-control"
-                    type="text"
-                    name="media"
-                    value=""
-                  />
+                  <div class="position-relative">
+                    <label for="media">
+                      <p class="label-title">
+                        Vous avez une capture d'écran ?
+                      </p>
+                      <p class="label-description">
+                        Ce champs est optionel
+                      </p>
+                    </label>
+                    <input
+                      id="media"
+                      class="form-control"
+                      type="text"
+                      name="media"
+                      value=""
+                    />
+                  </div>
                 </div>
                 <div class="col-12">
                   <label for="email">
@@ -222,6 +224,7 @@
           console.log('Done! Here is the image info: ', result.info);
           const media = document.querySelector("#media");
           media.value += (media.value ? "\\n" : "") + result.info.url;
+          media.value.trim() !== "" && media.classList.add('is-valid');
           media.dispatchEvent(new Event("change"));
         } else if (!error && result && result.event === 'display-changed') {
           if (cloudinaryWidget.isShowing()){
