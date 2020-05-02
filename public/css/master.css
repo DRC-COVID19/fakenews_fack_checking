@@ -62,6 +62,12 @@ h1 {
   font-weight: lighter;
 }
 
+@media screen and (max-width: 576px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
 header p {
   font-size: 18px;
 }
@@ -303,4 +309,30 @@ form input.error {
 
 form input.success {
   border-color: #c3e6cb;
+}
+
+.search-form .form-control {
+  width: 100% !important;
+}
+
+@media screen and (max-width: 796px) {
+  iframe {
+    /* width: calc(100% - 2rem) !important; */
+    /* height: calc(100% - 8rem) !important; */
+    /* top: 5rem !important; */
+    /* margin: 1rem !important; */
+    border: 1px #f5f5f5 solid !important;
+    box-shadow: rgba(112, 71, 71, 0.7) 0px 20px 30px !important;
+  }
+}
+
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.7) 0px 20px 30px !important;
+}
+
+.container-btn-cloudinary-widget-close {
+  top: 8px;
+  right: 1rem;
+  position: fixed;
+  z-index: 1000001;
 }
