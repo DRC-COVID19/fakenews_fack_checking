@@ -1,43 +1,37 @@
 import { Request, Response } from "express";
-import { Model } from "mongoose";
+import qs from "qs";
+
 const {
   Types: { ObjectId },
 } = require("mongoose");
 
 export default function createAPIController(Model: any) {
-  const findModelItemsAndSetCount = async (
-    start: string,
-    end: string,
-    req: Request,
-    res: Response
+  const findModelItemsAndCount = async (
+    filterArgs: Object,
+    start: any,
+    end: any,
+    select: string
   ) => {
-    const keyword: string = req.query.keyword as string;
-    const filterArgs = keyword
-      ? {
-          $or: [
-            { title: new RegExp(keyword, "i") },
-            { content: new RegExp(keyword, "i") },
-          ],
-        }
-      : {};
-
     const itemList = await Model.find(filterArgs)
       .sort({
         updatedAt: "desc",
         createdAt: "desc",
       })
       .skip(parseInt(start))
-      .limit(parseInt(end) - parseInt(start));
-
-    const totalCount = await Model.countDocuments({});
-    res.set("x-total-count", totalCount.toString());
-    return itemList.map((item: any) => ({
-      ...item?.toObject(),
-      id: item._id,
-    }));
+      .limit(parseInt(end) - parseInt(start))
+      .select(select)
+      .exec();
+    const totalCount = await Model.countDocuments(filterArgs);
+    return {
+      items: itemList.map((item: any) => ({
+        ...item?.toObject(),
+        id: item._id,
+      })),
+      totalCount,
+    };
   };
 
-  const findOneNewsAndSetCount = async (id: string, res: Response) => {
+  const findOneAndSetCount = async (id: string, res: Response) => {
     res.set("x-total-count", "1");
     const item = await Model.findById(id);
     return {
@@ -49,12 +43,20 @@ export default function createAPIController(Model: any) {
   return {
     getItems: async (req: Request, res: Response) => {
       res.header("Access-Control-Expose-Headers", "X-Total-Count");
-      const query = req.query;
+      const { query } = req;
       const start = query._start as string;
       const end = query._end as string;
-      const name = query.name as string;
+      const select = query.select as string;
+      const filterArgs = qs.parse(query.args as string);
       try {
-        res.send(await findModelItemsAndSetCount(start, end, req, res));
+        const { items, totalCount } = await findModelItemsAndCount(
+          filterArgs,
+          start,
+          end,
+          select
+        );
+        res.set("x-total-count", totalCount.toString());
+        res.send(items);
       } catch (err) {
         return res.status(404).send("Error while getting Model");
       }
@@ -66,7 +68,7 @@ export default function createAPIController(Model: any) {
       } = req;
       try {
         if (ObjectId.isValid(id)) {
-          res.send(await findOneNewsAndSetCount(id, res));
+          res.send(await findOneAndSetCount(id, res));
         }
       } catch (err) {
         return res.status(404).send("Error while getting Model Item");
@@ -89,13 +91,6 @@ export default function createAPIController(Model: any) {
     postItem: async (req: Request, res: Response) => {
       try {
         const now = Date.now();
-        // let createdItem = new Model({
-        //   ...req.body,
-        //   createdAt: now,
-        //   updatedAt: now,
-        // });
-        // createdItem = await createdItem.save().exec();
-
         await Model.create(
           {
             ...req.body,
@@ -121,5 +116,6 @@ export default function createAPIController(Model: any) {
         res.send("Error while deleting Model item");
       }
     },
+    findModelItemsAndCount
   };
 }

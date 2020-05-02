@@ -20,40 +20,60 @@
       <%- include('../partials/search-form.ejs') %>
     </div>
   </div>
-  <div class="row" style="margin-top: 100px;">
-    <% for(let check of factChecks){check.d = check.checkedFact.substr(0,
-    100);%>
-    <div class="col-12 col-md-4 mb-4">
-      <a href="/factchecks/<%= check.slug ? check.slug : check._id %>">
-        <div class="card">
-          <div class="embed-responsive embed-responsive-16by9">
-            <img
-              class="card-img-top embed-responsive-item"
-              src="<%= check.photo ? check.photo : 'images/covid_19_1.jpg' %>"
-              alt="<%= check.titleQuestion %>"
-            />
-          </div>
-          <div class="card-body">
-            <span
-              class="badge badge-<%= check.verdict =='true' ? 'success' :'danger' %> text-uppercase"
-              ><%= check.verdict==='true'?'VRAI':'FAUX' %></span
-            >
-            <h5 class="card-title"><%= check.titleQuestion %></h5>
-            <p class="card-text"><%- check.checkedFact %>...</p>
-            <p class="card-text">
-              <small class="text-muted date"><%= check.publishedAt %></small>
-            </p>
-            <div class="text-right">
-              <%-include('../partials/social-share',{url :
-              `https://factcheck.stopcoronavirusrdc.info/factchecks/${check.slug}`,
-              title : check.titleQuestion})%>
+  <div class="row mt-3">
+    <% for(let check of factChecks){%>
+      <div class="col-12 col-md-4 mb-4">
+        <a href="/factchecks/<%= check.slug ? check.slug : check._id %>">
+          <div class="card">
+            <div class="embed-responsive embed-responsive-16by9">
+              <img
+                class="card-img-top embed-responsive-item"
+                src="<%= check.photo ? check.photo : 'images/covid_19_1.jpg' %>"
+                alt="<%= check.titleQuestion %>"
+              />
+            </div>
+            <div class="card-body">
+              <span
+                class="badge badge-<%= check.verdict =='true' ? 'success' :'danger' %> text-uppercase"
+                ><%= check.verdict==='true'?'VRAI':'FAUX' %></span
+              >
+              <h5 class="card-title"><%= check.titleQuestion %></h5>
+              <p class="card-text"><%- check.checkedFact %>...</p>
+              <p class="card-text">
+                <small class="text-muted date"><%= check.publishedAt %></small>
+              </p>
+              <div class="text-right">
+                <%-include('../partials/social-share',{url :
+                `https://factcheck.stopcoronavirusrdc.info/factchecks/${check.slug}`,
+                title : check.titleQuestion})%>
+              </div>
             </div>
           </div>
-        </div>
-      </a>
-    </div>
+        </a>
+      </div>
     <% } %>
   </div>
+  <% if (pages > 1) { %>
+    <div class="row">
+      <div class="col">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination justify-content-center">
+            <li class="page-item <%= (page - 1) < 1 ? "disabled" : '' %>">
+              <a class="page-link" href="<%= urlWithoutPage %>&page=<%= page - 1 %>">Précédent</a>
+            </li>
+            <% for(let pageItemNumber = 1; pageItemNumber <= pages; pageItemNumber++) { %>
+              <li class="page-item <%= pageItemNumber == page ? "active" : '' %>">
+                <a class="page-link" href="<%= urlWithoutPage %>&page=<%= pageItemNumber %>"><%= pageItemNumber %></a>
+              </li>
+            <% } %>
+            <li class="page-item <%= (page + 1) > pages ? "disabled" : '' %>">
+              <a class="page-link" href="<%= urlWithoutPage %>&page=<%= page + 1 %>">Suivant</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  <% } %>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script src="js/html-string.js"></script>
   <script src="js/generate-loaders.js"></script>

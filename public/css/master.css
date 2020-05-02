@@ -39,7 +39,7 @@ nav a {
   text-transform: uppercase;
 }
 
-nav ul li {
+.navbar ul li {
   display: inline-block;
   padding-right: 20px;
   font-size: 20px;
@@ -164,11 +164,11 @@ figure img {
 }
 
 /* Submit page style*/
-input,
+/* input,
 textarea,
 .custom-file {
   margin: 10px 0;
-}
+} */
 
 textarea {
   width: 100%;
@@ -277,4 +277,30 @@ textarea {
 
 .embed-responsive .details-main-image {
   object-fit: cover;
+}
+.page-item:first-child .page-link {
+  margin-left: 0;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.page-link:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+.page-link {
+  position: relative;
+  display: block;
+  padding: 0.5rem 0.75rem;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+form input.error {
+  border-color: #e74c3c;
+}
+
+form input.success {
+  border-color: #c3e6cb;
 }
