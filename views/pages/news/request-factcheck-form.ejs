@@ -310,6 +310,7 @@
         const err = document.querySelector("#err");
         err.innerHTML =
           "Le champ <b>description</b> et <b>emplacement</b> sont obligatoires et doivent être valides";
+          
       } else {
         e.target.value = "Envoi des données...";
         axios
@@ -327,7 +328,7 @@
             err.style.fontWeight = "bold";
             err.innerText = "Informations envoyées pour verification";
             err.style.fontSize = "1.5em";
-            window.location.href = "http://localhost:5000/";
+            window.location.href = "/";
           })
           .catch((err) => console.log(err));
       }
