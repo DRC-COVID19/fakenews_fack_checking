@@ -10,13 +10,14 @@ export default function createAPIController(Model: any) {
     filterArgs: Object,
     start: any,
     end: any,
-    select: string
+    select: string,
+    sort: Object = {
+      updatedAt: "desc",
+      createdAt: "desc",
+    }
   ) => {
     const itemList = await Model.find(filterArgs)
-      .sort({
-        updatedAt: "desc",
-        createdAt: "desc",
-      })
+      .sort(sort)
       .skip(parseInt(start))
       .limit(parseInt(end) - parseInt(start))
       .select(select)
@@ -44,16 +45,16 @@ export default function createAPIController(Model: any) {
     getItems: async (req: Request, res: Response) => {
       res.header("Access-Control-Expose-Headers", "X-Total-Count");
       const { query } = req;
-      const start = query._start as string;
-      const end = query._end as string;
-      const select = query.select as string;
-      const filterArgs = qs.parse(query.args as string);
+      const { _start, _end, _sort, _order, select, ...args } = query;
+      const sort = { [_sort as string]: (_order as string)?.toLowerCase() };
+
       try {
         const { items, totalCount } = await findModelItemsAndCount(
-          filterArgs,
-          start,
-          end,
-          select
+          args,
+          _start,
+          _end,
+          select as string,
+          sort
         );
         res.set("x-total-count", totalCount.toString());
         res.send(items);
@@ -116,6 +117,6 @@ export default function createAPIController(Model: any) {
         res.send("Error while deleting Model item");
       }
     },
-    findModelItemsAndCount
+    findModelItemsAndCount,
   };
 }

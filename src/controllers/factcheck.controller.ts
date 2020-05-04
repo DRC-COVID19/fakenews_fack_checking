@@ -58,10 +58,15 @@ const getPaginationParams = (oneIndexPageNumber: number, pageSize: number) => {
 
 export default {
   async showIndex(req: Request, res: Response) {
-    const keyword = req.query.keyword as string;
+    const { query } = req;
+    
+    // keyword search
+    const keyword = query.keyword as string;
+    
+    // pagination
     const pageSize = 12;
     let { page, ...queryWithoutPage } = req.query;
-    const parsedPage = parseInt(req.query.page as string) || 1;
+    const parsedPage = parseInt(query.page as string) || 1;
     const urlWithoutPage = [
       req.baseUrl,
       qs.stringify(queryWithoutPage, { encode: false }),
@@ -69,6 +74,8 @@ export default {
       .filter((item) => item !== undefined || item !== "")
       .join("?");
     const { _start, _end } = getPaginationParams(parsedPage, pageSize);
+
+    // get data and render
     try {
       const { factChecks, totalCount }: any = await getFactChecks(
         keyword,
