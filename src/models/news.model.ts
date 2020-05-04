@@ -10,7 +10,6 @@ const NewsSchema = new mongoose.Schema(
   {
     sources: [
       {
-        // urls, etc.
         type: String,
         required: false,
       },
@@ -44,16 +43,11 @@ const NewsSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
-    // factCheck: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "FactCheck",
-    //   required: false,
-    // },
-    // newsLang: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "NewsLang",
-    //   required: false,
-    // },
+    factCheck: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "FactCheck",
+      required: false,
+    },
   },
   {
     timestamps: true,

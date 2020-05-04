@@ -79,6 +79,7 @@ export default {
         factChecks: factChecks.map((item: any) => ({
           ...item,
           photo: item.media?.[0],
+          publishedAt: formatDate(item.publishedAt),
         })),
         title: "Covid-19 Factchecking plateforme",
         description: "",
