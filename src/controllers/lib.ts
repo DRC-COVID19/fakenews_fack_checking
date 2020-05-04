@@ -41,16 +41,27 @@ export default function createAPIController(Model: any) {
     };
   };
 
+  const cleanRaId = (args: any) => {
+    if (args.id) {
+      const { id, ...rest } = args;
+      return {
+        ...rest,
+        _id: id?.length ? { $in: id } : id,
+      };
+    }
+    return args;
+  };
+
   return {
     getItems: async (req: Request, res: Response) => {
       res.header("Access-Control-Expose-Headers", "X-Total-Count");
       const { query } = req;
       const { _start, _end, _sort, _order, select, ...args } = query;
-      const sort = { [_sort as string]: (_order as string)?.toLowerCase() };
+      const sort = { [_sort as string]: _order };
 
       try {
         const { items, totalCount } = await findModelItemsAndCount(
-          args,
+          cleanRaId(args),
           _start,
           _end,
           select as string,
