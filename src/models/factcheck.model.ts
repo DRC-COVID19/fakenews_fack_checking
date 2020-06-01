@@ -28,6 +28,7 @@ const FactCheckSchema = new mongoose.Schema(
     },
     checkedFact: { type: String, required: true },
     scentificArgument: { type: String, required: true },
+    source: { type: String, required: true },
     links: { type: [String], required: false },
     media: { type: [String], required: false },
     lang: { type: String, required: true, default: "fr" },
